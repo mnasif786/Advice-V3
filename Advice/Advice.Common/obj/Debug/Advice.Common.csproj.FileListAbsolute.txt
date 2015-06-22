@@ -1,0 +1,14 @@
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Common.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Common.pdb
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Domain.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.ExchangeEmails.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\EmailServerService.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Domain.pdb
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.ExchangeEmails.pdb
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Advice.Infrastructure.pdb
+D:\Code\Advice_V3\Advice\Advice.Common\obj\Debug\Advice.Common.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.Common\obj\Debug\Advice.Common.dll
+D:\Code\Advice_V3\Advice\Advice.Common\obj\Debug\Advice.Common.pdb
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Peninsula.Domain.dll
+D:\Code\Advice_V3\Advice\Advice.Common\bin\Debug\Peninsula.Domain.pdb

@@ -1,0 +1,9 @@
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\Advice.ScannedDocuments.Test.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\Advice.ScannedDocuments.Test.pdb
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\Advice.ScannedDocuments.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\nunit.framework.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\Advice.ScannedDocuments.pdb
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\bin\Debug\nunit.framework.xml
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\obj\Debug\Advice.ScannedDocuments.Test.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\obj\Debug\Advice.ScannedDocuments.Test.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments.Test\obj\Debug\Advice.ScannedDocuments.Test.pdb

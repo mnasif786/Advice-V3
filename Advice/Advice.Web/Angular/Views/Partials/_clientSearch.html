@@ -1,0 +1,43 @@
+﻿<div class="row" ng-controller="clientController">
+    <div class="col-lg-12">
+        <div>    
+            <div class="client-search-group">
+                <div class="row">
+                    <div class="col-md-8" style="margin-bottom:5px;">
+                        <div class="input-group">                            
+                            <input type="text" ng-model="selectedCan"
+                                    placeholder="Search CAN"
+                                    typeahead-min-length="3"
+                                    typeahead-on-select='onCanSelect($item)'
+                                    typeahead="cans for cans in getCansStartWith($viewValue)"
+                                    class="form-control" aria-describedby="search1">
+                            <span id="search1" class="input-group-addon"><span class="fa fa-search fa-flip-horizontal"></span></span>                               
+                        </div>                                                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8" style="margin-bottom:5px;">
+                        <div class="input-group">                              
+                            <input type="text" ng-model="selectedClientName"
+                                placeholder="Search Client"
+                                typeahead-min-length="4"
+                                typeahead-on-select='onClientNameSelect($item)'
+                                typeahead="companyNames for companyNames in getClientNamesStartWith($viewValue)"
+                                class="form-control" aria-describedby="search2">                         
+                                <span class="input-group-addon" id="search2"><span class="fa fa-search fa-flip-horizontal"></span></span>                               
+                        </div>                       
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="col-md-4">&nbsp;</span>
+                    <div class="col-md-8">
+                            <div class="btn-group btn-group" role="group">                             
+                            <a class="row-pointer" ng-click="getRecentClientsAction()">Recent</a> | 
+                            <a ng-href={{advice2ClientSearchLink}} target="_blank">Advanced</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Advice.Common.Models;
+
+namespace Advice.Application.Contracts
+{
+    public interface IUserService
+    {
+        IEnumerable<UserModel> GetAllUsers();
+        UserModel GetUserByName(string usernName);
+        UserModel GetUserByNameWithTeamAndPermissions(string userName);
+    }
+}

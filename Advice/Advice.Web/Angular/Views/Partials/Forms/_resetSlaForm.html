@@ -1,0 +1,122 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">Reset SLA</h4>
+</div>
+<div class="modal-body">
+    <!--<div class="modal-alerts">
+            <alert ng-repeat="alert in validationMessages" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>-->
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Current SLA</label>
+            <div class="col-sm-9">{{taskDetailsData.DueDate}}</div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">New SLA</label>
+            <div class="col-sm-4">
+                <input type="text" placeholder="dd/mm/yyyy" class="form-control"
+                       ng-class="{errorfield: fields.newSla.errors.RequiredIf.On}"
+                       datepicker-popup="{{dtPickerickerSettings.format}}"
+                       ng-model="datePicker.datePicked"
+                       ng-click="dtPickerickerSettings.open($event)"
+                       is-open="dtPickerickerSettings.opened"
+                       min-date="dtPickerickerSettings.minDate"
+                       max-date="dtPickerickerSettings.maxDate"
+                       datepicker-options="dtPickerickerSettings.dateOptions"
+                       ng-change="setSlaTimes()"
+                       ng-required="true" close-text="Close" readonly />
+            </div>
+            <div class="col-sm-1">
+                <span>&nbsp;</span>
+                <span class="fa fa-calendar fa-2x" ng-click="dtPickerickerSettings.open($event)"></span>
+            </div>
+            <div class="col-sm-2">
+                <div ng-show="!resetTaskSlaModel.Manual">
+                    <select class="form-control" ng-model="selectedTime.time"
+                            ng-options="t for t in slaTime"></select>
+                </div>
+                <div classlass="col-sm-12" ng-show="resetTaskSlaModel.Manual">
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control input-sm" ng-class="{errorfield: fields.slaTime.hasError}" maxlength="2" placeholder="hh" ng-model="resetTaskSlaModel.ManualTime.Hour" />
+                    </div>
+                    <div class="col-sm-2">
+                        <span>&nbsp;:&nbsp;</span>
+                    </div>
+                    <div class="col-sm-5" >
+                        <input type="text" class="form-control input-sm" ng-class="{errorfield: fields.slaTime.hasError}" maxlength="2" placeholder="mm" ng-model="resetTaskSlaModel.ManualTime.Min" />
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-3">
+                &nbsp;<input style="padding-top:3px;" type="checkbox" ng-model="resetTaskSlaModel.Manual" />&nbsp;<label>Manual</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-5">
+                <p ng-show="fields.newSla.errors.RequiredIf.On" class="red">{{fields.newSla.errors.RequiredIf.Message}}</p>
+            </div>
+            <div class="col-sm-5">
+                <p ng-show="fields.slaTime.errors.RequiredIf.On" class="red">{{fields.slaTime.errors.RequiredIf.Message}}</p>
+                <p ng-show="fields.slaTime.errors.LessThanTodaysTime.On" class="red">{{fields.slaTime.errors.LessThanTodaysTime.Message}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Urgent?</label>
+            <div class="col-sm-1">
+                <input type="checkbox" ng-model="resetTaskSlaModel.Urgent" />
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Reason</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-class="{errorfield: fields.reason.errors.RequiredIf.On}" ng-model="selectedTaskModifyingReasonsForResetGroup.selectedReason"
+                        ng-options="taskModifyingReason.Description for taskModifyingReason in taskModifyingReasonsForResetGroup">
+                    <option value="">Please Select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-9">
+                <p ng-show="fields.reason.errors.RequiredIf.On" class="red">Please select a reason</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Comments</label>
+            <div class="col-sm-9">
+                <textarea ng-model="resetTaskSlaModel.Comments" ng-class="{errorfield: fields.comments.errors.RequiredIf.On}" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-9">
+                <p ng-show="fields.comments.errors.RequiredIf.On" class="red">Please enter comments</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="Save()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

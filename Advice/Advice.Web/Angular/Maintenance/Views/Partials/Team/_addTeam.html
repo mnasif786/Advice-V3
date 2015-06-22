@@ -1,0 +1,45 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">Add Team</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Team</label>
+            <div class="col-sm-9"><input type="text" class="form-control" ng-model="team.Description" maxlength="50" /></div>
+        </div>
+    </div>
+    <div class="row" ng-if="fields.team.errors.Required">
+        <div class="col-sm-12">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-9">
+                <p class="red">Please enter team name</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Division</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-options="division.Description for division in divisionGroup.divisions" ng-model="divisionGroup.selectedDivision">
+                    <option value="">Please Select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label class="col-sm-2">Department</label>
+            <div class="col-sm-9">
+                <select class="form-control" ng-options="department.Description for department in departmentGroup.departments" ng-model="departmentGroup.selectedDepartment"></select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="Save()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

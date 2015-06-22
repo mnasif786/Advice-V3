@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PeninsulaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLCompanyContacts">
+          <Key>
+            <PropertyRef Name="CompanyContactID" />
+          </Key>
+          <Property Name="CompanyContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="SiteAddressID" Type="int" Nullable="false" />
+          <Property Name="CustomerKey" Type="varchar" MaxLength="100" />
+          <Property Name="ContactTypeID" Type="int" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="20" />
+          <Property Name="Forename" Type="varchar" MaxLength="30" />
+          <Property Name="Initial" Type="varchar" MaxLength="10" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="TelNoMain" Type="varchar" MaxLength="20" />
+          <Property Name="TelNoAlt" Type="varchar" MaxLength="20" />
+          <Property Name="EMail" Type="varchar" MaxLength="50" />
+          <Property Name="NameSoundX" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="flagHidden" Type="bit" />
+          <Property Name="PrivateAndConfidential" Type="bit" />
+          <Property Name="FaxNumber" Type="varchar" MaxLength="20" />
+          <Property Name="ContactHrsSpanStart" Type="char" MaxLength="5" />
+          <Property Name="ContactHrsSpanEnd" Type="char" MaxLength="5" />
+          <Property Name="CompanyNo" Type="int" />
+          <Property Name="ContactNo" Type="int" />
+          <Property Name="Notes" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="TBLCustomers">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerKey" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="30" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="300" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="CompanyRegistrationNumber" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CompanyVATNumber" Type="varchar" MaxLength="15" />
+          <Property Name="NumberOfStaff" Type="int" />
+          <Property Name="Payroll" Type="money" />
+          <Property Name="BankName" Type="varchar" MaxLength="200" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="100" />
+          <Property Name="SortCode" Type="int" />
+          <Property Name="CompanyMainEmail" Type="varchar" MaxLength="1000" />
+          <Property Name="CompanyWebsite" Type="varchar" MaxLength="1000" />
+          <Property Name="DefaultLegalLocationID" Type="int" Nullable="false" />
+          <Property Name="CurrentSalesRepUserName" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentHSConsultant" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentPersonnelConsultant" Type="varchar" MaxLength="30" />
+          <Property Name="PrincipleBusinessTypeID" Type="int" />
+          <Property Name="CompanyNameAKA" Type="varchar" MaxLength="15" />
+          <Property Name="PBSIndustryTypeID" Type="int" />
+          <Property Name="CustomerGroupID" Type="int" />
+          <Property Name="DefaultPaymentMethodID" Type="int" Nullable="false" />
+          <Property Name="PrivateAndConfidential" Type="bit" />
+          <Property Name="AssociatedClientNotes" Type="varchar" MaxLength="2000" />
+          <Property Name="AssociatedClient" Type="varchar" MaxLength="20" />
+          <Property Name="OperaSalesLedger" Type="varchar" MaxLength="50" />
+          <Property Name="flagHidden" Type="bit" />
+          <Property Name="DummyAccount" Type="bit" />
+          <Property Name="ClientTypeID" Type="int" />
+          <Property Name="HighPriority" Type="bit" />
+          <Property Name="LeadSaleID" Type="int" />
+          <Property Name="SyncronisationStatus" Type="int" />
+          <Property Name="HoldAllAgreements" Type="bit" />
+          <Property Name="ServiceDeskID" Type="int" />
+          <Property Name="TradingAs" Type="varchar" MaxLength="100" />
+          <Property Name="IsVATRegistered" Type="bit" />
+          <Property Name="NumberOfERMUpdates" Type="int" />
+          <Property Name="SalesTeamID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TBLSiteAddresses">
+          <Key>
+            <PropertyRef Name="SiteAddressID" />
+          </Key>
+          <Property Name="SiteAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteAddressTypeID" Type="int" Nullable="false" />
+          <Property Name="CustomerKey" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="40" />
+          <Property Name="Address2" Type="varchar" MaxLength="40" />
+          <Property Name="Address3" Type="varchar" MaxLength="40" />
+          <Property Name="Address4" Type="varchar" MaxLength="40" />
+          <Property Name="Address5" Type="varchar" MaxLength="40" />
+          <Property Name="County" Type="varchar" MaxLength="40" />
+          <Property Name="Postcode" Type="varchar" MaxLength="15" />
+          <Property Name="PhoneMain" Type="varchar" MaxLength="20" />
+          <Property Name="FaxMain" Type="varchar" MaxLength="20" />
+          <Property Name="HSConsultantCode" Type="varchar" MaxLength="3" />
+          <Property Name="PersonnelConsultantCode" Type="varchar" MaxLength="3" />
+          <Property Name="SalesConsultantCode" Type="varchar" MaxLength="3" />
+          <Property Name="flagHidden" Type="bit" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="SoundXCompanyName" Type="char" MaxLength="4" />
+          <Property Name="SoundXAddress1" Type="char" MaxLength="4" />
+          <Property Name="SoundXPostCode" Type="char" MaxLength="4" />
+          <Property Name="CurrentHSConsultant" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentPersonnelConsultant" Type="varchar" MaxLength="30" />
+          <Property Name="CurrentSalesRepUserName" Type="varchar" MaxLength="30" />
+          <Property Name="LegalLocationID" Type="int" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="200" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="100" />
+          <Property Name="SortCode" Type="int" />
+          <Property Name="IndustryTypeID" Type="int" />
+          <Property Name="PrincipleBusinessTypeID" Type="int" />
+          <Property Name="PrivateAndConfidential" Type="bit" />
+          <Property Name="HopewiserIndustryType" Type="varchar" MaxLength="200" />
+          <Property Name="CompanyNo" Type="int" />
+          <Property Name="Latitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="LockCurrentHSConsultant" Type="bit" Nullable="false" />
+          <Property Name="OperaCompanyName" Type="nvarchar" MaxLength="40" />
+          <Property Name="CompanyNameJustAlphaNumeric" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TBLSiteAddressSiteAddressTypes">
+          <Key>
+            <PropertyRef Name="SiteAddressID" />
+            <PropertyRef Name="SiteAddressTypeID" />
+          </Key>
+          <Property Name="SiteAddressID" Type="int" Nullable="false" />
+          <Property Name="SiteAddressTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+          <End Role="TBLSiteAddresses" Type="Self.TBLSiteAddresses" Multiplicity="1" />
+          <End Role="TBLSiteAddressSiteAddressTypes" Type="Self.TBLSiteAddressSiteAddressTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSiteAddresses">
+              <PropertyRef Name="SiteAddressID" />
+            </Principal>
+            <Dependent Role="TBLSiteAddressSiteAddressTypes">
+              <PropertyRef Name="SiteAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PeninsulaModelStoreContainer">
+          <EntitySet Name="TBLCompanyContacts" EntityType="Self.TBLCompanyContacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCustomers" EntityType="Self.TBLCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSiteAddresses" EntityType="Self.TBLSiteAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLSiteAddressSiteAddressTypes" EntityType="Self.TBLSiteAddressSiteAddressTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" Association="Self.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+            <End Role="TBLSiteAddresses" EntitySet="TBLSiteAddresses" />
+            <End Role="TBLSiteAddressSiteAddressTypes" EntitySet="TBLSiteAddressSiteAddressTypes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PeninsulaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLCustomer">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CompanyName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyRegistrationNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyVATNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NumberOfStaff" Type="Int32" />
+          <Property Name="Payroll" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SortCode" Type="Int32" />
+          <Property Name="CompanyMainEmail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyWebsite" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultLegalLocationID" Type="Int32" Nullable="false" />
+          <Property Name="CurrentSalesRepUserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentHSConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentPersonnelConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PrincipleBusinessTypeID" Type="Int32" />
+          <Property Name="CompanyNameAKA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PBSIndustryTypeID" Type="Int32" />
+          <Property Name="CustomerGroupID" Type="Int32" />
+          <Property Name="DefaultPaymentMethodID" Type="Int32" Nullable="false" />
+          <Property Name="PrivateAndConfidential" Type="Boolean" />
+          <Property Name="AssociatedClientNotes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="AssociatedClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="OperaSalesLedger" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="flagHidden" Type="Boolean" />
+          <Property Name="DummyAccount" Type="Boolean" />
+          <Property Name="ClientTypeID" Type="Int32" />
+          <Property Name="HighPriority" Type="Boolean" />
+          <Property Name="LeadSaleID" Type="Int32" />
+          <Property Name="SyncronisationStatus" Type="Int32" />
+          <Property Name="HoldAllAgreements" Type="Boolean" />
+          <Property Name="ServiceDeskID" Type="Int32" />
+          <Property Name="TradingAs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsVATRegistered" Type="Boolean" />
+          <Property Name="NumberOfERMUpdates" Type="Int32" />
+          <Property Name="SalesTeamID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PeninsulaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLCustomers" EntityType="Self.TBLCustomer" />
+          <EntitySet Name="TBLSiteAddresses" EntityType="PeninsulaModel.TBLSiteAddress" />
+          <EntitySet Name="TBLSiteAddressSiteAddressTypes" EntityType="PeninsulaModel.TBLSiteAddressSiteAddressType" />
+          <AssociationSet Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" Association="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+            <End Role="TBLSiteAddress" EntitySet="TBLSiteAddresses" />
+            <End Role="TBLSiteAddressSiteAddressType" EntitySet="TBLSiteAddressSiteAddressTypes" />
+          </AssociationSet>
+          <EntitySet Name="TBLCompanyContacts" EntityType="PeninsulaModel.TBLCompanyContact" />
+        </EntityContainer>
+        <EntityType Name="TBLSiteAddress">
+          <Key>
+            <PropertyRef Name="SiteAddressID" />
+          </Key>
+          <Property Name="SiteAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteAddressTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address4" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Address5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="County" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Postcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneMain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FaxMain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HSConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="PersonnelConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SalesConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="flagHidden" Type="Boolean" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="SoundXCompanyName" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="SoundXAddress1" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="SoundXPostCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CurrentHSConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentPersonnelConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentSalesRepUserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="LegalLocationID" Type="Int32" Nullable="false" />
+          <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SortCode" Type="Int32" />
+          <Property Name="IndustryTypeID" Type="Int32" />
+          <Property Name="PrincipleBusinessTypeID" Type="Int32" />
+          <Property Name="PrivateAndConfidential" Type="Boolean" />
+          <Property Name="HopewiserIndustryType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyNo" Type="Int32" />
+          <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="LockCurrentHSConsultant" Type="Boolean" Nullable="false" />
+          <Property Name="OperaCompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyNameJustAlphaNumeric" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TBLSiteAddressSiteAddressTypes" Relationship="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" FromRole="TBLSiteAddress" ToRole="TBLSiteAddressSiteAddressType" />
+        </EntityType>
+        <EntityType Name="TBLSiteAddressSiteAddressType">
+          <Key>
+            <PropertyRef Name="SiteAddressID" />
+            <PropertyRef Name="SiteAddressTypeID" />
+          </Key>
+          <Property Name="SiteAddressID" Type="Int32" Nullable="false" />
+          <Property Name="SiteAddressTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TBLSiteAddress" Relationship="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" FromRole="TBLSiteAddressSiteAddressType" ToRole="TBLSiteAddress" />
+        </EntityType>
+        <Association Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+          <End Type="PeninsulaModel.TBLSiteAddress" Role="TBLSiteAddress" Multiplicity="1" />
+          <End Type="PeninsulaModel.TBLSiteAddressSiteAddressType" Role="TBLSiteAddressSiteAddressType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLSiteAddress">
+              <PropertyRef Name="SiteAddressID" />
+            </Principal>
+            <Dependent Role="TBLSiteAddressSiteAddressType">
+              <PropertyRef Name="SiteAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TBLCompanyContact">
+          <Key>
+            <PropertyRef Name="CompanyContactID" />
+          </Key>
+          <Property Name="CompanyContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="SiteAddressID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactTypeID" Type="Int32" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Forename" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Initial" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TelNoMain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TelNoAlt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NameSoundX" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="flagHidden" Type="Boolean" />
+          <Property Name="PrivateAndConfidential" Type="Boolean" />
+          <Property Name="FaxNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactHrsSpanStart" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="ContactHrsSpanEnd" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="CompanyNo" Type="Int32" />
+          <Property Name="ContactNo" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PeninsulaModelStoreContainer" CdmEntityContainer="PeninsulaEntities">
+          <EntitySetMapping Name="TBLCustomers">
+            <EntityTypeMapping TypeName="PeninsulaModel.TBLCustomer">
+              <MappingFragment StoreEntitySet="TBLCustomers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CompanyRegistrationNumber" ColumnName="CompanyRegistrationNumber" />
+                <ScalarProperty Name="CompanyVATNumber" ColumnName="CompanyVATNumber" />
+                <ScalarProperty Name="NumberOfStaff" ColumnName="NumberOfStaff" />
+                <ScalarProperty Name="Payroll" ColumnName="Payroll" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+                <ScalarProperty Name="CompanyMainEmail" ColumnName="CompanyMainEmail" />
+                <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
+                <ScalarProperty Name="DefaultLegalLocationID" ColumnName="DefaultLegalLocationID" />
+                <ScalarProperty Name="CurrentSalesRepUserName" ColumnName="CurrentSalesRepUserName" />
+                <ScalarProperty Name="CurrentHSConsultant" ColumnName="CurrentHSConsultant" />
+                <ScalarProperty Name="CurrentPersonnelConsultant" ColumnName="CurrentPersonnelConsultant" />
+                <ScalarProperty Name="PrincipleBusinessTypeID" ColumnName="PrincipleBusinessTypeID" />
+                <ScalarProperty Name="CompanyNameAKA" ColumnName="CompanyNameAKA" />
+                <ScalarProperty Name="PBSIndustryTypeID" ColumnName="PBSIndustryTypeID" />
+                <ScalarProperty Name="CustomerGroupID" ColumnName="CustomerGroupID" />
+                <ScalarProperty Name="DefaultPaymentMethodID" ColumnName="DefaultPaymentMethodID" />
+                <ScalarProperty Name="PrivateAndConfidential" ColumnName="PrivateAndConfidential" />
+                <ScalarProperty Name="AssociatedClientNotes" ColumnName="AssociatedClientNotes" />
+                <ScalarProperty Name="AssociatedClient" ColumnName="AssociatedClient" />
+                <ScalarProperty Name="OperaSalesLedger" ColumnName="OperaSalesLedger" />
+                <ScalarProperty Name="flagHidden" ColumnName="flagHidden" />
+                <ScalarProperty Name="DummyAccount" ColumnName="DummyAccount" />
+                <ScalarProperty Name="ClientTypeID" ColumnName="ClientTypeID" />
+                <ScalarProperty Name="HighPriority" ColumnName="HighPriority" />
+                <ScalarProperty Name="LeadSaleID" ColumnName="LeadSaleID" />
+                <ScalarProperty Name="SyncronisationStatus" ColumnName="SyncronisationStatus" />
+                <ScalarProperty Name="HoldAllAgreements" ColumnName="HoldAllAgreements" />
+                <ScalarProperty Name="ServiceDeskID" ColumnName="ServiceDeskID" />
+                <ScalarProperty Name="TradingAs" ColumnName="TradingAs" />
+                <ScalarProperty Name="IsVATRegistered" ColumnName="IsVATRegistered" />
+                <ScalarProperty Name="NumberOfERMUpdates" ColumnName="NumberOfERMUpdates" />
+                <ScalarProperty Name="SalesTeamID" ColumnName="SalesTeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSiteAddresses">
+            <EntityTypeMapping TypeName="PeninsulaModel.TBLSiteAddress">
+              <MappingFragment StoreEntitySet="TBLSiteAddresses">
+                <ScalarProperty Name="CompanyNameJustAlphaNumeric" ColumnName="CompanyNameJustAlphaNumeric" />
+                <ScalarProperty Name="OperaCompanyName" ColumnName="OperaCompanyName" />
+                <ScalarProperty Name="LockCurrentHSConsultant" ColumnName="LockCurrentHSConsultant" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
+                <ScalarProperty Name="HopewiserIndustryType" ColumnName="HopewiserIndustryType" />
+                <ScalarProperty Name="PrivateAndConfidential" ColumnName="PrivateAndConfidential" />
+                <ScalarProperty Name="PrincipleBusinessTypeID" ColumnName="PrincipleBusinessTypeID" />
+                <ScalarProperty Name="IndustryTypeID" ColumnName="IndustryTypeID" />
+                <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="LegalLocationID" ColumnName="LegalLocationID" />
+                <ScalarProperty Name="CurrentSalesRepUserName" ColumnName="CurrentSalesRepUserName" />
+                <ScalarProperty Name="CurrentPersonnelConsultant" ColumnName="CurrentPersonnelConsultant" />
+                <ScalarProperty Name="CurrentHSConsultant" ColumnName="CurrentHSConsultant" />
+                <ScalarProperty Name="SoundXPostCode" ColumnName="SoundXPostCode" />
+                <ScalarProperty Name="SoundXAddress1" ColumnName="SoundXAddress1" />
+                <ScalarProperty Name="SoundXCompanyName" ColumnName="SoundXCompanyName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="flagHidden" ColumnName="flagHidden" />
+                <ScalarProperty Name="SalesConsultantCode" ColumnName="SalesConsultantCode" />
+                <ScalarProperty Name="PersonnelConsultantCode" ColumnName="PersonnelConsultantCode" />
+                <ScalarProperty Name="HSConsultantCode" ColumnName="HSConsultantCode" />
+                <ScalarProperty Name="FaxMain" ColumnName="FaxMain" />
+                <ScalarProperty Name="PhoneMain" ColumnName="PhoneMain" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Address5" ColumnName="Address5" />
+                <ScalarProperty Name="Address4" ColumnName="Address4" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+                <ScalarProperty Name="SiteAddressTypeID" ColumnName="SiteAddressTypeID" />
+                <ScalarProperty Name="SiteAddressID" ColumnName="SiteAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLSiteAddressSiteAddressTypes">
+            <EntityTypeMapping TypeName="PeninsulaModel.TBLSiteAddressSiteAddressType">
+              <MappingFragment StoreEntitySet="TBLSiteAddressSiteAddressTypes">
+                <ScalarProperty Name="SiteAddressTypeID" ColumnName="SiteAddressTypeID" />
+                <ScalarProperty Name="SiteAddressID" ColumnName="SiteAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCompanyContacts">
+            <EntityTypeMapping TypeName="PeninsulaModel.TBLCompanyContact">
+              <MappingFragment StoreEntitySet="TBLCompanyContacts">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
+                <ScalarProperty Name="ContactHrsSpanEnd" ColumnName="ContactHrsSpanEnd" />
+                <ScalarProperty Name="ContactHrsSpanStart" ColumnName="ContactHrsSpanStart" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="PrivateAndConfidential" ColumnName="PrivateAndConfidential" />
+                <ScalarProperty Name="flagHidden" ColumnName="flagHidden" />
+                <ScalarProperty Name="NameSoundX" ColumnName="NameSoundX" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="TelNoAlt" ColumnName="TelNoAlt" />
+                <ScalarProperty Name="TelNoMain" ColumnName="TelNoMain" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="Forename" ColumnName="Forename" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+                <ScalarProperty Name="SiteAddressID" ColumnName="SiteAddressID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyContactID" ColumnName="CompanyContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

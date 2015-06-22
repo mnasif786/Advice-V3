@@ -1,0 +1,6 @@
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\bin\Debug\Advice.ScannedDocuments.dll.config
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\bin\Debug\Advice.ScannedDocuments.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\bin\Debug\Advice.ScannedDocuments.pdb
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\obj\Debug\Advice.ScannedDocuments.dll
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\obj\Debug\Advice.ScannedDocuments.pdb
+D:\Code\Advice_V3\Advice\Advice.ScannedDocuments\obj\Debug\Advice.ScannedDocuments.csprojResolveAssemblyReference.cache

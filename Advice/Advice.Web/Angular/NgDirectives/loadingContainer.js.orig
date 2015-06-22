@@ -1,0 +1,68 @@
+﻿//angular.module('adviceapp')
+//.directive('loadingContainer', function () {
+//    return {
+//        restrict: 'A',
+//        scope: false,
+//        link: function (scope, element, attrs) {
+//            var loadingLayer = angular.element('<div class="loading"></div>');
+//            element.append(loadingLayer);
+//            element.addClass('loading-container');
+//            scope.$watch(attrs.loadingContainer, function (value) {
+//                loadingLayer.toggleClass('ng-hide', !value);
+//            });
+//        }
+//    };
+//});
+
+angular.module('adviceapp')
+.directive('bootstrapSwitch', function () {
+    return {
+        restrict: 'E',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModelCtrl) {
+            if (attrs.type === 'checkbox' && !Object.hasOwnProperty(attrs, 'bsSwitch')) {
+                $(element).bootstrapSwitch({
+                    onSwitchChange: function (event, state) {
+                        scope.$apply(function () {
+                            ngModelCtrl.$setViewValue(state);
+                        });
+                    }
+                });
+
+                var dereg = scope.$watch(function () {
+                    return ngModelCtrl.$modelValue;
+                }, function (newVal) {
+                    $(element).bootstrapSwitch('state', !!newVal, true);
+                    dereg();
+                });
+            }
+        }
+    }
+});
+//.directive('bootstrapSwitch', [
+//      function() {
+//          return {
+//              restrict: 'A',
+//              require: '?ngModel',
+//              link: function(scope, element, attrs, ngModel) {
+//                  element.bootstrapSwitch();
+ 
+//                  element.on('switchChange.bootstrapSwitch', function(event, state) {
+//                      if (ngModel) {
+//                          scope.$apply(function() {
+//                              ngModel.$setViewValue(state);
+//                          });
+//                      }
+//                  });
+ 
+//                  scope.$watch(attrs.ngModel, function(newValue, oldValue) {
+//                      if (newValue) {
+//                          element.bootstrapSwitch('state', true, true);
+//                      } else {
+//                          element.bootstrapSwitch('state', false, true);
+//                      }
+//                  });
+//              }
+//          };
+//      }
+//]);

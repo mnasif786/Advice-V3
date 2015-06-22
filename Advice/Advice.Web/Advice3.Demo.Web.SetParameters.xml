@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Advice3_Demo" />
+  <setParameter name="AdviceEntities-Web.config Connection String" value="metadata=res://*/AdviceModel.csdl|res://*/AdviceModel.ssdl|res://*/AdviceModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=pbssqltest1;initial catalog=advice;persist security info=True;user id=intranetadmin;password=intadpas;MultipleActiveResultSets=True;&quot;" />
+</parameters>

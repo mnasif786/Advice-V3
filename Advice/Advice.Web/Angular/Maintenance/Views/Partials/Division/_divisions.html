@@ -1,0 +1,19 @@
+﻿<div>
+    <div ng-if="!maintenanceUserPermission.hasDivisionPermission">You do not have permissions to edit divisions</div>
+    <table ng-if="maintenanceUserPermission.hasDivisionPermission" class="table table-modal table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-xs-4 text-center">Division</th>
+                <th class="col-xs-1"></th>
+                <th class="col-xs-7"><button class="btn btn-primary" ng-click="addDivision()">Add</button></th>
+
+            </tr>
+        </thead>
+        <tr ng-repeat="division in divisions">
+            <td class="col-xs-4">{{division.Description}}</td>
+            <td class="col-xs-1"><button class="btn btn-primary" ng-click="editDivision(division)">Edit</button></td>
+            <th class="col-xs-7"></th>
+        </tr>
+    </table>
+</div>
+

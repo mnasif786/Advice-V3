@@ -1,0 +1,31 @@
+﻿
+namespace Advice.Domain.Entities.Enums
+{
+    public enum TaskTypeIds : long
+    {
+        BusinessWiseRequest = 1,
+        Callback30Minutes = 2,
+        Callback1Hour = 3,
+        CaseReview = 4,
+        Critique = 5,
+        DocumentReview = 6,
+        Email = 7,
+        Fax = 8,
+        FollowupTask = 9,
+        Post = 10,
+        SpecialProjectRequest = 11,
+        Misc = 12,
+        Call = 13,
+        CcEmail = 14,
+        FaxManual = 15,
+        RiskAssReview = 16,
+        RequestforConsultancy = 17,
+        InternalEmail = 18,
+        InternalCcEmail = 19,
+        HronlineAdviceRequest = 20,
+        HronlineClientActionAdded = 21,
+        HronlineCloseJobRequest = 22,
+        HronlineReopenJobRequest = 23,
+        ServiceReview = 24 
+    }
+}

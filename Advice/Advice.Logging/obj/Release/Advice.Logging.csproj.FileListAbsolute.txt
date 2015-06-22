@@ -1,0 +1,15 @@
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Advice.Logging.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Advice.Logging.pdb
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Elasticsearch.Net.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Nest.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Newtonsoft.Json.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\System.Net.Http.Formatting.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Elasticsearch.Net.pdb
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Elasticsearch.Net.xml
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Nest.pdb
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Nest.xml
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\Newtonsoft.Json.xml
+D:\Code\Advice_V3\Advice\Advice.Logging\bin\Release\System.Net.Http.Formatting.xml
+D:\Code\Advice_V3\Advice\Advice.Logging\obj\Release\Advice.Logging.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.Logging\obj\Release\Advice.Logging.dll
+D:\Code\Advice_V3\Advice\Advice.Logging\obj\Release\Advice.Logging.pdb

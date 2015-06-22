@@ -1,0 +1,295 @@
+﻿<!--<div class="col-md-12 task-detail-header">Details</div>-->
+<div class="task-detail-body" ng-show="taskDetailsData!=null">
+    <div class="row">
+        <span class="col-md-3">Task ID:</span>
+        <span class="col-md-3">{{taskDetailsData.TaskId}}</span>
+    </div>
+
+    <div class="row">
+        <span class="col-md-3">Contact Name: </span>
+        <span class="col-md-9">{{taskDetailsData.ContactName}}</span>
+    </div>
+
+    <div class="row">
+        <span class="col-md-3">Email Address: </span>
+        <span class="col-md-9">{{taskDetailsData.EmailAddress}}</span>
+    </div>
+    <div class="row">
+        <span class="col-md-3">Subject: </span>
+        <span class="col-md-9" ng-switch on="taskDetailsData.IsEmailTask">
+            <span ng-switch-when="true">
+                {{taskDetailsData.EmailTask.OutlookEmailMessage.EmailSubject}}
+            </span>
+            <span class="col-md-9" ng-switch-default>
+                {{taskDetailsData.JobSubject}}
+            </span>
+        </span>
+    </div>
+    <div class="row">
+        <span class="col-md-3">Phone: </span>
+        <span class="col-md-9">{{taskDetailsData.PhoneNumber}}</span>
+    </div>
+    <div class="task-detail-sections" ng-if="taskDetailsData.IsProactiveTask && taskDetailsData.TaskJobs[0].Job != null">
+        <div class="row">&nbsp;</div>
+        <fieldset>
+            <legend>Job Details</legend>
+            <div class="row">
+                <span class="col-md-3">Job Id:</span>
+                <span class="col-md-3">{{taskDetailsData.TaskJobs[0].JobID}}</span>
+            </div>
+            <div class="row">
+                <span class="col-md-3">Subject: </span>
+                <span class="col-md-9">{{taskDetailsData.TaskJobs[0].Job.Subject}}</span>
+            </div>
+            <div class="row">
+                <span class="col-md-3">Contact Name: </span>
+                <span class="col-md-9">{{taskDetailsData.TaskJobs[0].Job.Contact.Name}}</span>
+            </div>
+            <div class="row">
+                <span class="col-md-3">Job Email: </span>
+                <span class="col-md-9">{{taskDetailsData.TaskJobs[0].Job.Contact.EmailAddress}}</span>
+            </div>
+            <div class="row">
+                <span class="col-md-3">Phone: </span>
+                <span class="col-md-9">{{taskDetailsData.TaskJobs[0].Job.Contact.TelephoneNumberMain}}</span>
+            </div>
+        </fieldset>
+    </div>
+
+    <!--HRO div-->
+    <div ng-if="taskDetailsData.IsHroTask">
+        <div class="row">
+            <span class="col-md-3">Department: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.DepartmentDescription}}</span>
+            <span class="col-md-3">Jurisdiction: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.JurisdictionDescription}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Individual/Group: </span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.IndividualOrGroup == 'I'">Individual</span>
+            <span class="col-md-3" ng-if="!taskDetailsData.HroTask.IndividualOrGroup || taskDetailsData.HroTask.IndividualOrGroup == 'G'">Group</span>
+            <span class="col-md-3">Group Name: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.GroupName}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Individual Forename: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.IndividualForename}}</span>
+            <span class="col-md-3">Individual Surname: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.IndividualSurname}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Preferred Response: </span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseType == 'H'">HRO</span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseType == 'T'">Telephone</span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseType == ' '">None Required</span>
+            <span class="col-md-3">Preferred Contact Date: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.ResponseDate}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Preferred Contact Time: </span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseTime == 'M'">Morning</span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseTime == 'A'">Afternoon</span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseTime == 'E'">Evening</span>
+            <span class="col-md-3" ng-if="taskDetailsData.HroTask.ResponseTime == ' '">&nbsp;</span>
+            <span class="col-md-3">HRO NOA Group: </span>
+            <span class="col-md-3">{{taskDetailsData.HroTask.HroNatureOfAdviceGroup}}</span>
+        </div>
+    </div>
+
+    <!--Business wise div-->
+    <div ng-if="taskDetailsData.IsBusinessWiseTask">
+        <div class="row">
+            <span class="col-md-3">Department: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.DepartmentDescription}}</span>
+            <span class="col-md-3">Jurisdiction: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.JurisdictionDescription}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Individual/Group: </span>
+            <span class="col-md-3" ng-if="taskDetailsData.BusinessWiseTask.IndividualOrGroup == 'I'">Individual</span>
+            <span class="col-md-3" ng-if="!taskDetailsData.BusinessWiseTask.IndividualOrGroup || taskDetailsData.BusinessWiseTask.IndividualOrGroup == 'G'">Group</span>
+            <span class="col-md-3">Group Name: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.GroupName}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Individual Forename: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.IndividualForename}}</span>
+            <span class="col-md-3">Individual Surname: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.IndividualSurname}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Preferred Response: </span>
+            <span class="col-md-3">&nbsp;</span>
+            <span class="col-md-3">Preferred Contact Date: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.PreferredDateOfContact}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Preferred Contact Time: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.PreferredTimeOfContact}}</span>
+            <span class="col-md-3">BW NOA Group: </span>
+            <span class="col-md-3">{{taskDetailsData.BusinessWiseTask.BusinessWiseNatureOfAdviceGroup}}</span>
+        </div>
+    </div>
+
+    <!--Email/Internal email/CCemail with or without attachment-->
+    <div ng-if="taskDetailsData.IsEmailTask">
+        <div class="row">
+            <span class="col-md-3">Cross Posted: </span>
+            <span class="col-md-3">{{taskDetailsData.EmailTask.CrossPosted}}</span>
+        </div>
+        <div class="row">
+            <span class="col-md-3">Recipients: </span>
+            <div class="col-md-9">
+                <div ng-if="taskDetailsData.EmailTask.OutlookEmailMessage != null">
+                    <span ng-repeat="recipient in taskDetailsData.EmailTask.OutlookEmailMessage.Recipients">{{recipient}};</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <span class="col-md-3">CC Recipients: </span>
+            <div class="col-md-9">
+                <div ng-if="taskDetailsData.EmailTask.OutlookEmailMessage != null">
+                    <span ng-repeat="ccRecipient in taskDetailsData.EmailTask.OutlookEmailMessage.CcRecipients">{{ccRecipient}};</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Attachments-->
+    <div class="task-detail-sections">
+        <fieldset>
+            <legend>Attachments</legend>
+            <div id="attachments">
+                <div ng-repeat="taskDocument in taskDetailsData.TaskDocuments">
+                    <span ng-switch="taskDocument.Document.Extension">
+                        <img ng-switch-when=".doc" ng-src="Angular\Images\FileExtensionIcons\docx.png" />
+                        <img ng-switch-when=".docx" ng-src="Angular\Images\FileExtensionIcons\docx.png" />
+                        <img ng-switch-when=".xls" ng-src="Angular\Images\FileExtensionIcons\xls.png" />
+                        <img ng-switch-when=".xlsx" ng-src="Angular\Images\FileExtensionIcons\xlsx.png" />
+                        <img ng-switch-when=".pdf" ng-src="Angular\Images\FileExtensionIcons\pdf.png" />
+                        <img ng-switch-when=".txt" ng-src="Angular\Images\FileExtensionIcons\txt.png" />
+                        <img ng-switch-default ng-src="Angular\Images\FileExtensionIcons\unknownfiletype.png" />
+                    </span>
+
+                    <a href="{{apiUrl}}documents/{{taskDocument.Document.ScannedDocumentId}}/{{taskDocument.Document.Filename}}">
+                        <span ng-show="taskDocument.Document.Description != ''">{{taskDocument.Document.Description}}</span>
+                        <span ng-hide="taskDocument.Document.Description != ''">{{taskDocument.Document.Filename}}</span>
+                    </a>
+                </div>
+            </div>
+            <div class="empty"></div>
+        </fieldset>
+    </div>
+
+    <!--Description/Email-->
+    <div class="task-detail-sections">
+        <fieldset>
+            <legend>Description/Email</legend>
+            <div id="email-details">
+                <div ng-switch on="taskDetailsData.IsEmailTask">
+                    <p ng-switch-when="true" ng-bind-html="taskDetailsData.EmailTask.OutlookEmailMessage.Body">
+                        {{taskDetailsData.EmailTask.OutlookEmailMessage.EmailSubject}}
+                    </p>
+                    <p ng-switch-default>
+                        {{taskDetailsData.Description}}
+                    </p>
+                </div>
+            </div>
+            <div class="empty"></div>
+        </fieldset>
+    </div>
+
+    <!-- Description modal popup -->
+    <div id="descriptionModel" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Description/Email</h4>
+                </div>
+                <div class="modal-body scrollable-popup">
+                    <div ng-switch on="taskDetailsData.IsEmailTask">
+                        <p ng-switch-when="true" ng-bind-html="taskDetailsData.EmailTask.OutlookEmailMessage.Body">
+                            {{taskDetailsData.EmailTask.OutlookEmailMessage.EmailSubject}}
+                        </p>
+                        <p ng-switch-default>
+                            {{taskDetailsData.Description}}
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task History modal popup -->
+    <div id="taskHistoryModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Task History</h4>
+                </div>
+
+                <div class="modal-body scrollable-popup">
+                    <table class="table table-modal">
+                        <thead>
+                            <tr>
+                                <th class="col-xs-1">&nbsp;</th>
+                                <th class="col-xs-2">Date</th>
+                                <th class="col-xs-2">Changed By</th>
+                                <th class="col-xs-2">Change Made</th>
+                                <th class="col-xs-3">Comments</th>
+                                <th class="col-xs-2">Assigned To</th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="historyItem in taskHistory">
+                            <td>
+                                <div class="text-center" ng-switch="historyItem.SlaStatus">
+                                    <img ng-switch-when="Red" ng-src="Content/images/RAG_Red.png" data-toggle="tooltip" data-placement="right" title="{{historyItem.SlaStatus}}" />
+                                    <img ng-switch-when="Green" ng-src="Content/images/RAG_green.png" data-toggle="tooltip" data-placement="right" title="{{historyItem.SlaStatus}}" />
+                                    <img ng-switch-when="Amber" ng-src="Content/images/RAG_amber.png" data-togglse="tooltip" data-placement="right" title="{{historyItem.SlaStatus}}" />
+                                    <img ng-switch-when="Platinum" ng-src="Content/images/RAG_platinum.png" data-toggle="tooltip" data-placement="right" title="{{historyItem.SlaStatus}}" />
+                                    <span ng-switch-default>&nbsp;</span>
+                                </div>
+                            </td>
+                            <td>{{historyItem.LastModifiedDate | date:'dd/MM/yyyy HH:mm' }}</td>
+                            <td>{{historyItem.LastModifiedBy}}</td>
+                            <td>{{historyItem.TaskModifyingReasonGroup}}</td>
+                            <td>{{historyItem.TaskModifyingReason}} <br /> {{historyItem.LastModifiedComment}}</td>
+                            <td>{{historyItem.AssignedTo}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div class="row task-detail-footer" ng-show="taskDetailsData!=null">
+    <div class="btn-group btn-group-justified .form-horizontal btn-block" style="margin-top: 3px;">
+        <a class="btn btn-primary btn-taskdetails" ng-disabled="currentFilterType=='Delete'" ng-click="RestoreMessageToOutlook(taskDetailsData)">
+            <span ng-show="!activityMonitor.TaskSendToOutlookkInProgress">Send To<br />Outlook</span>
+            <span ng-show="activityMonitor.TaskSendToOutlookkInProgress"><span class="fa fa-spinner fa-spin fa-2x"></span></span>
+        </a>
+        <a class="btn btn-primary btn-taskdetails" ng-show="currentFilterType!='Delete'" ng-disabled="!hasUserDeletePermission" ng-click="DeleteTaskById(taskDetailsData.TaskId,viewProActiveTask)">
+            <span ng-show="!activityMonitor.TaskDeleteInProgress"> Delete</span>
+            <span ng-show="activityMonitor.TaskDeleteInProgress"><span class="fa fa-spinner fa-spin fa-2x"></span></span>
+        </a>
+        <a class="btn btn-primary btn-taskdetails" ng-if="currentFilterType=='Delete'" ng-click="ReinstateTask(taskDetailsData.TaskId)">Reinstate</a>
+        <a ng-href="{{advice2CompleteAndRemove}}" target="_blank" class="btn btn-primary btn-taskdetails" ng-disabled="currentFilterType=='Delete'">Complete<br />Remove</a>
+        <a ng-href="{{advice2CompleteNotRemove}}" target="_blank" class="btn btn-primary btn-taskdetails" ng-disabled="currentFilterType=='Delete'">Complete<br />No Remove</a>
+        <a class="btn btn-primary btn-taskdetails" ng-disabled="currentFilterType=='Delete'" ng-click="ReAssignTask(taskDetailsData.TaskId, taskDetailsData.DueDate, taskDetailsData.Urgent)">Reassign</a>
+        <a class="btn btn-primary btn-taskdetails" ng-disabled="currentFilterType=='Delete' || !hasUserResetPermission" ng-click="resetSla(taskDetailsData)">Reset<br /> SLA</a>
+        <a class="btn btn-primary btn-taskdetails" data-toggle="modal" data-target="#descriptionModel">Show<br />Email</a>
+        <a class="btn btn-primary btn-taskdetails" ng-click="getTaskHistoryByTaskId(taskDetailsData.TaskId)">Show<br />History</a>
+    </div>
+</div>
+

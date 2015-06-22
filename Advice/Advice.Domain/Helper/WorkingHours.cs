@@ -1,0 +1,151 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Advice.Domain.Helper
+{
+    // added to facilitate testing
+    public static class SystemTime
+    {
+        public static Func<DateTime> Now = () => DateTime.Now;
+        public static Func<DateTime> Today = () => DateTime.Today;
+    }
+
+    public static class WorkingHours
+    {
+        static WorkingHours()
+        {
+            string officeWorkingHours = ConfigurationManager.AppSettings["OfficeWorkingHours"];
+
+            if (!string.IsNullOrEmpty(officeWorkingHours))
+            {
+                string[] _workingHours = officeWorkingHours.Split(',');
+                OpeningTime = TimeSpan.Parse(_workingHours[0]);
+                ClosingTime = TimeSpan.Parse(_workingHours[1]);                
+            }
+            else
+            {
+                // if not defined, use defaults
+                OpeningTime = TimeSpan.Parse("08:30");
+                ClosingTime = TimeSpan.Parse("18:00");
+            }            
+        }
+
+        public static TimeSpan OpeningTime;
+        public static TimeSpan ClosingTime;
+               
+
+        public static DateTime ClosingTimeToday 
+        {
+            get 
+            {
+                return SystemTime.Today().AddMinutes(ClosingTime.TotalMinutes);
+            }            
+        }
+
+        public static DateTime OpeningTimeToday
+        {
+            get
+            {
+                return SystemTime.Today().AddMinutes(OpeningTime.TotalMinutes);
+            }
+        }
+                  
+        // Not for external use - does not take account of closed days.    
+        private static DateTime OpeningTimeTomorrow             
+        {
+            get
+            {
+                return SystemTime.Today().AddDays(1).AddMinutes(OpeningTime.TotalMinutes);
+            }
+        }                        
+
+        public static TimeSpan TimeClosedOvernight
+        {
+            get
+            {
+                return OpeningTimeTomorrow - ClosingTimeToday;
+            }
+        }            
+
+        public static List<DayOfWeek> ClosedDays = new List<DayOfWeek>
+        { 
+            DayOfWeek.Saturday, 
+            DayOfWeek.Sunday
+        };
+
+        //TODO: Handle bank holidays etc.
+        public static DateTime GetDateNWorkingDaysInPast(int numDays)
+        {
+            //int direction = numDays > 0 ? 1 : -1;
+
+            //DateTime returnDate = SystemTime.Today();
+                        
+            //for (int i = 0; i != numDays; )
+            //{                
+            //    while (returnDate.DayOfWeek == DayOfWeek.Sunday || returnDate.DayOfWeek == DayOfWeek.Saturday)
+            //    {
+            //        returnDate.AddDays(direction);
+            //    }
+
+            //    i += direction;
+            //}
+
+            return SystemTime.Today().AddDays(-numDays);
+        }
+
+        private static DateTime GetStartTime()
+        {
+            //TODO: SGG - While we are only adding Service Review tasks, we can set the creation time to OpeningTimeToday
+            //This will not be appropriate when we add other task types
+
+            //DateTime startTime = SystemTime.Now();
+            DateTime startTime = WorkingHours.OpeningTimeToday;
+
+            if (startTime < WorkingHours.OpeningTimeToday)
+            {
+                startTime = WorkingHours.OpeningTimeToday;
+            }
+
+            while (ClosedDays.Contains(startTime.DayOfWeek))
+            {
+                startTime = startTime.Date.AddDays(1);
+            }
+
+            return startTime;
+        }
+
+        public static DateTime CalculateDueDate(long slaTimeInMinutes)
+        {
+            DateTime dueDate;
+
+            DateTime startTime = GetStartTime();
+
+            if (startTime.AddMinutes(slaTimeInMinutes) < ClosingTimeToday)
+            {
+                dueDate = startTime.AddMinutes(slaTimeInMinutes);
+            }
+            else
+            { 
+                // TODO: SGG for now, assuming that maximum is two days SLA. In future, use recursion 
+                // to calculate longer SLA periods.
+                TimeSpan timeUntilEndOfDay = (ClosingTimeToday - startTime);
+                var remainingSLATimeInMinutes = slaTimeInMinutes - timeUntilEndOfDay.TotalMinutes;
+
+                startTime = OpeningTimeTomorrow;
+
+                while (ClosedDays.Contains(startTime.DayOfWeek))
+                {
+                    startTime = startTime.AddDays(1);
+                }
+
+                dueDate = startTime.AddMinutes( remainingSLATimeInMinutes );
+            }          
+
+            return dueDate;
+        }
+    }
+}

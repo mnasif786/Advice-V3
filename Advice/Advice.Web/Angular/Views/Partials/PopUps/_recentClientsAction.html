@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">Clients you have created actions for in the last 24 hours</h4>
+</div>
+<div class="modal-body">
+    <div class="modal-body scrollable-popup">
+        <div ng-show="!recentClientsActionFound" class="fa fa-info-circle fa-2x"><span class="alert-info">No recent action found.</span></div>
+        <table ng-show="recentClientsActionFound" class="table table-modal table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 text-center">CAN</th>
+                    <th class="col-xs-2">Client Name</th>
+                    <th class="col-xs-2">Last Action</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="recentClientAction in recentClientsAction" ng-click="clientSummaryRedirect(recentClientAction.ClientId)" class="row-pointer">
+                <td class="col-xs-2">{{recentClientAction.Can }}</td>
+                <td class="col-xs-2">{{recentClientAction.ClientName}}</td>
+                <td class="col-xs-2">{{recentClientAction.LastAction | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="close()">Close</button>
+</div>

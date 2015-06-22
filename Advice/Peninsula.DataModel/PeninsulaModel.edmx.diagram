@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0649d424f970471f95b6908b06a9ce08" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="PeninsulaModel.TBLCustomer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PeninsulaModel.TBLSiteAddress" Width="1.5" PointX="3.375" PointY="1.25" />
+        <EntityTypeShape EntityType="PeninsulaModel.TBLSiteAddressSiteAddressType" Width="1.5" PointX="5.625" PointY="4.75" />
+        <AssociationConnector Association="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" />
+        <EntityTypeShape EntityType="PeninsulaModel.TBLCompanyContact" Width="1.5" PointX="8.5" PointY="4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

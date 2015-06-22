@@ -1,0 +1,16 @@
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Advice.DataModel.dll.config
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Advice.DataModel.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Advice.DataModel.pdb
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Advice.Domain.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\EntityFramework.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\EntityFramework.SqlServer.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Newtonsoft.Json.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\System.Net.Http.Formatting.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Advice.Domain.pdb
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\EntityFramework.xml
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\EntityFramework.SqlServer.xml
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\Newtonsoft.Json.xml
+D:\Code\Advice_V3\Advice\Advice.DataModel\bin\Release\System.Net.Http.Formatting.xml
+D:\Code\Advice_V3\Advice\Advice.DataModel\obj\Release\Advice.DataModel.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.DataModel\obj\Release\Advice.DataModel.dll
+D:\Code\Advice_V3\Advice\Advice.DataModel\obj\Release\Advice.DataModel.pdb

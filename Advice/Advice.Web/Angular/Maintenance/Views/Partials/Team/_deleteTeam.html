@@ -1,0 +1,17 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title">Delete Team</h4>
+</div>
+<div class="modal-body">
+    <div ng-hide="deleteNotAllowed">Are you sure you want to delete the team <strong>{{team.teamName}}</strong>?</div>
+    <div ng-show="deleteNotAllowed"><strong>{{team.teamName}}</strong> cannot be deleted at this time as it is associated to one or more users.</div>
+</div>
+<div class="modal-footer">
+    <div ng-hide="deleteNotAllowed">
+        <button class="btn btn-primary" ng-click="save(team.teamId)">Yes</button>
+        <button class="btn btn-default" ng-click="cancel()">No</button>
+    </div>
+    <div ng-show="deleteNotAllowed">
+        <button class="btn btn-primary" ng-click="cancel()">Ok</button>
+    </div>
+</div>

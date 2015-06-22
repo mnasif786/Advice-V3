@@ -1,0 +1,5 @@
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\bin\Release\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\bin\Release\Advice.Infrastructure.pdb
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\obj\Release\Advice.Infrastructure.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\obj\Release\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\obj\Release\Advice.Infrastructure.pdb

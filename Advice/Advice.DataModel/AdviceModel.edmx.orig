@@ -1,0 +1,2677 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdviceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActionTypeID" Type="bigint" Nullable="false" />
+          <Property Name="JobID" Type="bigint" Nullable="false" />
+          <Property Name="NatureOfAdviceID" Type="bigint" />
+          <Property Name="NatureOfAdviceOther" Type="varchar" MaxLength="50" />
+          <Property Name="IndemnityID" Type="bigint" />
+          <Property Name="IndemnityReasonID" Type="bigint" />
+          <Property Name="IndemnityOther" Type="varchar" MaxLength="150" />
+          <Property Name="ContactID" Type="bigint" />
+          <Property Name="AdviceGiven" Type="varchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="CompletedDate" Type="datetime" />
+          <Property Name="EditStartDate" Type="datetime" />
+          <Property Name="EditCompletedDate" Type="datetime" />
+          <Property Name="GeneralNotes" Type="varchar(max)" />
+          <Property Name="InternalNotes" Type="varchar(max)" />
+          <Property Name="MeetingDate" Type="datetime" />
+          <Property Name="MeetingTypeID" Type="bigint" />
+          <Property Name="DocumentCount" Type="bigint" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="EmailSent" Type="bit" />
+          <Property Name="ExchangeGUID" Type="varchar" MaxLength="50" />
+          <Property Name="ResultingTaskId" Type="bigint" />
+          <Property Name="LoggedOnBehalfOf" Type="varchar" MaxLength="50" />
+          <Property Name="Outbound" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="OutOfHours" Type="bit" />
+          <Property Name="ClientSatisfiedWithAdvice" Type="bit" />
+          <Property Name="NumberOfEmployeesInvolved" Type="int" />
+          <Property Name="IsKeyEvent" Type="bit" />
+          <Property Name="PolicyNumberID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="ActionType">
+          <Key>
+            <PropertyRef Name="ActionTypeID" />
+          </Key>
+          <Property Name="ActionTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShowGeneralNotes" Type="bit" Nullable="false" />
+          <Property Name="ShowIndemnity" Type="bit" Nullable="false" />
+          <Property Name="ShowContactInfo" Type="bit" Nullable="false" />
+          <Property Name="ShowJobDetails" Type="bit" Nullable="false" />
+          <Property Name="ShowAdviceGiven" Type="bit" Nullable="false" />
+          <Property Name="ShowInternalNotes" Type="bit" Nullable="false" />
+          <Property Name="ShowNatureOfAdvice" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="Internal" Type="bit" Nullable="false" />
+          <Property Name="UserCanSetLogTimes" Type="bit" />
+        </EntityType>
+        <EntityType Name="ActionTypeGroup">
+          <Key>
+            <PropertyRef Name="ActionTypeGroupId" />
+            <PropertyRef Name="ActionTypeId" />
+          </Key>
+          <Property Name="ActionTypeGroupId" Type="bigint" Nullable="false" />
+          <Property Name="ActionTypeId" Type="bigint" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessWiseNatureOfAdviceGroup">
+          <Key>
+            <PropertyRef Name="BusinessWiseNatureOfAdviceGroupID" />
+          </Key>
+          <Property Name="BusinessWiseNatureOfAdviceGroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BusinessWiseTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="JusrisdictionID" Type="bigint" />
+          <Property Name="JusrisdictionDescription" Type="varchar" MaxLength="20" />
+          <Property Name="IndividualOrGroup" Type="char" MaxLength="1" />
+          <Property Name="IndividualForename" Type="varchar" MaxLength="50" />
+          <Property Name="IndividualSurname" Type="varchar" MaxLength="50" />
+          <Property Name="GroupName" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessWiseOrTelephone" Type="char" MaxLength="1" />
+          <Property Name="PreferedDateOfContact" Type="datetime" />
+          <Property Name="PreferedTimeOfContact" Type="char" MaxLength="1" />
+          <Property Name="BusinessWiseNatureOfAdviceGroupId" Type="bigint" />
+          <Property Name="AuthorisedUserID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="CorporatePriority">
+          <Key>
+            <PropertyRef Name="CorporatePriorityId" />
+          </Key>
+          <Property Name="CorporatePriorityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Can" Type="varchar" MaxLength="100" />
+          <Property Name="ContractValue" Type="money" />
+          <Property Name="ContractDetail" Type="varchar" MaxLength="2000" />
+          <Property Name="ContractEndDate" Type="datetime" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Filename" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ScannedDocumentsID" Type="bigint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DocumentLibraryId" Type="bigint" />
+          <Property Name="DocumentTypeId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="EmailTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="Sender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="100" />
+          <Property Name="CrossPosted" Type="bit" Nullable="false" />
+          <Property Name="MessageId" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'advice.dbo.HroTask' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HroTask">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="JusrisdictionID" Type="bigint" />
+          <Property Name="JusrisdictionDescription" Type="varchar" MaxLength="20" />
+          <Property Name="IndividualOrGroup" Type="char" MaxLength="1" />
+          <Property Name="IndividualForename" Type="varchar" MaxLength="50" />
+          <Property Name="IndividualSurname" Type="varchar" MaxLength="50" />
+          <Property Name="GroupName" Type="varchar" MaxLength="50" />
+          <Property Name="ResponseType" Type="char" MaxLength="1" />
+          <Property Name="ResponseDate" Type="datetime" />
+          <Property Name="ResponseTime" Type="char" MaxLength="1" />
+          <Property Name="HroNatureOfAdviceGroupId" Type="bigint" />
+          <Property Name="HroUserID" Type="uniqueidentifier" />
+          <Property Name="ResponseEmail" Type="varchar" MaxLength="100" />
+          <Property Name="HroEmployeeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="AdviceCardID" Type="bigint" />
+          <Property Name="SiteAddressID" Type="bigint" />
+          <Property Name="Subject" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="CurrentNatureOfAdviceID" Type="bigint" />
+          <Property Name="LastActionDate" Type="datetime" />
+          <Property Name="LastActionId" Type="bigint" />
+          <Property Name="ContactID" Type="bigint" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
+          <Property Name="IndemnityID" Type="bigint" />
+          <Property Name="Sensitive" Type="bit" Nullable="false" />
+          <Property Name="Checklist" Type="varchar" MaxLength="250" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyingAction" Type="varchar" MaxLength="10" />
+          <Property Name="LastModifiedReason" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="LastKeyNatureOfAdviceId" Type="bigint" />
+          <Property Name="PolicyNumberID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="MaintenancePermission">
+          <Key>
+            <PropertyRef Name="MaintenancePermissionId" />
+          </Key>
+          <Property Name="MaintenancePermissionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MaintenanceUserPermission">
+          <Key>
+            <PropertyRef Name="MaintenanceUserPermissionId" />
+          </Key>
+          <Property Name="MaintenanceUserPermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="MaintenancePermissionId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PermissionRole">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="PermissionRoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PermissionID" Type="bigint" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ReassignTaskEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskId" Type="bigint" Nullable="false" />
+          <Property Name="PreviousTeamId" Type="bigint" />
+          <Property Name="NewTeamId" Type="bigint" />
+          <Property Name="PreviousUser" Type="varchar" MaxLength="50" />
+          <Property Name="NewUser" Type="varchar" MaxLength="50" />
+          <Property Name="ReasonId" Type="bigint" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="ReassignedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ReassignedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ServiceReviewServiceCanGroups">
+          <Key>
+            <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+          </Key>
+          <Property Name="ServiceReviewServiceCansGroupId" Type="smallint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="Regex" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ServiceReviewServiceSchedule">
+          <Key>
+            <PropertyRef Name="ServiceReviewServiceScheduleId" />
+          </Key>
+          <Property Name="ServiceReviewServiceScheduleId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceReviewServiceCansGroupId" Type="smallint" Nullable="false" />
+          <Property Name="DayToRun" Type="int" Nullable="false" />
+          <Property Name="MonthToRun" Type="int" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="LastRun" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskTypeID" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="1200" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="WarningWindow" Type="bigint" />
+          <Property Name="AssignedUser" Type="varchar" MaxLength="50" />
+          <Property Name="AssignedTeamID" Type="bigint" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="CompletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CompletionDate" Type="datetime" />
+          <Property Name="Urgent" Type="bit" Nullable="false" />
+          <Property Name="ManualDueDate" Type="bit" Nullable="false" />
+          <Property Name="RecordedClientID" Type="bigint" />
+          <Property Name="CancelledReason" Type="varchar" MaxLength="50" />
+          <Property Name="CancelledDate" Type="datetime" />
+          <Property Name="CancelledBy" Type="varchar" MaxLength="50" />
+          <Property Name="PreviousTaskID" Type="bigint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifyingReasonID" Type="bigint" />
+          <Property Name="LastModifiedComment" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ContactName" Type="varchar" MaxLength="50" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+          <Property Name="Cancelled" Type="bit" Nullable="false" />
+          <Property Name="ManualDueDateReason" Type="varchar" MaxLength="100" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="DocumentCount" Type="bigint" />
+          <Property Name="JobSubject" Type="varchar" MaxLength="200" />
+          <Property Name="AcceptableWindow" Type="bigint" />
+          <Property Name="SlaStatus" Type="varchar" MaxLength="10" />
+          <Property Name="AvVersion" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TaskAction">
+          <Key>
+            <PropertyRef Name="TaskActionID" />
+          </Key>
+          <Property Name="TaskActionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="ActionID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskArchive">
+          <Key>
+            <PropertyRef Name="TaskArchiveId" />
+          </Key>
+          <Property Name="TaskArchiveId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="bigint" />
+          <Property Name="TaskTypeID" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="1200" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="WarningWindow" Type="bigint" />
+          <Property Name="AssignedUser" Type="varchar" MaxLength="50" />
+          <Property Name="AssignedTeamID" Type="bigint" />
+          <Property Name="AssignedDate" Type="datetime" />
+          <Property Name="CompletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CompletionDate" Type="datetime" />
+          <Property Name="Urgent" Type="bit" />
+          <Property Name="ManualDueDate" Type="bit" />
+          <Property Name="RecordedClientID" Type="bigint" />
+          <Property Name="CancelledReason" Type="varchar" MaxLength="50" />
+          <Property Name="CancelledDate" Type="datetime" />
+          <Property Name="CancelledBy" Type="varchar" MaxLength="50" />
+          <Property Name="PreviousTaskID" Type="bigint" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="LastModifyingReasonID" Type="bigint" />
+          <Property Name="LastModifiedComment" Type="varchar" MaxLength="100" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="300" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ContactName" Type="varchar" MaxLength="50" />
+          <Property Name="Completed" Type="bit" />
+          <Property Name="Cancelled" Type="bit" />
+          <Property Name="ManualDueDateReason" Type="varchar" MaxLength="100" />
+          <Property Name="IsRead" Type="bit" />
+          <Property Name="DocumentCount" Type="bigint" />
+          <Property Name="JobSubject" Type="varchar" MaxLength="200" />
+          <Property Name="AcceptableWindow" Type="bigint" />
+          <Property Name="SlaStatus" Type="varchar" MaxLength="10" />
+          <Property Name="AvVersion" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TaskDocument">
+          <Key>
+            <PropertyRef Name="TaskDocumentID" />
+          </Key>
+          <Property Name="TaskDocumentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="DocumentID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskJob">
+          <Key>
+            <PropertyRef Name="TaskJobID" />
+          </Key>
+          <Property Name="TaskJobID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="bigint" Nullable="false" />
+          <Property Name="JobID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskModifyingReason">
+          <Key>
+            <PropertyRef Name="TaskModifyingReasonID" />
+          </Key>
+          <Property Name="TaskModifyingReasonID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskModifyingReasonGroupID" Type="bigint" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskModifyingReasonGroup">
+          <Key>
+            <PropertyRef Name="TaskModifyingReasonGroupID" />
+          </Key>
+          <Property Name="TaskModifyingReasonGroupID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskType">
+          <Key>
+            <PropertyRef Name="TaskTypeID" />
+          </Key>
+          <Property Name="TaskTypeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="ExternalTask" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TaskTypeSLA">
+          <Key>
+            <PropertyRef Name="TaskTypeSLAID" />
+          </Key>
+          <Property Name="TaskTypeSLAID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskTypeID" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" Nullable="false" />
+          <Property Name="DefaultSLATime" Type="int" Nullable="false" />
+          <Property Name="DefaultWarningWindow" Type="int" Nullable="false" />
+          <Property Name="UserCanRaise" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DefaultAcceptableWindow" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManagerID" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="DivisionId" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="DeletedBy" Type="varchar" MaxLength="50" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="RoleID" Type="bigint" />
+          <Property Name="TeamID" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_Action_ActionType">
+          <End Role="ActionType" Type="Self.ActionType" Multiplicity="1" />
+          <End Role="Action" Type="Self.Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionType">
+              <PropertyRef Name="ActionTypeID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="ActionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CorporatePriority_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="CorporatePriority" Type="Self.CorporatePriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CorporatePriority">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_division">
+          <End Role="Division" Type="Self.Division" Multiplicity="0..1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTask_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="EmailTask" Type="Self.EmailTask" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="EmailTask">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaintenanceUserPermission_MaintenancePermission">
+          <End Role="MaintenancePermission" Type="Self.MaintenancePermission" Multiplicity="1" />
+          <End Role="MaintenanceUserPermission" Type="Self.MaintenanceUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenancePermission">
+              <PropertyRef Name="MaintenancePermissionId" />
+            </Principal>
+            <Dependent Role="MaintenanceUserPermission">
+              <PropertyRef Name="MaintenancePermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaintenanceUserPermission_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MaintenanceUserPermission" Type="Self.MaintenanceUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MaintenanceUserPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionRole_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="PermissionRole" Type="Self.PermissionRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="PermissionRole">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_NewTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="ReassignTaskEvent" Type="Self.ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="NewTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_PreviousTeam">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="ReassignTaskEvent" Type="Self.ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="PreviousTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_ReasonId">
+          <End Role="TaskModifyingReason" Type="Self.TaskModifyingReason" Multiplicity="0..1" />
+          <End Role="ReassignTaskEvent" Type="Self.ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="ReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="ReassignTaskEvent" Type="Self.ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule">
+          <End Role="ServiceReviewServiceCanGroups" Type="Self.ServiceReviewServiceCanGroups" Multiplicity="1" />
+          <End Role="ServiceReviewServiceSchedule" Type="Self.ServiceReviewServiceSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceReviewServiceCanGroups">
+              <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+            </Principal>
+            <Dependent Role="ServiceReviewServiceSchedule">
+              <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_TaskType">
+          <End Role="TaskType" Type="Self.TaskType" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskType">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskAction_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskAction" Type="Self.TaskAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskAction">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskArchive_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskArchive" Type="Self.TaskArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskArchive">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskDocument_Document">
+          <End Role="Document" Type="Self.Document" Multiplicity="1" />
+          <End Role="TaskDocument" Type="Self.TaskDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="DocumentID" />
+            </Principal>
+            <Dependent Role="TaskDocument">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskDocument_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskDocument" Type="Self.TaskDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskDocument">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskJob_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskJob" Type="Self.TaskJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskJob">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskModifyingReason_TaskModifyingReasonGroup">
+          <End Role="TaskModifyingReasonGroup" Type="Self.TaskModifyingReasonGroup" Multiplicity="1" />
+          <End Role="TaskModifyingReason" Type="Self.TaskModifyingReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReasonGroup">
+              <PropertyRef Name="TaskModifyingReasonGroupID" />
+            </Principal>
+            <Dependent Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTypeSLA_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="TaskTypeSLA" Type="Self.TaskTypeSLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="TaskTypeSLA">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTypeSLA_TaskType">
+          <End Role="TaskType" Type="Self.TaskType" Multiplicity="1" />
+          <End Role="TaskTypeSLA" Type="Self.TaskTypeSLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskType">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TaskTypeSLA">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Team_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CorporatePriorityByCansQuery" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CansExpression" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetTaskHistoryByTaskId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="taskID" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="AdviceModelStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionType" EntityType="Self.ActionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActionTypeGroup" EntityType="Self.ActionTypeGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessWiseNatureOfAdviceGroup" EntityType="Self.BusinessWiseNatureOfAdviceGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessWiseTask" EntityType="Self.BusinessWiseTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorporatePriority" EntityType="Self.CorporatePriority" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTask" EntityType="Self.EmailTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaintenancePermission" EntityType="Self.MaintenancePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaintenanceUserPermission" EntityType="Self.MaintenanceUserPermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionRole" EntityType="Self.PermissionRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReassignTaskEvent" EntityType="Self.ReassignTaskEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceReviewServiceCanGroups" EntityType="Self.ServiceReviewServiceCanGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceReviewServiceSchedule" EntityType="Self.ServiceReviewServiceSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskAction" EntityType="Self.TaskAction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskArchive" EntityType="Self.TaskArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskDocument" EntityType="Self.TaskDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskJob" EntityType="Self.TaskJob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskModifyingReason" EntityType="Self.TaskModifyingReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskModifyingReasonGroup" EntityType="Self.TaskModifyingReasonGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskType" EntityType="Self.TaskType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskTypeSLA" EntityType="Self.TaskTypeSLA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HroTask" EntityType="Self.HroTask" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Action_ActionType" Association="Self.FK_Action_ActionType">
+            <End Role="ActionType" EntitySet="ActionType" />
+            <End Role="Action" EntitySet="Action" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CorporatePriority_User" Association="Self.FK_CorporatePriority_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="CorporatePriority" EntitySet="CorporatePriority" />
+          </AssociationSet>
+          <AssociationSet Name="fk_division" Association="Self.fk_division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTask_Task" Association="Self.FK_EmailTask_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="EmailTask" EntitySet="EmailTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaintenanceUserPermission_MaintenancePermission" Association="Self.FK_MaintenanceUserPermission_MaintenancePermission">
+            <End Role="MaintenancePermission" EntitySet="MaintenancePermission" />
+            <End Role="MaintenanceUserPermission" EntitySet="MaintenanceUserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaintenanceUserPermission_User" Association="Self.FK_MaintenanceUserPermission_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MaintenanceUserPermission" EntitySet="MaintenanceUserPermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionRole_Permission" Association="Self.FK_PermissionRole_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="PermissionRole" EntitySet="PermissionRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_NewTeam" Association="Self.FK_ReassignTaskEvent_NewTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_PreviousTeam" Association="Self.FK_ReassignTaskEvent_PreviousTeam">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_ReasonId" Association="Self.FK_ReassignTaskEvent_ReasonId">
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReason" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_Task" Association="Self.FK_ReassignTaskEvent_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule" Association="Self.FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule">
+            <End Role="ServiceReviewServiceCanGroups" EntitySet="ServiceReviewServiceCanGroups" />
+            <End Role="ServiceReviewServiceSchedule" EntitySet="ServiceReviewServiceSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_TaskType" Association="Self.FK_Task_TaskType">
+            <End Role="TaskType" EntitySet="TaskType" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskAction_Task" Association="Self.FK_TaskAction_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskAction" EntitySet="TaskAction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskArchive_Task" Association="Self.FK_TaskArchive_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskArchive" EntitySet="TaskArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskDocument_Document" Association="Self.FK_TaskDocument_Document">
+            <End Role="Document" EntitySet="Document" />
+            <End Role="TaskDocument" EntitySet="TaskDocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskDocument_Task" Association="Self.FK_TaskDocument_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskDocument" EntitySet="TaskDocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskJob_Task" Association="Self.FK_TaskJob_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskJob" EntitySet="TaskJob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskModifyingReason_TaskModifyingReasonGroup" Association="Self.FK_TaskModifyingReason_TaskModifyingReasonGroup">
+            <End Role="TaskModifyingReasonGroup" EntitySet="TaskModifyingReasonGroup" />
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTypeSLA_Department" Association="Self.FK_TaskTypeSLA_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="TaskTypeSLA" EntitySet="TaskTypeSLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTypeSLA_TaskType" Association="Self.FK_TaskTypeSLA_TaskType">
+            <End Role="TaskType" EntitySet="TaskType" />
+            <End Role="TaskTypeSLA" EntitySet="TaskTypeSLA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_User" Association="Self.FK_Team_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdviceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmailTask" BaseType="AdviceModel.Task">
+          <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CrossPosted" Type="Boolean" Nullable="false" />
+          <Property Name="MessageId" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskID" />
+          </Key>
+          <Property Name="TaskID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskTypeID" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="1200" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="WarningWindow" Type="Int64" />
+          <Property Name="AssignedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTeamID" Type="Int64" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="Urgent" Type="Boolean" Nullable="false" />
+          <Property Name="ManualDueDate" Type="Boolean" Nullable="false" />
+          <Property Name="RecordedClientID" Type="Int64" />
+          <Property Name="CancelledReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CancelledDate" Type="DateTime" Precision="3" />
+          <Property Name="CancelledBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreviousTaskID" Type="Int64" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyingReasonID" Type="Int64" />
+          <Property Name="LastModifiedComment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="EmailAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <Property Name="Cancelled" Type="Boolean" Nullable="false" />
+          <Property Name="ManualDueDateReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="DocumentCount" Type="Int64" />
+          <Property Name="JobSubject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AcceptableWindow" Type="Int64" />
+          <NavigationProperty Name="TaskType" Relationship="Self.FK_Task_TaskType" FromRole="Task" ToRole="TaskType" />
+          <NavigationProperty Name="TaskActions" Relationship="Self.FK_TaskAction_Task" FromRole="Task" ToRole="TaskAction" />
+          <NavigationProperty Name="TaskArchives" Relationship="Self.FK_TaskArchive_Task" FromRole="Task" ToRole="TaskArchive" />
+          <NavigationProperty Name="TaskDocuments" Relationship="Self.FK_TaskDocument_Task" FromRole="Task" ToRole="TaskDocument" />
+          <NavigationProperty Name="TaskJobs" Relationship="Self.FK_TaskJob_Task" FromRole="Task" ToRole="TaskJob" />
+          <NavigationProperty Name="TaskModifyingReason" Relationship="AdviceModel.TaskTaskModifyingReason" FromRole="Task" ToRole="TaskModifyingReason" />
+          <NavigationProperty Name="AssignedTeam" Relationship="AdviceModel.Task_AssignedTeam" FromRole="Task" ToRole="Team" />
+          <NavigationProperty Name="ReassignTaskEvents" Relationship="AdviceModel.FK_ReassignTaskEvent_Task" FromRole="Task" ToRole="ReassignTaskEvent" />
+          <Property Name="SlaStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AvVersion" Type="Byte" />
+        </EntityType>
+        <EntityType Name="TaskAction">
+          <Key>
+            <PropertyRef Name="TaskActionID" />
+          </Key>
+          <Property Name="TaskActionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int64" Nullable="false" />
+          <Property Name="ActionID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_TaskAction_Task" FromRole="TaskAction" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="TaskArchive">
+          <Key>
+            <PropertyRef Name="TaskArchiveId" />
+          </Key>
+          <Property Name="TaskArchiveId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int64" />
+          <Property Name="TaskTypeID" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="1200" FixedLength="false" Unicode="false" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="WarningWindow" Type="Int64" />
+          <Property Name="AssignedUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssignedTeamID" Type="Int64" />
+          <Property Name="AssignedDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="Urgent" Type="Boolean" />
+          <Property Name="ManualDueDate" Type="Boolean" />
+          <Property Name="RecordedClientID" Type="Int64" />
+          <Property Name="CancelledReason" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CancelledDate" Type="DateTime" Precision="3" />
+          <Property Name="CancelledBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreviousTaskID" Type="Int64" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifyingReasonID" Type="Int64" />
+          <Property Name="LastModifiedComment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="EmailAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Completed" Type="Boolean" />
+          <Property Name="Cancelled" Type="Boolean" />
+          <Property Name="ManualDueDateReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsRead" Type="Boolean" />
+          <Property Name="DocumentCount" Type="Int64" />
+          <Property Name="JobSubject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AcceptableWindow" Type="Int64" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_TaskArchive_Task" FromRole="TaskArchive" ToRole="Task" />
+          <NavigationProperty Name="TaskModifyingReason" Relationship="AdviceModel.TaskArchiveTaskModifyingReason" FromRole="TaskArchive" ToRole="TaskModifyingReason" />
+          <NavigationProperty Name="Team" Relationship="AdviceModel.TeamTaskArchive" FromRole="TaskArchive" ToRole="Team" />
+          <Property Name="SlaStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AvVersion" Type="Byte" />
+        </EntityType>
+        <EntityType Name="TaskDocument">
+          <Key>
+            <PropertyRef Name="TaskDocumentID" />
+          </Key>
+          <Property Name="TaskDocumentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int64" Nullable="false" />
+          <Property Name="DocumentID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_TaskDocument_Task" FromRole="TaskDocument" ToRole="Task" />
+          <NavigationProperty Name="Document" Relationship="AdviceModel.FK_TaskDocument_Document" FromRole="TaskDocument" ToRole="Document" />
+        </EntityType>
+        <EntityType Name="TaskJob">
+          <Key>
+            <PropertyRef Name="TaskJobID" />
+          </Key>
+          <Property Name="TaskJobID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int64" Nullable="false" />
+          <Property Name="JobID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_TaskJob_Task" FromRole="TaskJob" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="TaskType">
+          <Key>
+            <PropertyRef Name="TaskTypeID" />
+          </Key>
+          <Property Name="TaskTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalTask" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_TaskType" FromRole="TaskType" ToRole="Task" />
+          <NavigationProperty Name="TaskTypeSLAs" Relationship="Self.FK_TaskTypeSLA_TaskType" FromRole="TaskType" ToRole="TaskTypeSLA" />
+        </EntityType>
+        <EntityType Name="TaskTypeSLA">
+          <Key>
+            <PropertyRef Name="TaskTypeSLAID" />
+          </Key>
+          <Property Name="TaskTypeSLAID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskTypeID" Type="Int64" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int64" Nullable="false" />
+          <Property Name="DefaultSLATime" Type="Int32" Nullable="false" />
+          <Property Name="DefaultWarningWindow" Type="Int32" Nullable="false" />
+          <Property Name="UserCanRaise" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DefaultAcceptableWindow" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TaskType" Relationship="Self.FK_TaskTypeSLA_TaskType" FromRole="TaskTypeSLA" ToRole="TaskType" />
+          <NavigationProperty Name="Department" Relationship="AdviceModel.FK_TaskTypeSLA_Department" FromRole="TaskTypeSLA" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="TeamID" />
+          </Key>
+          <Property Name="TeamID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ManagerID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DepartmentID" Type="Int64" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Team_User" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="ReassignTaskEvents" Relationship="AdviceModel.FK_ReassignTaskEvent_NewTeam" FromRole="Team" ToRole="ReassignTaskEvent" />
+          <NavigationProperty Name="ReassignTaskEvents1" Relationship="AdviceModel.FK_ReassignTaskEvent_PreviousTeam" FromRole="Team" ToRole="ReassignTaskEvent" />
+          <NavigationProperty Name="TaskArchives" Relationship="AdviceModel.TeamTaskArchive" FromRole="Team" ToRole="TaskArchive" />
+          <Property Name="DivisionId" Type="Int32" />
+          <NavigationProperty Name="Division" Relationship="AdviceModel.fk_division" FromRole="Team" ToRole="Division" />
+          <NavigationProperty Name="Department" Relationship="AdviceModel.DepartmentTeam" FromRole="Team" ToRole="Department" />          
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="RoleID" Type="Int64" />
+          <Property Name="TeamID" Type="Int64" />
+          <NavigationProperty Name="Teams" Relationship="Self.FK_Team_User" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="CorporatePriorities" Relationship="AdviceModel.FK_CorporatePriority_User" FromRole="User" ToRole="CorporatePriority" />
+          <NavigationProperty Name="MaintenanceUserPermissions" Relationship="AdviceModel.FK_MaintenanceUserPermission_User" FromRole="User" ToRole="MaintenanceUserPermission" />
+        </EntityType>
+        <Association Name="FK_Task_TaskType">
+          <End Role="TaskType" Type="Self.TaskType" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskType">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskAction_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskAction" Type="Self.TaskAction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskAction">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskArchive_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskArchive" Type="Self.TaskArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskArchive">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskDocument_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskDocument" Type="Self.TaskDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskDocument">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskJob_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="TaskJob" Type="Self.TaskJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="TaskJob">
+              <PropertyRef Name="TaskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TaskTypeSLA_TaskType">
+          <End Role="TaskType" Type="Self.TaskType" Multiplicity="1" />
+          <End Role="TaskTypeSLA" Type="Self.TaskTypeSLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskType">
+              <PropertyRef Name="TaskTypeID" />
+            </Principal>
+            <Dependent Role="TaskTypeSLA">
+              <PropertyRef Name="TaskTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Team_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="ManagerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdviceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="TaskActions" EntityType="Self.TaskAction" />
+          <EntitySet Name="TaskArchives" EntityType="Self.TaskArchive" />
+          <EntitySet Name="TaskDocuments" EntityType="Self.TaskDocument" />
+          <EntitySet Name="TaskJobs" EntityType="Self.TaskJob" />
+          <EntitySet Name="TaskTypes" EntityType="Self.TaskType" />
+          <EntitySet Name="TaskTypeSLAs" EntityType="Self.TaskTypeSLA" />
+          <EntitySet Name="Teams" EntityType="Self.Team" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Task_TaskType" Association="Self.FK_Task_TaskType">
+            <End Role="TaskType" EntitySet="TaskTypes" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskAction_Task" Association="Self.FK_TaskAction_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskAction" EntitySet="TaskActions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskArchive_Task" Association="Self.FK_TaskArchive_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskArchive" EntitySet="TaskArchives" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskDocument_Task" Association="Self.FK_TaskDocument_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskDocument" EntitySet="TaskDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskJob_Task" Association="Self.FK_TaskJob_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskJob" EntitySet="TaskJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaskTypeSLA_TaskType" Association="Self.FK_TaskTypeSLA_TaskType">
+            <End Role="TaskType" EntitySet="TaskTypes" />
+            <End Role="TaskTypeSLA" EntitySet="TaskTypeSLAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_User" Association="Self.FK_Team_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <EntitySet Name="Departments" EntityType="AdviceModel.Department" />
+          <AssociationSet Name="FK_TaskTypeSLA_Department" Association="AdviceModel.FK_TaskTypeSLA_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="TaskTypeSLA" EntitySet="TaskTypeSLAs" />
+          </AssociationSet>
+          <EntitySet Name="Documents" EntityType="AdviceModel.Document" />
+          <AssociationSet Name="FK_TaskDocument_Document" Association="AdviceModel.FK_TaskDocument_Document">
+            <End Role="Document" EntitySet="Documents" />
+            <End Role="TaskDocument" EntitySet="TaskDocuments" />
+          </AssociationSet>
+          <EntitySet Name="BusinessWiseNatureOfAdviceGroups" EntityType="AdviceModel.BusinessWiseNatureOfAdviceGroup" />
+          <AssociationSet Name="BusinessWiseTaskBusinessWiseNatureOfAdviceGroup" Association="AdviceModel.BusinessWiseTaskBusinessWiseNatureOfAdviceGroup">
+            <End Role="BusinessWiseTask" EntitySet="Tasks" />
+            <End Role="BusinessWiseNatureOfAdviceGroup" EntitySet="BusinessWiseNatureOfAdviceGroups" />
+          </AssociationSet>
+          <AssociationSet Name="BusinessWiseNatureOfAdviceGroupHroTask" Association="AdviceModel.BusinessWiseNatureOfAdviceGroupHroTask">
+            <End Role="BusinessWiseNatureOfAdviceGroup" EntitySet="BusinessWiseNatureOfAdviceGroups" />
+            <End Role="HroTask" EntitySet="Tasks" />
+          </AssociationSet>
+          <EntitySet Name="TaskModifyingReasons" EntityType="AdviceModel.TaskModifyingReason" />
+          <EntitySet Name="TaskModifyingReasonGroups" EntityType="AdviceModel.TaskModifyingReasonGroup" />
+          <AssociationSet Name="FK_TaskModifyingReason_TaskModifyingReasonGroup" Association="AdviceModel.FK_TaskModifyingReason_TaskModifyingReasonGroup">
+            <End Role="TaskModifyingReasonGroup" EntitySet="TaskModifyingReasonGroups" />
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReasons" />
+          </AssociationSet>
+          <AssociationSet Name="TaskTaskModifyingReason" Association="AdviceModel.TaskTaskModifyingReason">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReasons" />
+          </AssociationSet>
+          <AssociationSet Name="TaskArchiveTaskModifyingReason" Association="AdviceModel.TaskArchiveTaskModifyingReason">
+            <End Role="TaskArchive" EntitySet="TaskArchives" />
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReasons" />
+          </AssociationSet>
+          <AssociationSet Name="Task_AssignedTeam" Association="AdviceModel.Task_AssignedTeam">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <EntitySet Name="Permissions" EntityType="AdviceModel.Permission" />
+          <EntitySet Name="PermissionRoles" EntityType="AdviceModel.PermissionRole" />
+          <AssociationSet Name="FK_PermissionRole_Permission" Association="AdviceModel.FK_PermissionRole_Permission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="PermissionRole" EntitySet="PermissionRoles" />
+          </AssociationSet>
+          <EntitySet Name="ReassignTaskEvents" EntityType="AdviceModel.ReassignTaskEvent" />
+          <AssociationSet Name="FK_ReassignTaskEvent_NewTeam" Association="AdviceModel.FK_ReassignTaskEvent_NewTeam">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_PreviousTeam" Association="AdviceModel.FK_ReassignTaskEvent_PreviousTeam">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_ReasonId" Association="AdviceModel.FK_ReassignTaskEvent_ReasonId">
+            <End Role="TaskModifyingReason" EntitySet="TaskModifyingReasons" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReassignTaskEvent_Task" Association="AdviceModel.FK_ReassignTaskEvent_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="ReassignTaskEvent" EntitySet="ReassignTaskEvents" />
+          </AssociationSet>
+          <AssociationSet Name="TeamTaskArchive" Association="AdviceModel.TeamTaskArchive">
+            <End Role="Team" EntitySet="Teams" />
+            <End Role="TaskArchive" EntitySet="TaskArchives" />
+          </AssociationSet>
+          <EntitySet Name="Actions" EntityType="AdviceModel.Action" />
+          <EntitySet Name="ActionTypeGroups" EntityType="AdviceModel.ActionTypeGroup" />
+          <EntitySet Name="Jobs" EntityType="AdviceModel.Job" />
+          <EntitySet Name="ActionTypes" EntityType="AdviceModel.ActionType" />
+          <AssociationSet Name="FK_Action_ActionType" Association="AdviceModel.FK_Action_ActionType">
+            <End Role="ActionType" EntitySet="ActionTypes" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
+          <AssociationSet Name="ActionTypeActionTypeGroup" Association="AdviceModel.ActionTypeActionTypeGroup">
+            <End Role="ActionType" EntitySet="ActionTypes" />
+            <End Role="ActionTypeGroup" EntitySet="ActionTypeGroups" />
+          </AssociationSet>
+          <AssociationSet Name="JobAction" Association="AdviceModel.JobAction">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Action" EntitySet="Actions" />
+          </AssociationSet>
+          <EntitySet Name="Divisions" EntityType="AdviceModel.Division" />
+          <AssociationSet Name="fk_division" Association="AdviceModel.fk_division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentTeam" Association="AdviceModel.DepartmentTeam">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Team" EntitySet="Teams" />
+          </AssociationSet>
+          <EntitySet Name="CorporatePriorities" EntityType="AdviceModel.CorporatePriority" />
+          <AssociationSet Name="FK_CorporatePriority_User" Association="AdviceModel.FK_CorporatePriority_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="CorporatePriority" EntitySet="CorporatePriorities" />
+          </AssociationSet>
+          <EntitySet Name="MaintenancePermissions" EntityType="AdviceModel.MaintenancePermission" />
+          <EntitySet Name="MaintenanceUserPermissions" EntityType="AdviceModel.MaintenanceUserPermission" />
+          <AssociationSet Name="FK_MaintenanceUserPermission_MaintenancePermission" Association="AdviceModel.FK_MaintenanceUserPermission_MaintenancePermission">
+            <End Role="MaintenancePermission" EntitySet="MaintenancePermissions" />
+            <End Role="MaintenanceUserPermission" EntitySet="MaintenanceUserPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaintenanceUserPermission_User" Association="AdviceModel.FK_MaintenanceUserPermission_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MaintenanceUserPermission" EntitySet="MaintenanceUserPermissions" />
+          </AssociationSet>
+          <EntitySet Name="ServiceReviewServiceCanGroups" EntityType="AdviceModel.ServiceReviewServiceCanGroup" />
+          <EntitySet Name="ServiceReviewServiceSchedules" EntityType="AdviceModel.ServiceReviewServiceSchedule" />
+          <AssociationSet Name="FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule" Association="AdviceModel.FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule">
+            <End Role="ServiceReviewServiceCanGroup" EntitySet="ServiceReviewServiceCanGroups" />
+            <End Role="ServiceReviewServiceSchedule" EntitySet="ServiceReviewServiceSchedules" />
+          </AssociationSet>
+          <FunctionImport Name="CorporatePriorityByCansQuery" ReturnType="Collection(AdviceModel.CorporatePriorityByCansQueryResult)">
+            <Parameter Name="CansExpression" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TaskTypeSLAs" Relationship="AdviceModel.FK_TaskTypeSLA_Department" FromRole="Department" ToRole="TaskTypeSLA" />
+          <NavigationProperty Name="Teams" Relationship="AdviceModel.DepartmentTeam" FromRole="Department" ToRole="Team" />
+        </EntityType>
+        <Association Name="FK_TaskTypeSLA_Department">
+          <End Type="AdviceModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="AdviceModel.TaskTypeSLA" Role="TaskTypeSLA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="TaskTypeSLA">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="DocumentID" />
+          </Key>
+          <Property Name="DocumentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Filename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ScannedDocumentsID" Type="Int64" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DocumentLibraryId" Type="Int64" />
+          <Property Name="DocumentTypeId" Type="Int64" />
+          <NavigationProperty Name="TaskDocuments" Relationship="AdviceModel.FK_TaskDocument_Document" FromRole="Document" ToRole="TaskDocument" />
+        </EntityType>
+        <Association Name="FK_TaskDocument_Document">
+          <End Type="AdviceModel.Document" Role="Document" Multiplicity="1" />
+          <End Type="AdviceModel.TaskDocument" Role="TaskDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="DocumentID" />
+            </Principal>
+            <Dependent Role="TaskDocument">
+              <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BusinessWiseTask" BaseType="AdviceModel.Task">
+          <Property Name="DepartmentID" Type="Int64" />
+          <Property Name="JusrisdictionID" Type="Int64" />
+          <Property Name="JusrisdictionDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IndividualOrGroup" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IndividualForename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndividualSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessWiseOrTelephone" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PreferedDateOfContact" Type="DateTime" Precision="3" />
+          <Property Name="PreferedTimeOfContact" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BusinessWiseNatureOfAdviceGroupId" Type="Int64" />
+          <Property Name="AuthorisedUserID" Type="Int64" />
+          <NavigationProperty Name="BusinessWiseNatureOfAdviceGroup" Relationship="AdviceModel.BusinessWiseTaskBusinessWiseNatureOfAdviceGroup" FromRole="BusinessWiseTask" ToRole="BusinessWiseNatureOfAdviceGroup" />
+        </EntityType>
+        <EntityType Name="HroTask" BaseType="AdviceModel.Task">
+          <Property Name="DepartmentID" Type="Int64" />
+          <Property Name="JusrisdictionID" Type="Int64" />
+          <Property Name="JusrisdictionDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IndividualOrGroup" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IndividualForename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndividualSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResponseType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ResponseDate" Type="DateTime" Precision="3" />
+          <Property Name="ResponseTime" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="HroNatureOfAdviceGroupId" Type="Int64" />
+          <Property Name="HroUserID" Type="Guid" />
+          <Property Name="ResponseEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HroEmployeeId" Type="Int32" />
+          <NavigationProperty Name="HroNatureOfAdviceGroup" Relationship="AdviceModel.BusinessWiseNatureOfAdviceGroupHroTask" FromRole="HroTask" ToRole="BusinessWiseNatureOfAdviceGroup" />
+        </EntityType>
+        <EntityType Name="BusinessWiseNatureOfAdviceGroup">
+          <Key>
+            <PropertyRef Name="BusinessWiseNatureOfAdviceGroupID" />
+          </Key>
+          <Property Name="BusinessWiseNatureOfAdviceGroupID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentID" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="BusinessWiseTasks" Relationship="AdviceModel.BusinessWiseTaskBusinessWiseNatureOfAdviceGroup" FromRole="BusinessWiseNatureOfAdviceGroup" ToRole="BusinessWiseTask" />
+          <NavigationProperty Name="HroTasks" Relationship="AdviceModel.BusinessWiseNatureOfAdviceGroupHroTask" FromRole="BusinessWiseNatureOfAdviceGroup" ToRole="HroTask" />
+        </EntityType>
+        <Association Name="BusinessWiseTaskBusinessWiseNatureOfAdviceGroup">
+          <End Type="AdviceModel.BusinessWiseTask" Role="BusinessWiseTask" Multiplicity="*" />
+          <End Type="AdviceModel.BusinessWiseNatureOfAdviceGroup" Role="BusinessWiseNatureOfAdviceGroup" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessWiseNatureOfAdviceGroup">
+              <PropertyRef Name="BusinessWiseNatureOfAdviceGroupID" />
+            </Principal>
+            <Dependent Role="BusinessWiseTask">
+              <PropertyRef Name="BusinessWiseNatureOfAdviceGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BusinessWiseNatureOfAdviceGroupHroTask">
+          <End Type="AdviceModel.BusinessWiseNatureOfAdviceGroup" Role="BusinessWiseNatureOfAdviceGroup" Multiplicity="0..1" />
+          <End Type="AdviceModel.HroTask" Role="HroTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessWiseNatureOfAdviceGroup">
+              <PropertyRef Name="BusinessWiseNatureOfAdviceGroupID" />
+            </Principal>
+            <Dependent Role="HroTask">
+              <PropertyRef Name="HroNatureOfAdviceGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TaskModifyingReason">
+          <Key>
+            <PropertyRef Name="TaskModifyingReasonID" />
+          </Key>
+          <Property Name="TaskModifyingReasonID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskModifyingReasonGroupID" Type="Int64" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TaskModifyingReasonGroup" Relationship="AdviceModel.FK_TaskModifyingReason_TaskModifyingReasonGroup" FromRole="TaskModifyingReason" ToRole="TaskModifyingReasonGroup" />
+          <NavigationProperty Name="Tasks" Relationship="AdviceModel.TaskTaskModifyingReason" FromRole="TaskModifyingReason" ToRole="Task" />
+          <NavigationProperty Name="TaskArchives" Relationship="AdviceModel.TaskArchiveTaskModifyingReason" FromRole="TaskModifyingReason" ToRole="TaskArchive" />
+          <NavigationProperty Name="ReassignTaskEvents" Relationship="AdviceModel.FK_ReassignTaskEvent_ReasonId" FromRole="TaskModifyingReason" ToRole="ReassignTaskEvent" />
+        </EntityType>
+        <EntityType Name="TaskModifyingReasonGroup">
+          <Key>
+            <PropertyRef Name="TaskModifyingReasonGroupID" />
+          </Key>
+          <Property Name="TaskModifyingReasonGroupID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TaskModifyingReasons" Relationship="AdviceModel.FK_TaskModifyingReason_TaskModifyingReasonGroup" FromRole="TaskModifyingReasonGroup" ToRole="TaskModifyingReason" />
+        </EntityType>
+        <Association Name="FK_TaskModifyingReason_TaskModifyingReasonGroup">
+          <End Type="AdviceModel.TaskModifyingReasonGroup" Role="TaskModifyingReasonGroup" Multiplicity="1" />
+          <End Type="AdviceModel.TaskModifyingReason" Role="TaskModifyingReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReasonGroup">
+              <PropertyRef Name="TaskModifyingReasonGroupID" />
+            </Principal>
+            <Dependent Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TaskTaskModifyingReason">
+          <End Type="AdviceModel.Task" Role="Task" Multiplicity="*" />
+          <End Type="AdviceModel.TaskModifyingReason" Role="TaskModifyingReason" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="LastModifyingReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TaskArchiveTaskModifyingReason">
+          <End Type="AdviceModel.TaskArchive" Role="TaskArchive" Multiplicity="*" />
+          <End Type="AdviceModel.TaskModifyingReason" Role="TaskModifyingReason" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonID" />
+            </Principal>
+            <Dependent Role="TaskArchive">
+              <PropertyRef Name="LastModifyingReasonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Task_AssignedTeam">
+          <End Type="AdviceModel.Task" Role="Task" Multiplicity="*" />
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="AssignedTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+          </Key>
+          <Property Name="PermissionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PermissionRoles" Relationship="AdviceModel.FK_PermissionRole_Permission" FromRole="Permission" ToRole="PermissionRole" />
+        </EntityType>
+        <EntityType Name="PermissionRole">
+          <Key>
+            <PropertyRef Name="PermissionID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="PermissionRoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PermissionID" Type="Int64" Nullable="false" />
+          <Property Name="RoleID" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Permission" Relationship="AdviceModel.FK_PermissionRole_Permission" FromRole="PermissionRole" ToRole="Permission" />
+        </EntityType>
+        <Association Name="FK_PermissionRole_Permission">
+          <End Type="AdviceModel.Permission" Role="Permission" Multiplicity="1" />
+          <End Type="AdviceModel.PermissionRole" Role="PermissionRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="PermissionID" />
+            </Principal>
+            <Dependent Role="PermissionRole">
+              <PropertyRef Name="PermissionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReassignTaskEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskId" Type="Int64" Nullable="false" />
+          <Property Name="PreviousTeamId" Type="Int64" />
+          <Property Name="NewTeamId" Type="Int64" />
+          <Property Name="PreviousUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NewUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReasonId" Type="Int64" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ReassignedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReassignedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NewTeam" Relationship="AdviceModel.FK_ReassignTaskEvent_NewTeam" FromRole="ReassignTaskEvent" ToRole="Team" />
+          <NavigationProperty Name="PreviousTeam" Relationship="AdviceModel.FK_ReassignTaskEvent_PreviousTeam" FromRole="ReassignTaskEvent" ToRole="Team" />
+          <NavigationProperty Name="TaskModifyingReason" Relationship="AdviceModel.FK_ReassignTaskEvent_ReasonId" FromRole="ReassignTaskEvent" ToRole="TaskModifyingReason" />
+          <NavigationProperty Name="Task" Relationship="AdviceModel.FK_ReassignTaskEvent_Task" FromRole="ReassignTaskEvent" ToRole="Task" />
+        </EntityType>
+        <Association Name="FK_ReassignTaskEvent_NewTeam">
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="AdviceModel.ReassignTaskEvent" Role="ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="NewTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_PreviousTeam">
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="AdviceModel.ReassignTaskEvent" Role="ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="PreviousTeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_ReasonId">
+          <End Type="AdviceModel.TaskModifyingReason" Role="TaskModifyingReason" Multiplicity="0..1" />
+          <End Type="AdviceModel.ReassignTaskEvent" Role="ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaskModifyingReason">
+              <PropertyRef Name="TaskModifyingReasonID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="ReasonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReassignTaskEvent_Task">
+          <End Type="AdviceModel.Task" Role="Task" Multiplicity="1" />
+          <End Type="AdviceModel.ReassignTaskEvent" Role="ReassignTaskEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="TaskID" />
+            </Principal>
+            <Dependent Role="ReassignTaskEvent">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TeamTaskArchive">
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="AdviceModel.TaskArchive" Role="TaskArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="TeamID" />
+            </Principal>
+            <Dependent Role="TaskArchive">
+              <PropertyRef Name="AssignedTeamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="ActionID" />
+          </Key>
+          <Property Name="ActionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionTypeID" Type="Int64" Nullable="false" />
+          <Property Name="JobID" Type="Int64" Nullable="false" />
+          <Property Name="NatureOfAdviceID" Type="Int64" />
+          <Property Name="NatureOfAdviceOther" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IndemnityID" Type="Int64" />
+          <Property Name="IndemnityReasonID" Type="Int64" />
+          <Property Name="IndemnityOther" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactID" Type="Int64" />
+          <Property Name="AdviceGiven" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="EditStartDate" Type="DateTime" Precision="3" />
+          <Property Name="EditCompletedDate" Type="DateTime" Precision="3" />
+          <Property Name="GeneralNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InternalNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MeetingDate" Type="DateTime" Precision="3" />
+          <Property Name="MeetingTypeID" Type="Int64" />
+          <Property Name="DocumentCount" Type="Int64" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailSent" Type="Boolean" />
+          <Property Name="ExchangeGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResultingTaskId" Type="Int64" />
+          <Property Name="LoggedOnBehalfOf" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Outbound" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="OutOfHours" Type="Boolean" />
+          <Property Name="ClientSatisfiedWithAdvice" Type="Boolean" />
+          <Property Name="NumberOfEmployeesInvolved" Type="Int32" />
+          <Property Name="IsKeyEvent" Type="Boolean" />
+          <Property Name="PolicyNumberID" Type="Int64" />
+          <NavigationProperty Name="ActionType" Relationship="AdviceModel.FK_Action_ActionType" FromRole="Action" ToRole="ActionType" />
+          <NavigationProperty Name="Job" Relationship="AdviceModel.JobAction" FromRole="Action" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="ActionTypeGroup">
+          <Key>
+            <PropertyRef Name="ActionTypeGroupId" />
+            <PropertyRef Name="ActionTypeId" />
+          </Key>
+          <Property Name="ActionTypeGroupId" Type="Int64" Nullable="false" />
+          <Property Name="ActionTypeId" Type="Int64" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ActionType" Relationship="AdviceModel.ActionTypeActionTypeGroup" FromRole="ActionTypeGroup" ToRole="ActionType" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobID" />
+          </Key>
+          <Property Name="JobID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentID" Type="Int64" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="AdviceCardID" Type="Int64" />
+          <Property Name="SiteAddressID" Type="Int64" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentNatureOfAdviceID" Type="Int64" />
+          <Property Name="LastActionDate" Type="DateTime" Precision="3" />
+          <Property Name="LastActionId" Type="Int64" />
+          <Property Name="ContactID" Type="Int64" />
+          <Property Name="Closed" Type="Boolean" Nullable="false" />
+          <Property Name="IndemnityID" Type="Int64" />
+          <Property Name="Sensitive" Type="Boolean" Nullable="false" />
+          <Property Name="Checklist" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifyingAction" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedReason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="LastKeyNatureOfAdviceId" Type="Int64" />
+          <Property Name="PolicyNumberID" Type="Int64" />
+          <NavigationProperty Name="Actions" Relationship="AdviceModel.JobAction" FromRole="Job" ToRole="Action" />
+        </EntityType>
+        <EntityType Name="ActionType">
+          <Key>
+            <PropertyRef Name="ActionTypeID" />
+          </Key>
+          <Property Name="ActionTypeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShowGeneralNotes" Type="Boolean" Nullable="false" />
+          <Property Name="ShowIndemnity" Type="Boolean" Nullable="false" />
+          <Property Name="ShowContactInfo" Type="Boolean" Nullable="false" />
+          <Property Name="ShowJobDetails" Type="Boolean" Nullable="false" />
+          <Property Name="ShowAdviceGiven" Type="Boolean" Nullable="false" />
+          <Property Name="ShowInternalNotes" Type="Boolean" Nullable="false" />
+          <Property Name="ShowNatureOfAdvice" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Internal" Type="Boolean" Nullable="false" />
+          <Property Name="UserCanSetLogTimes" Type="Boolean" />
+          <NavigationProperty Name="Actions" Relationship="AdviceModel.FK_Action_ActionType" FromRole="ActionType" ToRole="Action" />
+          <NavigationProperty Name="ActionTypeGroups" Relationship="AdviceModel.ActionTypeActionTypeGroup" FromRole="ActionType" ToRole="ActionTypeGroup" />
+        </EntityType>
+        <Association Name="FK_Action_ActionType">
+          <End Type="AdviceModel.ActionType" Role="ActionType" Multiplicity="1" />
+          <End Type="AdviceModel.Action" Role="Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionType">
+              <PropertyRef Name="ActionTypeID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="ActionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActionTypeActionTypeGroup">
+          <End Type="AdviceModel.ActionType" Role="ActionType" Multiplicity="1" />
+          <End Type="AdviceModel.ActionTypeGroup" Role="ActionTypeGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActionType">
+              <PropertyRef Name="ActionTypeID" />
+            </Principal>
+            <Dependent Role="ActionTypeGroup">
+              <PropertyRef Name="ActionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobAction">
+          <End Type="AdviceModel.Job" Role="Job" Multiplicity="1" />
+          <End Type="AdviceModel.Action" Role="Action" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="JobID" />
+            </Principal>
+            <Dependent Role="Action">
+              <PropertyRef Name="JobID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Teams" Relationship="AdviceModel.fk_division" FromRole="Division" ToRole="Team" />
+        </EntityType>
+        <Association Name="fk_division">
+          <End Type="AdviceModel.Division" Role="Division" Multiplicity="0..1" />
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DepartmentTeam">
+          <End Type="AdviceModel.Department" Role="Department" Multiplicity="0..1" />
+          <End Type="AdviceModel.Team" Role="Team" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="Team">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CorporatePriority">
+          <Key>
+            <PropertyRef Name="CorporatePriorityId" />
+          </Key>
+          <Property Name="CorporatePriorityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Can" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContractValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ContractDetail" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ContractEndDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="User" Relationship="AdviceModel.FK_CorporatePriority_User" FromRole="CorporatePriority" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_CorporatePriority_User">
+          <End Type="AdviceModel.User" Role="User" Multiplicity="1" />
+          <End Type="AdviceModel.CorporatePriority" Role="CorporatePriority" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="CorporatePriority">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaintenancePermission">
+          <Key>
+            <PropertyRef Name="MaintenancePermissionId" />
+          </Key>
+          <Property Name="MaintenancePermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MaintenanceUserPermissions" Relationship="AdviceModel.FK_MaintenanceUserPermission_MaintenancePermission" FromRole="MaintenancePermission" ToRole="MaintenanceUserPermission" />
+        </EntityType>
+        <EntityType Name="MaintenanceUserPermission">
+          <Key>
+            <PropertyRef Name="MaintenanceUserPermissionId" />
+          </Key>
+          <Property Name="MaintenanceUserPermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="MaintenancePermissionId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="DeletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MaintenancePermission" Relationship="AdviceModel.FK_MaintenanceUserPermission_MaintenancePermission" FromRole="MaintenanceUserPermission" ToRole="MaintenancePermission" />
+          <NavigationProperty Name="User" Relationship="AdviceModel.FK_MaintenanceUserPermission_User" FromRole="MaintenanceUserPermission" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_MaintenanceUserPermission_MaintenancePermission">
+          <End Type="AdviceModel.MaintenancePermission" Role="MaintenancePermission" Multiplicity="1" />
+          <End Type="AdviceModel.MaintenanceUserPermission" Role="MaintenanceUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenancePermission">
+              <PropertyRef Name="MaintenancePermissionId" />
+            </Principal>
+            <Dependent Role="MaintenanceUserPermission">
+              <PropertyRef Name="MaintenancePermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaintenanceUserPermission_User">
+          <End Type="AdviceModel.User" Role="User" Multiplicity="1" />
+          <End Type="AdviceModel.MaintenanceUserPermission" Role="MaintenanceUserPermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MaintenanceUserPermission">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ServiceReviewServiceCanGroup">
+          <Key>
+            <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+          </Key>
+          <Property Name="ServiceReviewServiceCansGroupId" Type="Int16" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="Regex" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceReviewServiceSchedules" Relationship="AdviceModel.FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule" FromRole="ServiceReviewServiceCanGroup" ToRole="ServiceReviewServiceSchedule" />
+        </EntityType>
+        <EntityType Name="ServiceReviewServiceSchedule">
+          <Key>
+            <PropertyRef Name="ServiceReviewServiceScheduleId" />
+          </Key>
+          <Property Name="ServiceReviewServiceScheduleId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceReviewServiceCansGroupId" Type="Int16" Nullable="false" />
+          <Property Name="DayToRun" Type="Int32" Nullable="false" />
+          <Property Name="MonthToRun" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="LastRun" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ServiceReviewServiceCanGroup" Relationship="AdviceModel.FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule" FromRole="ServiceReviewServiceSchedule" ToRole="ServiceReviewServiceCanGroup" />
+        </EntityType>
+        <Association Name="FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule">
+          <End Type="AdviceModel.ServiceReviewServiceCanGroup" Role="ServiceReviewServiceCanGroup" Multiplicity="1" />
+          <End Type="AdviceModel.ServiceReviewServiceSchedule" Role="ServiceReviewServiceSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceReviewServiceCanGroup">
+              <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+            </Principal>
+            <Dependent Role="ServiceReviewServiceSchedule">
+              <PropertyRef Name="ServiceReviewServiceCansGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="CorporatePriorityByCansQueryResult">
+          <Property Type="Int32" Name="CorporatePriorityId" Nullable="false" />
+          <Property Type="String" Name="Can" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="ContractValue" Nullable="true" Precision="19" />
+          <Property Type="String" Name="ContractDetail" Nullable="true" MaxLength="2000" />
+          <Property Type="DateTime" Name="ContractEndDate" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="UserId" Nullable="false" />
+          <Property Type="Boolean" Name="Deleted" Nullable="false" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdviceModelStoreContainer" CdmEntityContainer="AdviceEntities">
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="IsTypeOf(AdviceModel.Task)">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="AvVersion" ColumnName="AvVersion" />
+                <ScalarProperty Name="SlaStatus" ColumnName="SlaStatus" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="AcceptableWindow" ColumnName="AcceptableWindow" />
+                <ScalarProperty Name="JobSubject" ColumnName="JobSubject" />
+                <ScalarProperty Name="DocumentCount" ColumnName="DocumentCount" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="ManualDueDateReason" ColumnName="ManualDueDateReason" />
+                <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedComment" ColumnName="LastModifiedComment" />
+                <ScalarProperty Name="LastModifyingReasonID" ColumnName="LastModifyingReasonID" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PreviousTaskID" ColumnName="PreviousTaskID" />
+                <ScalarProperty Name="CancelledBy" ColumnName="CancelledBy" />
+                <ScalarProperty Name="CancelledDate" ColumnName="CancelledDate" />
+                <ScalarProperty Name="CancelledReason" ColumnName="CancelledReason" />
+                <ScalarProperty Name="RecordedClientID" ColumnName="RecordedClientID" />
+                <ScalarProperty Name="ManualDueDate" ColumnName="ManualDueDate" />
+                <ScalarProperty Name="Urgent" ColumnName="Urgent" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="AssignedTeamID" ColumnName="AssignedTeamID" />
+                <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+                <ScalarProperty Name="WarningWindow" ColumnName="WarningWindow" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(AdviceModel.EmailTask)">
+              <MappingFragment StoreEntitySet="EmailTask">
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+                <ScalarProperty Name="CrossPosted" ColumnName="CrossPosted" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(AdviceModel.BusinessWiseTask)">
+              <MappingFragment StoreEntitySet="BusinessWiseTask">
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="JusrisdictionID" ColumnName="JusrisdictionID" />
+                <ScalarProperty Name="JusrisdictionDescription" ColumnName="JusrisdictionDescription" />
+                <ScalarProperty Name="IndividualOrGroup" ColumnName="IndividualOrGroup" />
+                <ScalarProperty Name="IndividualForename" ColumnName="IndividualForename" />
+                <ScalarProperty Name="IndividualSurname" ColumnName="IndividualSurname" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="BusinessWiseOrTelephone" ColumnName="BusinessWiseOrTelephone" />
+                <ScalarProperty Name="PreferedDateOfContact" ColumnName="PreferedDateOfContact" />
+                <ScalarProperty Name="PreferedTimeOfContact" ColumnName="PreferedTimeOfContact" />
+                <ScalarProperty Name="BusinessWiseNatureOfAdviceGroupId" ColumnName="BusinessWiseNatureOfAdviceGroupId" />
+                <ScalarProperty Name="AuthorisedUserID" ColumnName="AuthorisedUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(AdviceModel.HroTask)">
+              <MappingFragment StoreEntitySet="HroTask">
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="JusrisdictionID" ColumnName="JusrisdictionID" />
+                <ScalarProperty Name="JusrisdictionDescription" ColumnName="JusrisdictionDescription" />
+                <ScalarProperty Name="IndividualOrGroup" ColumnName="IndividualOrGroup" />
+                <ScalarProperty Name="IndividualForename" ColumnName="IndividualForename" />
+                <ScalarProperty Name="IndividualSurname" ColumnName="IndividualSurname" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ResponseType" ColumnName="ResponseType" />
+                <ScalarProperty Name="ResponseDate" ColumnName="ResponseDate" />
+                <ScalarProperty Name="ResponseTime" ColumnName="ResponseTime" />
+                <ScalarProperty Name="HroNatureOfAdviceGroupId" ColumnName="HroNatureOfAdviceGroupId" />
+                <ScalarProperty Name="HroUserID" ColumnName="HroUserID" />
+                <ScalarProperty Name="ResponseEmail" ColumnName="ResponseEmail" />
+                <ScalarProperty Name="HroEmployeeId" ColumnName="HroEmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskActions">
+            <EntityTypeMapping TypeName="AdviceModel.TaskAction">
+              <MappingFragment StoreEntitySet="TaskAction">
+                <ScalarProperty Name="TaskActionID" ColumnName="TaskActionID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskArchives">
+            <EntityTypeMapping TypeName="AdviceModel.TaskArchive">
+              <MappingFragment StoreEntitySet="TaskArchive">
+                <ScalarProperty Name="AvVersion" ColumnName="AvVersion" />
+                <ScalarProperty Name="SlaStatus" ColumnName="SlaStatus" />
+                <ScalarProperty Name="TaskArchiveId" ColumnName="TaskArchiveId" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="WarningWindow" ColumnName="WarningWindow" />
+                <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+                <ScalarProperty Name="AssignedTeamID" ColumnName="AssignedTeamID" />
+                <ScalarProperty Name="AssignedDate" ColumnName="AssignedDate" />
+                <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="Urgent" ColumnName="Urgent" />
+                <ScalarProperty Name="ManualDueDate" ColumnName="ManualDueDate" />
+                <ScalarProperty Name="RecordedClientID" ColumnName="RecordedClientID" />
+                <ScalarProperty Name="CancelledReason" ColumnName="CancelledReason" />
+                <ScalarProperty Name="CancelledDate" ColumnName="CancelledDate" />
+                <ScalarProperty Name="CancelledBy" ColumnName="CancelledBy" />
+                <ScalarProperty Name="PreviousTaskID" ColumnName="PreviousTaskID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifyingReasonID" ColumnName="LastModifyingReasonID" />
+                <ScalarProperty Name="LastModifiedComment" ColumnName="LastModifiedComment" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Cancelled" ColumnName="Cancelled" />
+                <ScalarProperty Name="ManualDueDateReason" ColumnName="ManualDueDateReason" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+                <ScalarProperty Name="DocumentCount" ColumnName="DocumentCount" />
+                <ScalarProperty Name="JobSubject" ColumnName="JobSubject" />
+                <ScalarProperty Name="AcceptableWindow" ColumnName="AcceptableWindow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskDocuments">
+            <EntityTypeMapping TypeName="AdviceModel.TaskDocument">
+              <MappingFragment StoreEntitySet="TaskDocument">
+                <ScalarProperty Name="TaskDocumentID" ColumnName="TaskDocumentID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskJobs">
+            <EntityTypeMapping TypeName="AdviceModel.TaskJob">
+              <MappingFragment StoreEntitySet="TaskJob">
+                <ScalarProperty Name="TaskJobID" ColumnName="TaskJobID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskTypes">
+            <EntityTypeMapping TypeName="AdviceModel.TaskType">
+              <MappingFragment StoreEntitySet="TaskType">
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExternalTask" ColumnName="ExternalTask" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskTypeSLAs">
+            <EntityTypeMapping TypeName="AdviceModel.TaskTypeSLA">
+              <MappingFragment StoreEntitySet="TaskTypeSLA">
+                <ScalarProperty Name="TaskTypeSLAID" ColumnName="TaskTypeSLAID" />
+                <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="DefaultSLATime" ColumnName="DefaultSLATime" />
+                <ScalarProperty Name="DefaultWarningWindow" ColumnName="DefaultWarningWindow" />
+                <ScalarProperty Name="UserCanRaise" ColumnName="UserCanRaise" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DefaultAcceptableWindow" ColumnName="DefaultAcceptableWindow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="AdviceModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AdviceModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="TeamID" ColumnName="TeamID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="AdviceModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="AdviceModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="DocumentTypeId" ColumnName="DocumentTypeId" />
+                <ScalarProperty Name="DocumentLibraryId" ColumnName="DocumentLibraryId" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ScannedDocumentsID" ColumnName="ScannedDocumentsID" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Filename" ColumnName="Filename" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessWiseNatureOfAdviceGroups">
+            <EntityTypeMapping TypeName="AdviceModel.BusinessWiseNatureOfAdviceGroup">
+              <MappingFragment StoreEntitySet="BusinessWiseNatureOfAdviceGroup">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="BusinessWiseNatureOfAdviceGroupID" ColumnName="BusinessWiseNatureOfAdviceGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskModifyingReasons">
+            <EntityTypeMapping TypeName="AdviceModel.TaskModifyingReason">
+              <MappingFragment StoreEntitySet="TaskModifyingReason">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaskModifyingReasonGroupID" ColumnName="TaskModifyingReasonGroupID" />
+                <ScalarProperty Name="TaskModifyingReasonID" ColumnName="TaskModifyingReasonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskModifyingReasonGroups">
+            <EntityTypeMapping TypeName="AdviceModel.TaskModifyingReasonGroup">
+              <MappingFragment StoreEntitySet="TaskModifyingReasonGroup">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaskModifyingReasonGroupID" ColumnName="TaskModifyingReasonGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="AdviceModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionRoles">
+            <EntityTypeMapping TypeName="AdviceModel.PermissionRole">
+              <MappingFragment StoreEntitySet="PermissionRole">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="PermissionID" ColumnName="PermissionID" />
+                <ScalarProperty Name="PermissionRoleID" ColumnName="PermissionRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReassignTaskEvents">
+            <EntityTypeMapping TypeName="AdviceModel.ReassignTaskEvent">
+              <MappingFragment StoreEntitySet="ReassignTaskEvent">
+                <ScalarProperty Name="ReassignedDate" ColumnName="ReassignedDate" />
+                <ScalarProperty Name="ReassignedBy" ColumnName="ReassignedBy" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="NewUser" ColumnName="NewUser" />
+                <ScalarProperty Name="PreviousUser" ColumnName="PreviousUser" />
+                <ScalarProperty Name="NewTeamId" ColumnName="NewTeamId" />
+                <ScalarProperty Name="PreviousTeamId" ColumnName="PreviousTeamId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="AdviceModel.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="PolicyNumberID" ColumnName="PolicyNumberID" />
+                <ScalarProperty Name="IsKeyEvent" ColumnName="IsKeyEvent" />
+                <ScalarProperty Name="NumberOfEmployeesInvolved" ColumnName="NumberOfEmployeesInvolved" />
+                <ScalarProperty Name="ClientSatisfiedWithAdvice" ColumnName="ClientSatisfiedWithAdvice" />
+                <ScalarProperty Name="OutOfHours" ColumnName="OutOfHours" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Outbound" ColumnName="Outbound" />
+                <ScalarProperty Name="LoggedOnBehalfOf" ColumnName="LoggedOnBehalfOf" />
+                <ScalarProperty Name="ResultingTaskId" ColumnName="ResultingTaskId" />
+                <ScalarProperty Name="ExchangeGUID" ColumnName="ExchangeGUID" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="DocumentCount" ColumnName="DocumentCount" />
+                <ScalarProperty Name="MeetingTypeID" ColumnName="MeetingTypeID" />
+                <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+                <ScalarProperty Name="InternalNotes" ColumnName="InternalNotes" />
+                <ScalarProperty Name="GeneralNotes" ColumnName="GeneralNotes" />
+                <ScalarProperty Name="EditCompletedDate" ColumnName="EditCompletedDate" />
+                <ScalarProperty Name="EditStartDate" ColumnName="EditStartDate" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="AdviceGiven" ColumnName="AdviceGiven" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="IndemnityOther" ColumnName="IndemnityOther" />
+                <ScalarProperty Name="IndemnityReasonID" ColumnName="IndemnityReasonID" />
+                <ScalarProperty Name="IndemnityID" ColumnName="IndemnityID" />
+                <ScalarProperty Name="NatureOfAdviceOther" ColumnName="NatureOfAdviceOther" />
+                <ScalarProperty Name="NatureOfAdviceID" ColumnName="NatureOfAdviceID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+                <ScalarProperty Name="ActionTypeID" ColumnName="ActionTypeID" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionTypeGroups">
+            <EntityTypeMapping TypeName="AdviceModel.ActionTypeGroup">
+              <MappingFragment StoreEntitySet="ActionTypeGroup">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ActionTypeId" ColumnName="ActionTypeId" />
+                <ScalarProperty Name="ActionTypeGroupId" ColumnName="ActionTypeGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="AdviceModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="PolicyNumberID" ColumnName="PolicyNumberID" />
+                <ScalarProperty Name="LastKeyNatureOfAdviceId" ColumnName="LastKeyNatureOfAdviceId" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedReason" ColumnName="LastModifiedReason" />
+                <ScalarProperty Name="LastModifyingAction" ColumnName="LastModifyingAction" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Checklist" ColumnName="Checklist" />
+                <ScalarProperty Name="Sensitive" ColumnName="Sensitive" />
+                <ScalarProperty Name="IndemnityID" ColumnName="IndemnityID" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="LastActionId" ColumnName="LastActionId" />
+                <ScalarProperty Name="LastActionDate" ColumnName="LastActionDate" />
+                <ScalarProperty Name="CurrentNatureOfAdviceID" ColumnName="CurrentNatureOfAdviceID" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="SiteAddressID" ColumnName="SiteAddressID" />
+                <ScalarProperty Name="AdviceCardID" ColumnName="AdviceCardID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="JobID" ColumnName="JobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActionTypes">
+            <EntityTypeMapping TypeName="AdviceModel.ActionType">
+              <MappingFragment StoreEntitySet="ActionType">
+                <ScalarProperty Name="UserCanSetLogTimes" ColumnName="UserCanSetLogTimes" />
+                <ScalarProperty Name="Internal" ColumnName="Internal" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ShowNatureOfAdvice" ColumnName="ShowNatureOfAdvice" />
+                <ScalarProperty Name="ShowInternalNotes" ColumnName="ShowInternalNotes" />
+                <ScalarProperty Name="ShowAdviceGiven" ColumnName="ShowAdviceGiven" />
+                <ScalarProperty Name="ShowJobDetails" ColumnName="ShowJobDetails" />
+                <ScalarProperty Name="ShowContactInfo" ColumnName="ShowContactInfo" />
+                <ScalarProperty Name="ShowIndemnity" ColumnName="ShowIndemnity" />
+                <ScalarProperty Name="ShowGeneralNotes" ColumnName="ShowGeneralNotes" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ActionTypeID" ColumnName="ActionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="AdviceModel.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CorporatePriorities">
+            <EntityTypeMapping TypeName="AdviceModel.CorporatePriority">
+              <MappingFragment StoreEntitySet="CorporatePriority">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ContractEndDate" ColumnName="ContractEndDate" />
+                <ScalarProperty Name="ContractDetail" ColumnName="ContractDetail" />
+                <ScalarProperty Name="ContractValue" ColumnName="ContractValue" />
+                <ScalarProperty Name="Can" ColumnName="Can" />
+                <ScalarProperty Name="CorporatePriorityId" ColumnName="CorporatePriorityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenancePermissions">
+            <EntityTypeMapping TypeName="AdviceModel.MaintenancePermission">
+              <MappingFragment StoreEntitySet="MaintenancePermission">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MaintenancePermissionId" ColumnName="MaintenancePermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceUserPermissions">
+            <EntityTypeMapping TypeName="AdviceModel.MaintenanceUserPermission">
+              <MappingFragment StoreEntitySet="MaintenanceUserPermission">
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="MaintenancePermissionId" ColumnName="MaintenancePermissionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MaintenanceUserPermissionId" ColumnName="MaintenanceUserPermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceReviewServiceCanGroups">
+            <EntityTypeMapping TypeName="AdviceModel.ServiceReviewServiceCanGroup">
+              <MappingFragment StoreEntitySet="ServiceReviewServiceCanGroups">
+                <ScalarProperty Name="Regex" ColumnName="Regex" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ServiceReviewServiceCansGroupId" ColumnName="ServiceReviewServiceCansGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceReviewServiceSchedules">
+            <EntityTypeMapping TypeName="AdviceModel.ServiceReviewServiceSchedule">
+              <MappingFragment StoreEntitySet="ServiceReviewServiceSchedule">
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="MonthToRun" ColumnName="MonthToRun" />
+                <ScalarProperty Name="DayToRun" ColumnName="DayToRun" />
+                <ScalarProperty Name="ServiceReviewServiceCansGroupId" ColumnName="ServiceReviewServiceCansGroupId" />
+                <ScalarProperty Name="ServiceReviewServiceScheduleId" ColumnName="ServiceReviewServiceScheduleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CorporatePriorityByCansQuery" FunctionName="AdviceModel.Store.CorporatePriorityByCansQuery">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdviceModel.CorporatePriorityByCansQueryResult">
+                <ScalarProperty Name="CorporatePriorityId" ColumnName="CorporatePriorityId" />
+                <ScalarProperty Name="Can" ColumnName="Can" />
+                <ScalarProperty Name="ContractValue" ColumnName="ContractValue" />
+                <ScalarProperty Name="ContractDetail" ColumnName="ContractDetail" />
+                <ScalarProperty Name="ContractEndDate" ColumnName="ContractEndDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

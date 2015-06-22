@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{479223D6-C71E-40E8-8CCB-624CF9650F25}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Advice.Web</RootNamespace>
+    <AssemblyName>Advice.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.1\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4">
+      <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebApiContrib.IoC.StructureMap">
+      <HintPath>..\packages\WebApiContrib.IoC.StructureMap.0.9.5.0\lib\net40\WebApiContrib.IoC.StructureMap.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Angular\Helpers\Dialogs\dialogs.js" />
+    <Content Include="Angular\maintenance.js" />
+    <Content Include="Angular\app.js" />
+    <Content Include="Angular\Components\NgTable\ng-table.css" />
+    <Content Include="Angular\Components\NgTable\ng-table.js" />
+    <Content Include="Angular\Components\NgTable\ng-table.min.css" />
+    <Content Include="Angular\Components\NgTable\ng-table.min.js" />
+    <Content Include="Angular\Components\trNgGrid\trNgGrid.min.css" />
+    <Content Include="Angular\Components\trNgGrid\trNgGrid.min.js" />
+    <Content Include="Angular\Controllers\clientController.js" />
+    <Content Include="Angular\Controllers\PopUps\clientSearchDetailsController.js" />
+    <Content Include="Angular\Controllers\PopUps\reAssignTaskController.js" />
+    <Content Include="Angular\Controllers\PopUps\resetSlaController.js" />
+    <Content Include="Angular\Controllers\PopUps\genericConfirmationPopupController.js" />
+    <Content Include="Angular\Maintenance\Controllers\CorporatePriority\addEditCorportatePriorityPopupController.js" />
+    <Content Include="Angular\Maintenance\Controllers\CorporatePriority\manageCorporatePriorityUserController.js" />
+    <Content Include="Angular\Maintenance\Controllers\Division\addDivisionController.js" />
+    <Content Include="Angular\Maintenance\Controllers\Division\editDivisionController.js" />
+    <Content Include="Angular\Maintenance\Controllers\maintenanceController.js" />
+    <Content Include="Angular\Controllers\taskController.js" />
+    <Content Include="Angular\Helpers\utilService.js" />
+    <Content Include="Angular\Images\FileExtensionIcons\docx.png" />
+    <Content Include="Angular\Images\FileExtensionIcons\pdf.png" />
+    <Content Include="Angular\Images\FileExtensionIcons\txt.png" />
+    <Content Include="Angular\Images\FileExtensionIcons\unknownfiletype.png" />
+    <Content Include="Angular\Images\FileExtensionIcons\xls.png" />
+    <Content Include="Angular\Images\FileExtensionIcons\xlsx.png" />
+    <Content Include="Angular\Maintenance\Controllers\Team\deleteTeamController.js" />
+    <Content Include="Angular\Maintenance\Controllers\Team\editTeamController.js" />
+    <Content Include="Angular\Maintenance\Controllers\Team\addTeamController.js" />
+    <Content Include="Angular\Maintenance\Modules\corporatepriorityService.js" />
+    <Content Include="Angular\Maintenance\Modules\departmentService.js" />
+    <Content Include="Angular\Maintenance\Modules\divisionService.js" />
+    <Content Include="Angular\Maintenance\Modules\maintenanceUserService.js" />
+    <Content Include="Angular\Maintenance\Modules\teamService.js" />
+    <Content Include="Angular\Maintenance\NgDirectives\confirmationLink.js" />
+    <Content Include="Angular\Maintenance\Views\NgTemplates\ConfirmationLink\confirmationLinkBox.tmpl.html" />
+    <Content Include="Angular\Maintenance\Views\NgTemplates\ConfirmationLink\confirmationLink.tmpl.html" />
+    <Content Include="Angular\Maintenance\Views\maintenance.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\CorporatePriority\_addEditCorporatePriorityPopup.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\CorporatePriority\_corporatepriority.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\CorporatePriority\_manageCorporatePriorityUserPopup.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Division\_addDivision.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Division\_divisions.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Division\_editDivision.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Team\_addTeam.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Team\_deleteTeam.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Team\_editTeam.html" />
+    <Content Include="Angular\Maintenance\Views\Partials\Team\_teams.html" />
+    <Content Include="Angular\Modules\configservice.js" />
+    <Content Include="Angular\Helpers\constantsHelper.js" />
+    <Content Include="Angular\Modules\clientService.js" />
+    <Content Include="Angular\Modules\configservice.js.LIVE" />
+    <Content Include="Angular\Modules\taskModifyingReasonService.js" />
+    <Content Include="Angular\Modules\taskservice.js" />
+    <Content Include="Angular\Modules\userService.js" />
+    <Content Include="Angular\NgDirectives\loadingContainer.js" />
+    <Content Include="Angular\NgDirectives\multiselect.js" />
+    <Content Include="Angular\NgDirectives\resizer.js" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\boot.js" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\console.js" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\jasmine-html.js" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\jasmine.css" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\jasmine.js" />
+    <Content Include="Angular\Tests\Jasmine\lib\2.0.3\jasmine_favicon.png" />
+    <Content Include="Angular\Tests\SpecHelper.js" />
+    <Content Include="Angular\Tests\SpecRunner.html" />
+    <Content Include="Angular\Tests\Spec\ClientServiceTests.js" />
+    <Content Include="Angular\Tests\Spec\TaskControllerTests.js" />
+    <Content Include="Angular\Tests\Spec\TaskModifyingReasonServiceTests.js" />
+    <Content Include="Angular\Tests\Spec\taskServiceTests.js" />
+    <Content Include="Angular\Tests\Spec\UserServiceTests.js" />
+    <Content Include="Angular\Views\NgTemplates\dialogs.html" />
+    <Content Include="Angular\Views\NgTemplates\genericConfirmationPopup.html" />
+    <Content Include="Angular\Views\NgTemplates\multiselectuser.tmpl.html" />
+    <Content Include="Angular\Views\NgTemplates\multiselectteam.tmpl.html" />
+    <Content Include="Angular\Views\NgTemplates\multiselect.tmpl.html" />
+    <Content Include="Angular\Views\Partials\Forms\_reAssignTask.html" />
+    <Content Include="Angular\Views\Partials\Forms\_resetSlaForm.html" />
+    <Content Include="Angular\Views\Partials\PopUps\_recentClientsAction.html" />
+    <Content Include="Angular\Views\Partials\PopUps\_clientSearchDetails.html" />
+    <Content Include="Angular\Views\Partials\_clientSearch.html" />
+    <Content Include="Angular\Views\Partials\_proactiveTaskSearchResult.html" />
+    <Content Include="Angular\Views\Partials\_taskDetails.html" />
+    <Content Include="Angular\Views\task.html" />
+    <Content Include="Angular\Views\Partials\_taskSearchResult.html" />
+    <Content Include="Content\angularjs\1.2.26\angular-sanitize.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-sanitize.min.js" />
+    <Content Include="Content\angularjs\1.2.26\angular.js" />
+    <Content Include="Content\angularjs\1.2.26\angular.min.js" />
+    <Content Include="Content\bootstrap\3.2.0\js\bootstrap.min.js" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\av3.png" />
+    <Content Include="Content\images\av3Tran.png" />
+    <Content Include="Content\images\RAG_amber.png" />
+    <Content Include="Content\images\RAG_amber_BIG.png" />
+    <Content Include="Content\images\RAG_green.png" />
+    <Content Include="Content\images\RAG_green_BIG.png" />
+    <Content Include="Content\images\RAG_Grey.png" />
+    <Content Include="Content\images\RAG_Grey_BIG.png" />
+    <Content Include="Content\images\RAG_Platinum.png" />
+    <Content Include="Content\images\RAG_Platinum_BIG.png" />
+    <Content Include="Content\images\RAG_Red.png" />
+    <Content Include="Content\images\RAG_Red_BIG.png" />
+    <Content Include="Content\images\spinner24x24.gif" />
+    <Content Include="Content\ngdirectives\mutiselect.css" />
+    <Content Include="Content\Styles.css" />
+    <Content Include="maintenanceApp.html" />
+    <Content Include="index.html" />
+    <Content Include="Content\angularjs\1.2.26\angular-animate.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-animate.min.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-resource.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-resource.min.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-route.js" />
+    <Content Include="Content\angularjs\1.2.26\angular-route.min.js" />
+    <Content Include="Content\bootstrap\ui\0.11.0\ui-bootstrap-tpls.js" />
+    <Content Include="Content\bootstrap\ui\0.11.0\ui-bootstrap-tpls.min.js" />
+    <Content Include="Content\bootstrap\ui\0.11.0\ui-bootstrap.js" />
+    <Content Include="Content\bootstrap\ui\0.11.0\ui-bootstrap.min.js" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bootstrap\3.2.0\js\bootstrap.js" />
+    <Content Include="Content\fontawesome\4.2.0\css\font-awesome.css" />
+    <Content Include="Content\fontawesome\4.2.0\css\font-awesome.min.css" />
+    <Content Include="Content\fontawesome\4.2.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\jquery\2.1.1\jquery.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DivisionController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\TaskModifyingReasonController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Helpers\ControllerRegistry.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Helpers\DependencyResolver.cs" />
+    <Compile Include="ExceptionHandling\ElkExceptionLogger.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\UserIdentity.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceTask.cs" />
+    <Compile Include="Models\ResetTaskSlaModel.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TaskSearchRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\3.2.0\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bootstrap\3.2.0\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fontawesome\4.2.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fontawesome\4.2.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fontawesome\4.2.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fontawesome\4.2.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\fontawesome\4.2.0\less\bordered-pulled.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\core.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\fixed-width.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\font-awesome.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\icons.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\larger.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\list.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\mixins.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\path.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\rotated-flipped.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\spinning.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\stacked.less" />
+    <Content Include="Content\fontawesome\4.2.0\less\variables.less" />
+    <Content Include="Content\fontawesome\4.2.0\scss\font-awesome.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_core.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_fixed-width.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_icons.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_larger.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_list.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_mixins.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_path.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_spinning.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_stacked.scss" />
+    <Content Include="Content\fontawesome\4.2.0\scss\_variables.scss" />
+    <Content Include="Content\angularjs\1.2.26\angular-resource.min.js.map" />
+    <Content Include="Content\angularjs\1.2.26\angular-animate.min.js.map" />
+    <Content Include="Content\angularjs\1.2.26\angular-route.min.js.map" />
+    <Content Include="AngularManifest.appcache" />
+    <Content Include="Angular\Tests\Jasmine\MIT.LICENSE" />
+    <Content Include="Content\angularjs\1.2.26\angular.min.js.map" />
+    <Content Include="Angular\Components\NgTable\ng-table.less" />
+    <Content Include="Angular\Components\NgTable\ng-table.map" />
+    <Content Include="Content\angularjs\1.2.26\angular-sanitize.min.js.map" />
+    <Content Include="Angular\Modules\configservice.js.UAT" />
+    <Content Include="Angular\Modules\configservice.js.LIVE_OFFLINE" />
+    <None Include="Properties\PublishProfiles\Advice3_DeployLive_Jenkins.pubxml" />
+    <None Include="Properties\PublishProfiles\Advice3_Deploy_Local.pubxml" />
+    <None Include="Properties\PublishProfiles\Advice3_DeployStaging_Jenkins.pubxml" />
+    <None Include="Properties\PublishProfiles\Advice3_DeployUAT_Jenkins.pubxml" />
+    <None Include="Web.Advice3_DeployLive_Jenkins.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Advice3_DeployStaging_Jenkins.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Advice3_DeployUAT_Jenkins.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Advice3_Deploy_Local.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Advice.Application\Advice.Application.csproj">
+      <Project>{6041c7b4-4327-4762-8ce4-aae0b86961ad}</Project>
+      <Name>Advice.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Common\Advice.Common.csproj">
+      <Project>{baead89c-3058-4353-91f3-715551b3e0aa}</Project>
+      <Name>Advice.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Infrastructure\Advice.Infrastructure.csproj">
+      <Project>{c59ce00b-db3e-4122-bb6f-9fdd0236e08d}</Project>
+      <Name>Advice.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Logging\Advice.Logging.csproj">
+      <Project>{62fbdd00-6d9c-4308-ad77-5ce27a272ecc}</Project>
+      <Name>Advice.Logging</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>48873</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8021</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:2021/</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

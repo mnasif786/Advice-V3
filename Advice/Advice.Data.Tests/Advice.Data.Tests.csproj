@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78AD774A-AE59-468C-903A-397329810437}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Advice.Data.Tests</RootNamespace>
+    <AssemblyName>Advice.Data.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseCustomEntityRepositoryTests.cs" />
+    <Compile Include="Common\BaseJobRepositoryTests.cs" />
+    <Compile Include="Common\BaseMaintenanceUserPermissionRepositoryTests.cs" />
+    <Compile Include="Common\BaseServiceReviewServiceTests.cs" />
+    <Compile Include="Common\BaseTaskArchiveRepositoryTests.cs" />
+    <Compile Include="Common\BaseTaskModifyingReasonRepositoryTests.cs" />
+    <Compile Include="Common\BaseTaskRepositoryTests.cs" />
+    <Compile Include="Common\BaseTeamRepositoryTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CustomEntityTests\GetAdvisorNameWithMostRecentActionsByJobIdTests.cs" />
+    <Compile Include="Repository\CustomEntityTests\GetRecentCustomersAction.cs" />
+    <Compile Include="Repository\ProActiveTaskTests\GetProActiveTasksByTeamsTests.cs" />
+    <Compile Include="Repository\TaskTests\DeleteTaskByIdTests.cs" />
+    <Compile Include="Repository\TaskTests\GetDeletedTasksTests.cs" />
+    <Compile Include="Repository\GetPermissionsTests.cs" />
+    <Compile Include="Repository\TaskTests\GetTaskWithDetailByTaskIdTests.cs" />
+    <Compile Include="Repository\JobTests\GetOpenConductSuspensionJobsByLastActionDateTests.cs" />
+    <Compile Include="Repository\JobTests\GetOpenJobsByNatureOfAdviceGroupAndLastActionDateTests.cs" />
+    <Compile Include="Repository\JobTests\GetOpenJobsByNonNatureOfAdviceGroupAndLastActionDateTests.cs" />
+    <Compile Include="Repository\MaintenanceUserPermissionsTests\GetCorporatePriorityUsersTests.cs" />
+    <Compile Include="Repository\MaintenanceUserPermissionsTests\GetMaintenanceUserPermissionsTests.cs" />
+    <Compile Include="Repository\ProActiveTaskTests\GetProActiveTasksByUserTests.cs" />
+    <Compile Include="Repository\TaskTests\ReinstateTasksTest.cs" />
+    <Compile Include="Repository\ServiceReviewServiceTests\GetServiceReviewServiceSkippedJobsTests.cs" />
+    <Compile Include="Repository\ServiceReviewServiceTests\GetServiceReviewServiceScheduledJobsTests.cs" />
+    <Compile Include="Repository\TaskArchiveTests\GetTaskArchivesByTaskIdTests.cs" />
+    <Compile Include="Repository\MaintenanceUserPermissionsTests\GetCorporatePriorityUserByUserIdTests.cs" />
+    <Compile Include="Repository\TaskModifyingReasonTests\GetTaskModifyingReasonByGroupIdTests.cs" />
+    <Compile Include="Repository\TaskTests\TaskRepositoryTests.cs" />
+    <Compile Include="Repository\TaskTests\TaskStoredProcRunnerTests.cs" />
+    <Compile Include="Repository\TeamTests\AnyUserAssociatedWithTeamTests.cs" />
+    <Compile Include="Repository\TeamTests\TeamRepositoryTests.cs" />
+    <Compile Include="Repository\UserTests\UserRepositoryTests.cs" />
+    <Compile Include="TestHelpers\DbSetInitialisedMockFactory.cs" />
+    <Compile Include="TestHelpers\MockUsersFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Advice.DataModel\Advice.DataModel.csproj">
+      <Project>{52C32E5F-BFAD-4331-969A-9E628179BD04}</Project>
+      <Name>Advice.DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Data\Advice.Data.csproj">
+      <Project>{bfb6f2a9-8f54-4cc6-86fd-788ad3d770f8}</Project>
+      <Name>Advice.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Domain\Advice.Domain.csproj">
+      <Project>{b215abcd-c02d-43b6-a7f7-1b48d20c7950}</Project>
+      <Name>Advice.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

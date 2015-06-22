@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PeninsulaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBLCustomer">
+    <Key>
+      <PropertyRef Name="CustomerKey" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="CompanyName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyRegistrationNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CompanyVATNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NumberOfStaff" Type="Int32" />
+    <Property Name="Payroll" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SortCode" Type="Int32" />
+    <Property Name="CompanyMainEmail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyWebsite" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DefaultLegalLocationID" Type="Int32" Nullable="false" />
+    <Property Name="CurrentSalesRepUserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentHSConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentPersonnelConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PrincipleBusinessTypeID" Type="Int32" />
+    <Property Name="CompanyNameAKA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PBSIndustryTypeID" Type="Int32" />
+    <Property Name="CustomerGroupID" Type="Int32" />
+    <Property Name="DefaultPaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="PrivateAndConfidential" Type="Boolean" />
+    <Property Name="AssociatedClientNotes" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="AssociatedClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OperaSalesLedger" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="flagHidden" Type="Boolean" />
+    <Property Name="DummyAccount" Type="Boolean" />
+    <Property Name="ClientTypeID" Type="Int32" />
+    <Property Name="HighPriority" Type="Boolean" />
+    <Property Name="LeadSaleID" Type="Int32" />
+    <Property Name="SyncronisationStatus" Type="Int32" />
+    <Property Name="HoldAllAgreements" Type="Boolean" />
+    <Property Name="ServiceDeskID" Type="Int32" />
+    <Property Name="TradingAs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsVATRegistered" Type="Boolean" />
+    <Property Name="NumberOfERMUpdates" Type="Int32" />
+    <Property Name="SalesTeamID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="PeninsulaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLCustomers" EntityType="Self.TBLCustomer" />
+    <EntitySet Name="TBLSiteAddresses" EntityType="PeninsulaModel.TBLSiteAddress" />
+    <EntitySet Name="TBLSiteAddressSiteAddressTypes" EntityType="PeninsulaModel.TBLSiteAddressSiteAddressType" />
+    <AssociationSet Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" Association="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+      <End Role="TBLSiteAddress" EntitySet="TBLSiteAddresses" />
+      <End Role="TBLSiteAddressSiteAddressType" EntitySet="TBLSiteAddressSiteAddressTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TBLSiteAddress">
+    <Key>
+      <PropertyRef Name="SiteAddressID" />
+    </Key>
+    <Property Name="SiteAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteAddressTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CustomerKey" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address1" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Address3" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Address4" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Address5" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="County" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneMain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FaxMain" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HSConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="PersonnelConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="SalesConsultantCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="flagHidden" Type="Boolean" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="SoundXCompanyName" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="SoundXAddress1" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="SoundXPostCode" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="CurrentHSConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentPersonnelConsultant" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CurrentSalesRepUserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="LegalLocationID" Type="Int32" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SortCode" Type="Int32" />
+    <Property Name="IndustryTypeID" Type="Int32" />
+    <Property Name="PrincipleBusinessTypeID" Type="Int32" />
+    <Property Name="PrivateAndConfidential" Type="Boolean" />
+    <Property Name="HopewiserIndustryType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyNo" Type="Int32" />
+    <Property Name="Latitude" Type="Decimal" Precision="9" Scale="6" />
+    <Property Name="Longitude" Type="Decimal" Precision="9" Scale="6" />
+    <Property Name="LockCurrentHSConsultant" Type="Boolean" Nullable="false" />
+    <Property Name="OperaCompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyNameJustAlphaNumeric" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TBLSiteAddressSiteAddressTypes" Relationship="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" FromRole="TBLSiteAddress" ToRole="TBLSiteAddressSiteAddressType" />
+  </EntityType>
+  <EntityType Name="TBLSiteAddressSiteAddressType">
+    <Key>
+      <PropertyRef Name="SiteAddressID" />
+      <PropertyRef Name="SiteAddressTypeID" />
+    </Key>
+    <Property Name="SiteAddressID" Type="Int32" Nullable="false" />
+    <Property Name="SiteAddressTypeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TBLSiteAddress" Relationship="PeninsulaModel.FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses" FromRole="TBLSiteAddressSiteAddressType" ToRole="TBLSiteAddress" />
+  </EntityType>
+  <Association Name="FK_TBLSiteAddressSiteAddressTypes_TBLSiteAddresses">
+    <End Type="PeninsulaModel.TBLSiteAddress" Role="TBLSiteAddress" Multiplicity="1" />
+    <End Type="PeninsulaModel.TBLSiteAddressSiteAddressType" Role="TBLSiteAddressSiteAddressType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSiteAddress">
+        <PropertyRef Name="SiteAddressID" />
+      </Principal>
+      <Dependent Role="TBLSiteAddressSiteAddressType">
+        <PropertyRef Name="SiteAddressID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

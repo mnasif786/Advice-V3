@@ -1,0 +1,61 @@
+﻿<div class="row">
+    <div class="col-md-9">
+        <div class="col-md-3">
+            <a ng-href="index.html#/tasks" title="Home"><img src="../../../Content/images/av3Tran.png" /></a>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-10">
+                <div class="col-md-1">
+                    <a ng-href="{{advice2MyWork}}" target="_blank" class="no-decoration-icon" title="My Work"><span class="fa fa-line-chart fa-2x"></span></a>
+                </div>
+                <div class="col-md-1">
+                    <a ng-href="{{advice2AddTask}}" target="_blank" class="no-decoration-icon" title="Add Task"><span class="fa fa-plus-square fa-2x"></span></a>
+                </div>
+                <div class="col-md-1">
+                    <a ng-href="{{advice2Reports}}" target="_blank" class="no-decoration-icon" title="Reports"><span class="fa fa-bar-chart fa-2x"></span></a>
+                </div>
+                <div class="col-md-1">
+                    <a ng-href="{{advice2UserAdmin}}" target="_blank" class="no-decoration-icon" title="User Admin"><span class="fa fa-users fa-2x"></span></a>
+                </div>
+                <div class="col-md-1">
+                    <a ng-href="maintenanceApp.html#/maintenance" target="_blank" class="no-decoration-icon" title="Maintenance"><span class="fa fa-wrench fa-2x"></span></a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                &nbsp;
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label class="domainlabel">{{loggedInUser.Identity.Domain}}\{{loggedInUser.Identity.UserName}} </label>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="row">&nbsp;</div>
+    <tabset justified="false">
+        <tab select="refreshTeams()">
+            <tab-heading>
+                Teams
+            </tab-heading>
+            <div ng-include="templates.Teams.URL"></div>
+        </tab>
+        <tab select="getAllDivisionsForTab()">
+            <tab-heading>
+                Divisions
+            </tab-heading>
+            <div ng-include="templates.Divisions.URL"></div>
+        </tab>
+        <tab select="redirectToUserMaintenance()">
+            <tab-heading>
+                Users
+            </tab-heading>
+        </tab>
+        <tab select="getAllCorporatePrioritiesForTab()">
+            <tab-heading>
+                Corporate & Priority
+            </tab-heading>
+            <div ng-include="templates.CorporatePriority.URL"></div>
+        </tab>       
+    </tabset>
+</div>

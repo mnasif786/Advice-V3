@@ -1,0 +1,2182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/exchange/services/2006/types" />
+      <s:element name="ArchiveMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ArchiveMessageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArchiveMessageRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MailboxEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerLoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Outbound" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CAN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartmentId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="MoveToMailManagerFolder" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastModifiedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Deleted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeletedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeletedDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageAttachedToPBSApp" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsArchiveToHoldingPath" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsNonEmbeddedMode" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ArchiveMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ArchiveMessageResult" type="tns:ArchiveMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArchiveMessageResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArchivedScannedDocuments" type="tns:ArrayOfArchivedScannedDocument" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArchivedScannedDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArchivedScannedDocument" nillable="true" type="tns:ArchivedScannedDocument" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArchivedScannedDocument">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ScannedDocumentId" nillable="true" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="OriginalFilename" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentLibraryDocumentId" nillable="true" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoldingPathGuid" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extension" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessageFromArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageId" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageFromArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageFromArchiveResult" type="tns:GetArchivedMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetArchivedMessageResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ArchivedMessageGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s2:MessageType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ArchivedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailboxEmailAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Outbound" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ArchivedScannedDocuments" type="tns:ArrayOfArchivedScannedDocument" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExchangeItemId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessageFromArchiveByExchangeItemId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="exchangeItemId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessageFromArchiveByExchangeItemIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessageFromArchiveByExchangeItemIdResult" type="tns:GetArchivedMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMessagesFromArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageIds" type="tns:ArrayOfLong" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLong">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="long" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMessagesFromArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessagesFromArchiveResult" type="tns:ArrayOfGetArchivedMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGetArchivedMessageResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GetArchivedMessageResponse" nillable="true" type="tns:GetArchivedMessageResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RestoreMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:RestoreMessageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RestoreMessageRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerLoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerEmailAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserToRestoreTo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RestoreMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RestoreMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailAndArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:SendEmailAndArchiveRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SendEmailAndArchiveRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MailboxEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerLoginName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MailManagerEmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToRecipients" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CcRecipients" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="BccRecipients" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="tns:ArrayOfSendEmailAttachment" />
+          <s:element minOccurs="0" maxOccurs="1" name="CAN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartmentId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientSideMessageId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSendEmailAttachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SendEmailAttachment" nillable="true" type="tns:SendEmailAttachment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SendEmailAttachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayFilename" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendEmailAndArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendEmailAndArchiveResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TestArchiveMessage">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestArchiveMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TestArchiveMessageResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessageFromArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="deletedBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteMessageFromArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteMessageFromArchiveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMessagePBSApplicationAssociation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="messageId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAssociatedWithPBSApplication" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMessagePBSApplicationAssociationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetMessagePBSApplicationAssociationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMessagesPBSApplicationAssociation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="messageIds" type="tns:ArrayOfLong" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAssociatedWithPBSApplication" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetMessagesPBSApplicationAssociationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetMessagesPBSApplicationAssociationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ForwardEmailAndArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:ForwardEmailAndArchiveRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ForwardEmailAndArchiveRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemIdToFoward" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToRecipients" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="sendAndArchiveRequest" type="tns:SendEmailAndArchiveRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ForwardEmailAndArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ForwardEmailAndArchiveResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/exchange/services/2006/types">
+      <s:complexType name="MessageType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ToRecipients" type="s2:ArrayOfEmailAddressType" />
+              <s:element minOccurs="0" maxOccurs="1" name="CcRecipients" type="s2:ArrayOfEmailAddressType" />
+              <s:element minOccurs="0" maxOccurs="1" name="BccRecipients" type="s2:ArrayOfEmailAddressType" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsReadReceiptRequested" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsDeliveryReceiptRequested" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationIndex" type="s:base64Binary" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationTopic" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="From" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="InternetMessageId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsRead" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsResponseRequested" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="References" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReplyTo" type="s2:ArrayOfEmailAddressType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReceivedBy" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReceivedRepresenting" type="s2:SingleRecipientType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ItemType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MimeContent" type="s2:MimeContentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s2:ItemIdType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentFolderId" type="s2:FolderIdType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemClass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sensitivity" type="s2:SensitivityChoicesType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s2:BodyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Attachments" type="s2:ArrayOfChoice1" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTimeReceived" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Size" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Categories" type="s2:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Importance" type="s2:ImportanceChoicesType" />
+          <s:element minOccurs="0" maxOccurs="1" name="InReplyTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsSubmitted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsDraft" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsFromMe" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsResend" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsUnmodified" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternetMessageHeaders" type="s2:ArrayOfInternetHeaderType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTimeSent" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateTimeCreated" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseObjects" type="s2:ArrayOfChoice2" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReminderDueBy" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReminderIsSet" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReminderMinutesBeforeStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayCc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HasAttachments" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExtendedProperty" type="s2:ExtendedPropertyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:language" />
+          <s:element minOccurs="0" maxOccurs="1" name="EffectiveRights" type="s2:EffectiveRightsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsAssociated" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebClientReadFormQueryString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WebClientEditFormQueryString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConversationId" type="s2:ItemIdType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueBody" type="s2:BodyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MimeContentType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="CharacterSet" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ItemIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseItemIdType">
+            <s:attribute name="Id" type="s:string" />
+            <s:attribute name="ChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseItemIdType" abstract="true" />
+      <s:complexType name="RecurringMasterItemIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseItemIdType">
+            <s:attribute name="OccurrenceId" type="s:string" />
+            <s:attribute name="ChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RootItemIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseItemIdType">
+            <s:attribute name="RootItemId" type="s:string" />
+            <s:attribute name="RootItemChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OccurrenceItemIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseItemIdType">
+            <s:attribute name="RecurringMasterId" type="s:string" />
+            <s:attribute name="ChangeKey" type="s:string" />
+            <s:attribute name="InstanceIndex" type="s:int" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RequestAttachmentIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseItemIdType">
+            <s:attribute name="Id" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AttachmentIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RequestAttachmentIdType">
+            <s:attribute name="RootItemId" type="s:string" />
+            <s:attribute name="RootItemChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="FolderIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseFolderIdType">
+            <s:attribute name="Id" type="s:string" />
+            <s:attribute name="ChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseFolderIdType" abstract="true" />
+      <s:complexType name="DistinguishedFolderIdType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseFolderIdType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Mailbox" type="s2:EmailAddressType" />
+            </s:sequence>
+            <s:attribute name="Id" type="s2:DistinguishedFolderIdNameType" use="required" />
+            <s:attribute name="ChangeKey" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EmailAddressType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BaseEmailAddressType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RoutingType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MailboxType" type="s2:MailboxTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s2:ItemIdType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseEmailAddressType" />
+      <s:simpleType name="MailboxTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="OneOff" />
+          <s:enumeration value="Mailbox" />
+          <s:enumeration value="PublicDL" />
+          <s:enumeration value="PrivateDL" />
+          <s:enumeration value="Contact" />
+          <s:enumeration value="PublicFolder" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DistinguishedFolderIdNameType">
+        <s:restriction base="s:string">
+          <s:enumeration value="calendar" />
+          <s:enumeration value="contacts" />
+          <s:enumeration value="deleteditems" />
+          <s:enumeration value="drafts" />
+          <s:enumeration value="inbox" />
+          <s:enumeration value="journal" />
+          <s:enumeration value="notes" />
+          <s:enumeration value="outbox" />
+          <s:enumeration value="sentitems" />
+          <s:enumeration value="tasks" />
+          <s:enumeration value="msgfolderroot" />
+          <s:enumeration value="publicfoldersroot" />
+          <s:enumeration value="root" />
+          <s:enumeration value="junkemail" />
+          <s:enumeration value="searchfolders" />
+          <s:enumeration value="voicemail" />
+          <s:enumeration value="recoverableitemsroot" />
+          <s:enumeration value="recoverableitemsdeletions" />
+          <s:enumeration value="recoverableitemsversions" />
+          <s:enumeration value="recoverableitemspurges" />
+          <s:enumeration value="archiveroot" />
+          <s:enumeration value="archivemsgfolderroot" />
+          <s:enumeration value="archivedeleteditems" />
+          <s:enumeration value="archiverecoverableitemsroot" />
+          <s:enumeration value="archiverecoverableitemsdeletions" />
+          <s:enumeration value="archiverecoverableitemsversions" />
+          <s:enumeration value="archiverecoverableitemspurges" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="SensitivityChoicesType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Normal" />
+          <s:enumeration value="Personal" />
+          <s:enumeration value="Private" />
+          <s:enumeration value="Confidential" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="BodyType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="BodyType" type="s2:BodyTypeType" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="BodyTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="HTML" />
+          <s:enumeration value="Text" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfChoice1">
+        <s:choice minOccurs="0" maxOccurs="unbounded">
+          <s:element minOccurs="0" maxOccurs="1" name="FileAttachment" type="s2:FileAttachmentType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemAttachment" type="s2:ItemAttachmentType" />
+        </s:choice>
+      </s:complexType>
+      <s:complexType name="FileAttachmentType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AttachmentType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="IsContactPhoto" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AttachmentType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentId" type="s2:AttachmentIdType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Size" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastModifiedTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsInline" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ItemAttachmentType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:AttachmentType">
+            <s:sequence>
+              <s:choice minOccurs="1" maxOccurs="1">
+                <s:element minOccurs="0" maxOccurs="1" name="Task" type="s2:TaskType" />
+                <s:element minOccurs="0" maxOccurs="1" name="Contact" type="s2:ContactItemType" />
+                <s:element minOccurs="0" maxOccurs="1" name="PostItem" type="s2:PostItemType" />
+                <s:element minOccurs="0" maxOccurs="1" name="MeetingCancellation" type="s2:MeetingCancellationMessageType" />
+                <s:element minOccurs="0" maxOccurs="1" name="MeetingRequest" type="s2:MeetingRequestMessageType" />
+                <s:element minOccurs="0" maxOccurs="1" name="MeetingResponse" type="s2:MeetingResponseMessageType" />
+                <s:element minOccurs="0" maxOccurs="1" name="Item" type="s2:ItemType" />
+                <s:element minOccurs="0" maxOccurs="1" name="CalendarItem" type="s2:CalendarItemType" />
+                <s:element minOccurs="0" maxOccurs="1" name="MeetingMessage" type="s2:MeetingMessageType" />
+                <s:element minOccurs="0" maxOccurs="1" name="Message" type="s2:MessageType" />
+              </s:choice>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TaskType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ActualWork" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AssignedTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="BillingInformation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ChangeCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Companies" type="s2:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompleteDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Contacts" type="s2:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="DelegationState" type="s2:TaskDelegateStateType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Delegator" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DueDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsAssignmentEditable" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsComplete" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsRecurring" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsTeamTask" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mileage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Owner" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PercentComplete" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Recurrence" type="s2:TaskRecurrenceType" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Status" type="s2:TaskStatusType" />
+              <s:element minOccurs="0" maxOccurs="1" name="StatusDescription" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TotalWork" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TaskDelegateStateType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoMatch" />
+          <s:enumeration value="OwnNew" />
+          <s:enumeration value="Owned" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="Declined" />
+          <s:enumeration value="Max" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="TaskRecurrenceType">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="AbsoluteMonthlyRecurrence" type="s2:AbsoluteMonthlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="DailyRecurrence" type="s2:DailyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearlyRegeneration" type="s2:YearlyRegeneratingPatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelativeMonthlyRecurrence" type="s2:RelativeMonthlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelativeYearlyRecurrence" type="s2:RelativeYearlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="WeeklyRecurrence" type="s2:WeeklyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MonthlyRegeneration" type="s2:MonthlyRegeneratingPatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="DailyRegeneration" type="s2:DailyRegeneratingPatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AbsoluteYearlyRecurrence" type="s2:AbsoluteYearlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="WeeklyRegeneration" type="s2:WeeklyRegeneratingPatternType" />
+          </s:choice>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="NumberedRecurrence" type="s2:NumberedRecurrenceRangeType" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoEndRecurrence" type="s2:NoEndRecurrenceRangeType" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDateRecurrence" type="s2:EndDateRecurrenceRangeType" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AbsoluteMonthlyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:IntervalRecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DayOfMonth" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="IntervalRecurrencePatternBaseType" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Interval" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurrencePatternBaseType" abstract="true" />
+      <s:complexType name="RelativeYearlyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DaysOfWeek" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DayOfWeekIndex" type="s2:DayOfWeekIndexType" />
+              <s:element minOccurs="1" maxOccurs="1" name="Month" type="s2:MonthNamesType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DayOfWeekIndexType">
+        <s:restriction base="s:string">
+          <s:enumeration value="First" />
+          <s:enumeration value="Second" />
+          <s:enumeration value="Third" />
+          <s:enumeration value="Fourth" />
+          <s:enumeration value="Last" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MonthNamesType">
+        <s:restriction base="s:string">
+          <s:enumeration value="January" />
+          <s:enumeration value="February" />
+          <s:enumeration value="March" />
+          <s:enumeration value="April" />
+          <s:enumeration value="May" />
+          <s:enumeration value="June" />
+          <s:enumeration value="July" />
+          <s:enumeration value="August" />
+          <s:enumeration value="September" />
+          <s:enumeration value="October" />
+          <s:enumeration value="November" />
+          <s:enumeration value="December" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AbsoluteYearlyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DayOfMonth" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Month" type="s2:MonthNamesType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RelativeMonthlyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:IntervalRecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DaysOfWeek" type="s2:DayOfWeekType" />
+              <s:element minOccurs="1" maxOccurs="1" name="DayOfWeekIndex" type="s2:DayOfWeekIndexType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DayOfWeekType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Sunday" />
+          <s:enumeration value="Monday" />
+          <s:enumeration value="Tuesday" />
+          <s:enumeration value="Wednesday" />
+          <s:enumeration value="Thursday" />
+          <s:enumeration value="Friday" />
+          <s:enumeration value="Saturday" />
+          <s:enumeration value="Day" />
+          <s:enumeration value="Weekday" />
+          <s:enumeration value="WeekendDay" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="WeeklyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:IntervalRecurrencePatternBaseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DaysOfWeek" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstDayOfWeek" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DailyRecurrencePatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:IntervalRecurrencePatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RegeneratingPatternBaseType" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:IntervalRecurrencePatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WeeklyRegeneratingPatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RegeneratingPatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="YearlyRegeneratingPatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RegeneratingPatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DailyRegeneratingPatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RegeneratingPatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MonthlyRegeneratingPatternType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RegeneratingPatternBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NumberedRecurrenceRangeType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrenceRangeBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="NumberOfOccurrences" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurrenceRangeBaseType" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:date" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoEndRecurrenceRangeType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrenceRangeBaseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EndDateRecurrenceRangeType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurrenceRangeBaseType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:date" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="TaskStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotStarted" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="Completed" />
+          <s:enumeration value="WaitingOnOthers" />
+          <s:enumeration value="Deferred" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ContactItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FileAs" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FileAsMapping" type="s2:FileAsMappingType" />
+              <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="GivenName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Initials" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompleteName" type="s2:CompleteNameType" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="EmailAddresses" type="s2:ArrayOfEmailAddressDictionaryEntryType" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhysicalAddresses" type="s2:ArrayOfPhysicalAddressDictionaryEntryType" />
+              <s:element minOccurs="0" maxOccurs="1" name="PhoneNumbers" type="s2:ArrayOfPhoneNumberDictionaryEntryType" />
+              <s:element minOccurs="0" maxOccurs="1" name="AssistantName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Birthday" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="BusinessHomePage" type="s:anyURI" />
+              <s:element minOccurs="0" maxOccurs="1" name="Children" type="s2:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="Companies" type="s2:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="ContactSource" type="s2:ContactSourceType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Generation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ImAddresses" type="s2:ArrayOfImAddressDictionaryEntryType" />
+              <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Manager" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Mileage" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="OfficeLocation" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PostalAddressIndex" type="s2:PhysicalAddressIndexType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Profession" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="SpouseName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="WeddingAnniversary" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="HasPicture" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="FileAsMappingType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="LastCommaFirst" />
+          <s:enumeration value="FirstSpaceLast" />
+          <s:enumeration value="Company" />
+          <s:enumeration value="LastCommaFirstCompany" />
+          <s:enumeration value="CompanyLastFirst" />
+          <s:enumeration value="LastFirst" />
+          <s:enumeration value="LastFirstCompany" />
+          <s:enumeration value="CompanyLastCommaFirst" />
+          <s:enumeration value="LastFirstSuffix" />
+          <s:enumeration value="LastSpaceFirstCompany" />
+          <s:enumeration value="CompanyLastSpaceFirst" />
+          <s:enumeration value="LastSpaceFirst" />
+          <s:enumeration value="DisplayName" />
+          <s:enumeration value="FirstName" />
+          <s:enumeration value="LastFirstMiddleSuffix" />
+          <s:enumeration value="LastName" />
+          <s:enumeration value="Empty" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="CompleteNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Initials" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FullName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YomiFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="YomiLastName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmailAddressDictionaryEntryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="s2:EmailAddressDictionaryEntryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmailAddressDictionaryEntryType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Key" type="s2:EmailAddressKeyType" use="required" />
+            <s:attribute name="Name" type="s:string" />
+            <s:attribute name="RoutingType" type="s:string" />
+            <s:attribute name="MailboxType" type="s2:MailboxTypeType" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="EmailAddressKeyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="EmailAddress1" />
+          <s:enumeration value="EmailAddress2" />
+          <s:enumeration value="EmailAddress3" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPhysicalAddressDictionaryEntryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="s2:PhysicalAddressDictionaryEntryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PhysicalAddressDictionaryEntryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Street" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryOrRegion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+        </s:sequence>
+        <s:attribute name="Key" type="s2:PhysicalAddressKeyType" use="required" />
+      </s:complexType>
+      <s:simpleType name="PhysicalAddressKeyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Business" />
+          <s:enumeration value="Home" />
+          <s:enumeration value="Other" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfPhoneNumberDictionaryEntryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="s2:PhoneNumberDictionaryEntryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PhoneNumberDictionaryEntryType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Key" type="s2:PhoneNumberKeyType" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="PhoneNumberKeyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AssistantPhone" />
+          <s:enumeration value="BusinessFax" />
+          <s:enumeration value="BusinessPhone" />
+          <s:enumeration value="BusinessPhone2" />
+          <s:enumeration value="Callback" />
+          <s:enumeration value="CarPhone" />
+          <s:enumeration value="CompanyMainPhone" />
+          <s:enumeration value="HomeFax" />
+          <s:enumeration value="HomePhone" />
+          <s:enumeration value="HomePhone2" />
+          <s:enumeration value="Isdn" />
+          <s:enumeration value="MobilePhone" />
+          <s:enumeration value="OtherFax" />
+          <s:enumeration value="OtherTelephone" />
+          <s:enumeration value="Pager" />
+          <s:enumeration value="PrimaryPhone" />
+          <s:enumeration value="RadioPhone" />
+          <s:enumeration value="Telex" />
+          <s:enumeration value="TtyTddPhone" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ContactSourceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ActiveDirectory" />
+          <s:enumeration value="Store" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfImAddressDictionaryEntryType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Entry" type="s2:ImAddressDictionaryEntryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ImAddressDictionaryEntryType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Key" type="s2:ImAddressKeyType" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="ImAddressKeyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ImAddress1" />
+          <s:enumeration value="ImAddress2" />
+          <s:enumeration value="ImAddress3" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="PhysicalAddressIndexType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Business" />
+          <s:enumeration value="Home" />
+          <s:enumeration value="Other" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PostItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationIndex" type="s:base64Binary" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConversationTopic" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="From" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="InternetMessageId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsRead" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="PostedTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="References" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Sender" type="s2:SingleRecipientType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SingleRecipientType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mailbox" type="s2:EmailAddressType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeetingCancellationMessageType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:MeetingMessageType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeetingMessageType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:MessageType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AssociatedCalendarItemId" type="s2:ItemIdType" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsDelegated" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsOutOfDate" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="HasBeenProcessed" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="ResponseType" type="s2:ResponseTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RecurrenceId" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateTimeStamp" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ResponseTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Organizer" />
+          <s:enumeration value="Tentative" />
+          <s:enumeration value="Accept" />
+          <s:enumeration value="Decline" />
+          <s:enumeration value="NoResponseReceived" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="MeetingResponseMessageType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:MeetingMessageType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MeetingRequestMessageType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:MeetingMessageType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingRequestType" type="s2:MeetingRequestTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="IntendedFreeBusyStatus" type="s2:LegacyFreeBusyType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Start" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="End" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="OriginalStart" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsAllDayEvent" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="LegacyFreeBusyStatus" type="s2:LegacyFreeBusyType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="When" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsMeeting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsCancelled" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsRecurring" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingRequestWasSent" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="CalendarItemType" type="s2:CalendarItemTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="MyResponseType" type="s2:ResponseTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Organizer" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="RequiredAttendees" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="OptionalAttendees" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Resources" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConflictingMeetingCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjacentMeetingCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConflictingMeetings" type="s2:NonEmptyArrayOfAllItemsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjacentMeetings" type="s2:NonEmptyArrayOfAllItemsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Duration" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentReplyTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentSequenceNumber" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentState" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Recurrence" type="s2:RecurrenceType" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstOccurrence" type="s2:OccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastOccurrence" type="s2:OccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ModifiedOccurrences" type="s2:ArrayOfOccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeletedOccurrences" type="s2:ArrayOfDeletedOccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingTimeZone" type="s2:TimeZoneType" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartTimeZone" type="s2:TimeZoneDefinitionType" />
+              <s:element minOccurs="0" maxOccurs="1" name="EndTimeZone" type="s2:TimeZoneDefinitionType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConferenceType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AllowNewTimeProposal" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsOnlineMeeting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingWorkspaceUrl" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NetShowUrl" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="MeetingRequestTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="FullUpdate" />
+          <s:enumeration value="InformationalUpdate" />
+          <s:enumeration value="NewMeetingRequest" />
+          <s:enumeration value="Outdated" />
+          <s:enumeration value="SilentUpdate" />
+          <s:enumeration value="PrincipalWantsCopy" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LegacyFreeBusyType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Free" />
+          <s:enumeration value="Tentative" />
+          <s:enumeration value="Busy" />
+          <s:enumeration value="OOF" />
+          <s:enumeration value="NoData" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="CalendarItemTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Single" />
+          <s:enumeration value="Occurrence" />
+          <s:enumeration value="Exception" />
+          <s:enumeration value="RecurringMaster" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfAttendeeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attendee" type="s2:AttendeeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AttendeeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mailbox" type="s2:EmailAddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseType" type="s2:ResponseTypeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastResponseTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NonEmptyArrayOfAllItemsType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="RemoveItem" type="s2:RemoveItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="DistributionList" type="s2:DistributionListType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ForwardItem" type="s2:ForwardItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Item" type="s2:ItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MeetingMessage" type="s2:MeetingMessageType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MeetingRequest" type="s2:MeetingRequestMessageType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MeetingResponse" type="s2:MeetingResponseMessageType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s2:MessageType" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostItem" type="s2:PostItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Contact" type="s2:ContactItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AcceptItem" type="s2:AcceptItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="PostReplyItem" type="s2:PostReplyItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="CalendarItem" type="s2:CalendarItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="DeclineItem" type="s2:DeclineItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReplyToItem" type="s2:ReplyToItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuppressReadReceipt" type="s2:SuppressReadReceiptType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Task" type="s2:TaskType" />
+            <s:element minOccurs="0" maxOccurs="1" name="TentativelyAcceptItem" type="s2:TentativelyAcceptItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AcceptSharingInvitation" type="s2:AcceptSharingInvitationType" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReplyAllToItem" type="s2:ReplyAllToItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="CancelCalendarItem" type="s2:CancelCalendarItemType" />
+            <s:element minOccurs="0" maxOccurs="1" name="MeetingCancellation" type="s2:MeetingCancellationMessageType" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RemoveItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseObjectType" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectCoreType">
+            <s:attribute name="ObjectName" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ResponseObjectCoreType" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:MessageType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ReferenceItemId" type="s2:ItemIdType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WellKnownResponseObjectType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TentativelyAcceptItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:WellKnownResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DeclineItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:WellKnownResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AcceptItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:WellKnownResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SmartResponseBaseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SmartResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:SmartResponseBaseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NewBodyContent" type="s2:BodyType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReplyAllToItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:SmartResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReplyToItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:SmartResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ForwardItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:SmartResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CancelCalendarItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:SmartResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReferenceItemResponseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SuppressReadReceiptType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ReferenceItemResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AcceptSharingInvitationType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ReferenceItemResponseType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PostReplyItemBaseType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ResponseObjectType" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PostReplyItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:PostReplyItemBaseType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NewBodyContent" type="s2:BodyType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DistributionListType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FileAs" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ContactSource" type="s2:ContactSourceType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Members" type="s2:ArrayOfMemberType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfMemberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Member" type="s2:MemberType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mailbox" type="s2:EmailAddressType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s2:MemberStatusType" />
+        </s:sequence>
+        <s:attribute name="Key" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="MemberStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unrecognized" />
+          <s:enumeration value="Normal" />
+          <s:enumeration value="Demoted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="CalendarItemType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:ItemType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RecurrenceId" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="DateTimeStamp" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Start" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="End" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="OriginalStart" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsAllDayEvent" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="LegacyFreeBusyStatus" type="s2:LegacyFreeBusyType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="When" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsMeeting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsCancelled" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsRecurring" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingRequestWasSent" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsResponseRequested" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="CalendarItemType" type="s2:CalendarItemTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="MyResponseType" type="s2:ResponseTypeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Organizer" type="s2:SingleRecipientType" />
+              <s:element minOccurs="0" maxOccurs="1" name="RequiredAttendees" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="OptionalAttendees" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Resources" type="s2:ArrayOfAttendeeType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConflictingMeetingCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjacentMeetingCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConflictingMeetings" type="s2:NonEmptyArrayOfAllItemsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="AdjacentMeetings" type="s2:NonEmptyArrayOfAllItemsType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Duration" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TimeZone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentReplyTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentSequenceNumber" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AppointmentState" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Recurrence" type="s2:RecurrenceType" />
+              <s:element minOccurs="0" maxOccurs="1" name="FirstOccurrence" type="s2:OccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="LastOccurrence" type="s2:OccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ModifiedOccurrences" type="s2:ArrayOfOccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="DeletedOccurrences" type="s2:ArrayOfDeletedOccurrenceInfoType" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingTimeZone" type="s2:TimeZoneType" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartTimeZone" type="s2:TimeZoneDefinitionType" />
+              <s:element minOccurs="0" maxOccurs="1" name="EndTimeZone" type="s2:TimeZoneDefinitionType" />
+              <s:element minOccurs="0" maxOccurs="1" name="ConferenceType" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="AllowNewTimeProposal" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="IsOnlineMeeting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MeetingWorkspaceUrl" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NetShowUrl" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurrenceType">
+        <s:sequence>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="DailyRecurrence" type="s2:DailyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AbsoluteMonthlyRecurrence" type="s2:AbsoluteMonthlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AbsoluteYearlyRecurrence" type="s2:AbsoluteYearlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelativeMonthlyRecurrence" type="s2:RelativeMonthlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelativeYearlyRecurrence" type="s2:RelativeYearlyRecurrencePatternType" />
+            <s:element minOccurs="0" maxOccurs="1" name="WeeklyRecurrence" type="s2:WeeklyRecurrencePatternType" />
+          </s:choice>
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="NumberedRecurrence" type="s2:NumberedRecurrenceRangeType" />
+            <s:element minOccurs="0" maxOccurs="1" name="NoEndRecurrence" type="s2:NoEndRecurrenceRangeType" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDateRecurrence" type="s2:EndDateRecurrenceRangeType" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OccurrenceInfoType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ItemId" type="s2:ItemIdType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Start" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="End" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OriginalStart" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOccurrenceInfoType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Occurrence" type="s2:OccurrenceInfoType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeletedOccurrenceInfoType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeletedOccurrence" type="s2:DeletedOccurrenceInfoType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeletedOccurrenceInfoType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Start" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TimeZoneType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BaseOffset" type="s:duration" />
+          <s:element minOccurs="0" maxOccurs="1" name="Standard" type="s2:TimeChangeType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Daylight" type="s2:TimeChangeType" />
+        </s:sequence>
+        <s:attribute name="TimeZoneName" type="s:string" />
+      </s:complexType>
+      <s:complexType name="TimeChangeType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Offset" type="s:duration" />
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="1" maxOccurs="1" name="AbsoluteDate" type="s:date" />
+            <s:element minOccurs="0" maxOccurs="1" name="RelativeYearlyRecurrence" type="s2:RelativeYearlyRecurrencePatternType" />
+          </s:choice>
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:time" />
+        </s:sequence>
+        <s:attribute name="TimeZoneName" type="s:string" />
+      </s:complexType>
+      <s:complexType name="TimeZoneDefinitionType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Periods" type="s2:ArrayOfPeriodType" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransitionsGroups" type="s2:ArrayOfArrayOfTransitionsType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Transitions" type="s2:ArrayOfTransitionsType" />
+        </s:sequence>
+        <s:attribute name="Id" type="s:string" />
+        <s:attribute name="Name" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfPeriodType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Period" type="s2:PeriodType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PeriodType">
+        <s:attribute name="Bias" type="s:duration" />
+        <s:attribute name="Name" type="s:string" />
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfTransitionsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransitionsGroup" type="s2:ArrayOfTransitionsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTransitionsType">
+        <s:sequence>
+          <s:choice minOccurs="0" maxOccurs="unbounded">
+            <s:element minOccurs="0" maxOccurs="1" name="Transition" type="s2:TransitionType" />
+            <s:element minOccurs="0" maxOccurs="1" name="AbsoluteDateTransition" type="s2:AbsoluteDateTransitionType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecurringDateTransition" type="s2:RecurringDateTransitionType" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecurringDayTransition" type="s2:RecurringDayTransitionType" />
+          </s:choice>
+        </s:sequence>
+        <s:attribute name="Id" type="s:string" />
+      </s:complexType>
+      <s:complexType name="TransitionType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s2:TransitionTargetType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransitionTargetType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="Kind" type="s2:TransitionTargetKindType" use="required" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:simpleType name="TransitionTargetKindType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Period" />
+          <s:enumeration value="Group" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AbsoluteDateTransitionType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TransitionType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DateTime" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurringTimeTransitionType" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:TransitionType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TimeOffset" type="s:duration" />
+              <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurringDateTransitionType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurringTimeTransitionType">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="RecurringDayTransitionType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:RecurringTimeTransitionType">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DayOfWeek" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Occurrence" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ImportanceChoicesType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Low" />
+          <s:enumeration value="Normal" />
+          <s:enumeration value="High" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfInternetHeaderType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InternetMessageHeader" type="s2:InternetHeaderType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InternetHeaderType">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="HeaderName" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfChoice2">
+        <s:choice minOccurs="0" maxOccurs="unbounded">
+          <s:element minOccurs="0" maxOccurs="1" name="TentativelyAcceptItem" type="s2:TentativelyAcceptItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcceptSharingInvitation" type="s2:AcceptSharingInvitationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplyAllToItem" type="s2:ReplyAllToItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CancelCalendarItem" type="s2:CancelCalendarItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="RemoveItem" type="s2:RemoveItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="SuppressReadReceipt" type="s2:SuppressReadReceiptType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ForwardItem" type="s2:ForwardItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeclineItem" type="s2:DeclineItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostReplyItem" type="s2:PostReplyItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReplyToItem" type="s2:ReplyToItemType" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcceptItem" type="s2:AcceptItemType" />
+        </s:choice>
+      </s:complexType>
+      <s:complexType name="ExtendedPropertyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ExtendedFieldURI" type="s2:PathToExtendedFieldType" />
+          <s:choice minOccurs="1" maxOccurs="1">
+            <s:element minOccurs="0" maxOccurs="1" name="Values" type="s2:NonEmptyArrayOfPropertyValuesType" />
+            <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          </s:choice>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PathToExtendedFieldType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BasePathToElementType">
+            <s:attribute name="DistinguishedPropertySetId" type="s2:DistinguishedPropertySetType" />
+            <s:attribute name="PropertySetId" type="s:string" />
+            <s:attribute name="PropertyTag" type="s:string" />
+            <s:attribute name="PropertyName" type="s:string" />
+            <s:attribute name="PropertyId" type="s:int" />
+            <s:attribute name="PropertyType" type="s2:MapiPropertyTypeType" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasePathToElementType" abstract="true" />
+      <s:complexType name="PathToIndexedFieldType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BasePathToElementType">
+            <s:attribute name="FieldURI" type="s2:DictionaryURIType" use="required" />
+            <s:attribute name="FieldIndex" type="s:string" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="DictionaryURIType">
+        <s:restriction base="s:string">
+          <s:enumeration value="item:InternetMessageHeader" />
+          <s:enumeration value="contacts:ImAddress" />
+          <s:enumeration value="contacts:PhysicalAddress:Street" />
+          <s:enumeration value="contacts:PhysicalAddress:City" />
+          <s:enumeration value="contacts:PhysicalAddress:State" />
+          <s:enumeration value="contacts:PhysicalAddress:CountryOrRegion" />
+          <s:enumeration value="contacts:PhysicalAddress:PostalCode" />
+          <s:enumeration value="contacts:PhoneNumber" />
+          <s:enumeration value="contacts:EmailAddress" />
+          <s:enumeration value="distributionlist:Members:Member" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PathToExceptionFieldType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BasePathToElementType">
+            <s:attribute name="FieldURI" type="s2:ExceptionPropertyURIType" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ExceptionPropertyURIType">
+        <s:restriction base="s:string">
+          <s:enumeration value="attachment:Name" />
+          <s:enumeration value="attachment:ContentType" />
+          <s:enumeration value="attachment:Content" />
+          <s:enumeration value="recurrence:Month" />
+          <s:enumeration value="recurrence:DayOfWeekIndex" />
+          <s:enumeration value="recurrence:DaysOfWeek" />
+          <s:enumeration value="recurrence:DayOfMonth" />
+          <s:enumeration value="recurrence:Interval" />
+          <s:enumeration value="recurrence:NumberOfOccurrences" />
+          <s:enumeration value="timezone:Offset" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PathToUnindexedFieldType">
+        <s:complexContent mixed="false">
+          <s:extension base="s2:BasePathToElementType">
+            <s:attribute name="FieldURI" type="s2:UnindexedFieldURIType" use="required" />
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="UnindexedFieldURIType">
+        <s:restriction base="s:string">
+          <s:enumeration value="folder:FolderId" />
+          <s:enumeration value="folder:ParentFolderId" />
+          <s:enumeration value="folder:DisplayName" />
+          <s:enumeration value="folder:UnreadCount" />
+          <s:enumeration value="folder:TotalCount" />
+          <s:enumeration value="folder:ChildFolderCount" />
+          <s:enumeration value="folder:FolderClass" />
+          <s:enumeration value="folder:SearchParameters" />
+          <s:enumeration value="folder:ManagedFolderInformation" />
+          <s:enumeration value="folder:PermissionSet" />
+          <s:enumeration value="folder:EffectiveRights" />
+          <s:enumeration value="folder:SharingEffectiveRights" />
+          <s:enumeration value="item:ItemId" />
+          <s:enumeration value="item:ParentFolderId" />
+          <s:enumeration value="item:ItemClass" />
+          <s:enumeration value="item:MimeContent" />
+          <s:enumeration value="item:Attachments" />
+          <s:enumeration value="item:Subject" />
+          <s:enumeration value="item:DateTimeReceived" />
+          <s:enumeration value="item:Size" />
+          <s:enumeration value="item:Categories" />
+          <s:enumeration value="item:HasAttachments" />
+          <s:enumeration value="item:Importance" />
+          <s:enumeration value="item:InReplyTo" />
+          <s:enumeration value="item:InternetMessageHeaders" />
+          <s:enumeration value="item:IsAssociated" />
+          <s:enumeration value="item:IsDraft" />
+          <s:enumeration value="item:IsFromMe" />
+          <s:enumeration value="item:IsResend" />
+          <s:enumeration value="item:IsSubmitted" />
+          <s:enumeration value="item:IsUnmodified" />
+          <s:enumeration value="item:DateTimeSent" />
+          <s:enumeration value="item:DateTimeCreated" />
+          <s:enumeration value="item:Body" />
+          <s:enumeration value="item:ResponseObjects" />
+          <s:enumeration value="item:Sensitivity" />
+          <s:enumeration value="item:ReminderDueBy" />
+          <s:enumeration value="item:ReminderIsSet" />
+          <s:enumeration value="item:ReminderMinutesBeforeStart" />
+          <s:enumeration value="item:DisplayTo" />
+          <s:enumeration value="item:DisplayCc" />
+          <s:enumeration value="item:Culture" />
+          <s:enumeration value="item:EffectiveRights" />
+          <s:enumeration value="item:LastModifiedName" />
+          <s:enumeration value="item:LastModifiedTime" />
+          <s:enumeration value="item:ConversationId" />
+          <s:enumeration value="item:UniqueBody" />
+          <s:enumeration value="item:WebClientReadFormQueryString" />
+          <s:enumeration value="item:WebClientEditFormQueryString" />
+          <s:enumeration value="message:ConversationIndex" />
+          <s:enumeration value="message:ConversationTopic" />
+          <s:enumeration value="message:InternetMessageId" />
+          <s:enumeration value="message:IsRead" />
+          <s:enumeration value="message:IsResponseRequested" />
+          <s:enumeration value="message:IsReadReceiptRequested" />
+          <s:enumeration value="message:IsDeliveryReceiptRequested" />
+          <s:enumeration value="message:ReceivedBy" />
+          <s:enumeration value="message:ReceivedRepresenting" />
+          <s:enumeration value="message:References" />
+          <s:enumeration value="message:ReplyTo" />
+          <s:enumeration value="message:From" />
+          <s:enumeration value="message:Sender" />
+          <s:enumeration value="message:ToRecipients" />
+          <s:enumeration value="message:CcRecipients" />
+          <s:enumeration value="message:BccRecipients" />
+          <s:enumeration value="meeting:AssociatedCalendarItemId" />
+          <s:enumeration value="meeting:IsDelegated" />
+          <s:enumeration value="meeting:IsOutOfDate" />
+          <s:enumeration value="meeting:HasBeenProcessed" />
+          <s:enumeration value="meeting:ResponseType" />
+          <s:enumeration value="meetingRequest:MeetingRequestType" />
+          <s:enumeration value="meetingRequest:IntendedFreeBusyStatus" />
+          <s:enumeration value="calendar:Start" />
+          <s:enumeration value="calendar:End" />
+          <s:enumeration value="calendar:OriginalStart" />
+          <s:enumeration value="calendar:IsAllDayEvent" />
+          <s:enumeration value="calendar:LegacyFreeBusyStatus" />
+          <s:enumeration value="calendar:Location" />
+          <s:enumeration value="calendar:When" />
+          <s:enumeration value="calendar:IsMeeting" />
+          <s:enumeration value="calendar:IsCancelled" />
+          <s:enumeration value="calendar:IsRecurring" />
+          <s:enumeration value="calendar:MeetingRequestWasSent" />
+          <s:enumeration value="calendar:IsResponseRequested" />
+          <s:enumeration value="calendar:CalendarItemType" />
+          <s:enumeration value="calendar:MyResponseType" />
+          <s:enumeration value="calendar:Organizer" />
+          <s:enumeration value="calendar:RequiredAttendees" />
+          <s:enumeration value="calendar:OptionalAttendees" />
+          <s:enumeration value="calendar:Resources" />
+          <s:enumeration value="calendar:ConflictingMeetingCount" />
+          <s:enumeration value="calendar:AdjacentMeetingCount" />
+          <s:enumeration value="calendar:ConflictingMeetings" />
+          <s:enumeration value="calendar:AdjacentMeetings" />
+          <s:enumeration value="calendar:Duration" />
+          <s:enumeration value="calendar:TimeZone" />
+          <s:enumeration value="calendar:AppointmentReplyTime" />
+          <s:enumeration value="calendar:AppointmentSequenceNumber" />
+          <s:enumeration value="calendar:AppointmentState" />
+          <s:enumeration value="calendar:Recurrence" />
+          <s:enumeration value="calendar:FirstOccurrence" />
+          <s:enumeration value="calendar:LastOccurrence" />
+          <s:enumeration value="calendar:ModifiedOccurrences" />
+          <s:enumeration value="calendar:DeletedOccurrences" />
+          <s:enumeration value="calendar:MeetingTimeZone" />
+          <s:enumeration value="calendar:ConferenceType" />
+          <s:enumeration value="calendar:AllowNewTimeProposal" />
+          <s:enumeration value="calendar:IsOnlineMeeting" />
+          <s:enumeration value="calendar:MeetingWorkspaceUrl" />
+          <s:enumeration value="calendar:NetShowUrl" />
+          <s:enumeration value="calendar:UID" />
+          <s:enumeration value="calendar:RecurrenceId" />
+          <s:enumeration value="calendar:DateTimeStamp" />
+          <s:enumeration value="calendar:StartTimeZone" />
+          <s:enumeration value="calendar:EndTimeZone" />
+          <s:enumeration value="task:ActualWork" />
+          <s:enumeration value="task:AssignedTime" />
+          <s:enumeration value="task:BillingInformation" />
+          <s:enumeration value="task:ChangeCount" />
+          <s:enumeration value="task:Companies" />
+          <s:enumeration value="task:CompleteDate" />
+          <s:enumeration value="task:Contacts" />
+          <s:enumeration value="task:DelegationState" />
+          <s:enumeration value="task:Delegator" />
+          <s:enumeration value="task:DueDate" />
+          <s:enumeration value="task:IsAssignmentEditable" />
+          <s:enumeration value="task:IsComplete" />
+          <s:enumeration value="task:IsRecurring" />
+          <s:enumeration value="task:IsTeamTask" />
+          <s:enumeration value="task:Mileage" />
+          <s:enumeration value="task:Owner" />
+          <s:enumeration value="task:PercentComplete" />
+          <s:enumeration value="task:Recurrence" />
+          <s:enumeration value="task:StartDate" />
+          <s:enumeration value="task:Status" />
+          <s:enumeration value="task:StatusDescription" />
+          <s:enumeration value="task:TotalWork" />
+          <s:enumeration value="contacts:AssistantName" />
+          <s:enumeration value="contacts:Birthday" />
+          <s:enumeration value="contacts:BusinessHomePage" />
+          <s:enumeration value="contacts:Children" />
+          <s:enumeration value="contacts:Companies" />
+          <s:enumeration value="contacts:CompanyName" />
+          <s:enumeration value="contacts:CompleteName" />
+          <s:enumeration value="contacts:ContactSource" />
+          <s:enumeration value="contacts:Culture" />
+          <s:enumeration value="contacts:Department" />
+          <s:enumeration value="contacts:DisplayName" />
+          <s:enumeration value="contacts:EmailAddresses" />
+          <s:enumeration value="contacts:FileAs" />
+          <s:enumeration value="contacts:FileAsMapping" />
+          <s:enumeration value="contacts:Generation" />
+          <s:enumeration value="contacts:GivenName" />
+          <s:enumeration value="contacts:ImAddresses" />
+          <s:enumeration value="contacts:Initials" />
+          <s:enumeration value="contacts:JobTitle" />
+          <s:enumeration value="contacts:Manager" />
+          <s:enumeration value="contacts:MiddleName" />
+          <s:enumeration value="contacts:Mileage" />
+          <s:enumeration value="contacts:Nickname" />
+          <s:enumeration value="contacts:OfficeLocation" />
+          <s:enumeration value="contacts:PhoneNumbers" />
+          <s:enumeration value="contacts:PhysicalAddresses" />
+          <s:enumeration value="contacts:PostalAddressIndex" />
+          <s:enumeration value="contacts:Profession" />
+          <s:enumeration value="contacts:SpouseName" />
+          <s:enumeration value="contacts:Surname" />
+          <s:enumeration value="contacts:WeddingAnniversary" />
+          <s:enumeration value="contacts:HasPicture" />
+          <s:enumeration value="distributionlist:Members" />
+          <s:enumeration value="postitem:PostedTime" />
+          <s:enumeration value="conversation:ConversationId" />
+          <s:enumeration value="conversation:ConversationTopic" />
+          <s:enumeration value="conversation:UniqueRecipients" />
+          <s:enumeration value="conversation:GlobalUniqueRecipients" />
+          <s:enumeration value="conversation:UniqueUnreadSenders" />
+          <s:enumeration value="conversation:GlobalUniqueUnreadSenders" />
+          <s:enumeration value="conversation:UniqueSenders" />
+          <s:enumeration value="conversation:GlobalUniqueSenders" />
+          <s:enumeration value="conversation:LastDeliveryTime" />
+          <s:enumeration value="conversation:GlobalLastDeliveryTime" />
+          <s:enumeration value="conversation:Categories" />
+          <s:enumeration value="conversation:GlobalCategories" />
+          <s:enumeration value="conversation:FlagStatus" />
+          <s:enumeration value="conversation:GlobalFlagStatus" />
+          <s:enumeration value="conversation:HasAttachments" />
+          <s:enumeration value="conversation:GlobalHasAttachments" />
+          <s:enumeration value="conversation:MessageCount" />
+          <s:enumeration value="conversation:GlobalMessageCount" />
+          <s:enumeration value="conversation:UnreadCount" />
+          <s:enumeration value="conversation:GlobalUnreadCount" />
+          <s:enumeration value="conversation:Size" />
+          <s:enumeration value="conversation:GlobalSize" />
+          <s:enumeration value="conversation:ItemClasses" />
+          <s:enumeration value="conversation:GlobalItemClasses" />
+          <s:enumeration value="conversation:Importance" />
+          <s:enumeration value="conversation:GlobalImportance" />
+          <s:enumeration value="conversation:ItemIds" />
+          <s:enumeration value="conversation:GlobalItemIds" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DistinguishedPropertySetType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Meeting" />
+          <s:enumeration value="Appointment" />
+          <s:enumeration value="Common" />
+          <s:enumeration value="PublicStrings" />
+          <s:enumeration value="Address" />
+          <s:enumeration value="InternetHeaders" />
+          <s:enumeration value="CalendarAssistant" />
+          <s:enumeration value="UnifiedMessaging" />
+          <s:enumeration value="Task" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MapiPropertyTypeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ApplicationTime" />
+          <s:enumeration value="ApplicationTimeArray" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="BinaryArray" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="CLSID" />
+          <s:enumeration value="CLSIDArray" />
+          <s:enumeration value="Currency" />
+          <s:enumeration value="CurrencyArray" />
+          <s:enumeration value="Double" />
+          <s:enumeration value="DoubleArray" />
+          <s:enumeration value="Error" />
+          <s:enumeration value="Float" />
+          <s:enumeration value="FloatArray" />
+          <s:enumeration value="Integer" />
+          <s:enumeration value="IntegerArray" />
+          <s:enumeration value="Long" />
+          <s:enumeration value="LongArray" />
+          <s:enumeration value="Null" />
+          <s:enumeration value="Object" />
+          <s:enumeration value="ObjectArray" />
+          <s:enumeration value="Short" />
+          <s:enumeration value="ShortArray" />
+          <s:enumeration value="SystemTime" />
+          <s:enumeration value="SystemTimeArray" />
+          <s:enumeration value="String" />
+          <s:enumeration value="StringArray" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="NonEmptyArrayOfPropertyValuesType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EffectiveRightsType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CreateAssociated" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateContents" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateHierarchy" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Delete" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Modify" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Read" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ViewPrivateItems" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmailAddressType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Mailbox" type="s2:EmailAddressType" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ArchiveMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ArchiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="ArchiveMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ArchiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageFromArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageFromArchive" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageFromArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageFromArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageFromArchiveByExchangeItemIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessageFromArchiveByExchangeItemId" />
+  </wsdl:message>
+  <wsdl:message name="GetMessageFromArchiveByExchangeItemIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessageFromArchiveByExchangeItemIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesFromArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessagesFromArchive" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesFromArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessagesFromArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="RestoreMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:RestoreMessage" />
+  </wsdl:message>
+  <wsdl:message name="RestoreMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:RestoreMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailAndArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmailAndArchive" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailAndArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailAndArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestArchiveMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:TestArchiveMessage" />
+  </wsdl:message>
+  <wsdl:message name="TestArchiveMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:TestArchiveMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageFromArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteMessageFromArchive" />
+  </wsdl:message>
+  <wsdl:message name="DeleteMessageFromArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteMessageFromArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetMessagePBSApplicationAssociationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetMessagePBSApplicationAssociation" />
+  </wsdl:message>
+  <wsdl:message name="SetMessagePBSApplicationAssociationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetMessagePBSApplicationAssociationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetMessagesPBSApplicationAssociationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetMessagesPBSApplicationAssociation" />
+  </wsdl:message>
+  <wsdl:message name="SetMessagesPBSApplicationAssociationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetMessagesPBSApplicationAssociationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ForwardEmailAndArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:ForwardEmailAndArchive" />
+  </wsdl:message>
+  <wsdl:message name="ForwardEmailAndArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:ForwardEmailAndArchiveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WS_ExchangeArchiveSoap">
+    <wsdl:operation name="ArchiveMessage">
+      <wsdl:input message="tns:ArchiveMessageSoapIn" />
+      <wsdl:output message="tns:ArchiveMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchive">
+      <wsdl:input message="tns:GetMessageFromArchiveSoapIn" />
+      <wsdl:output message="tns:GetMessageFromArchiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchiveByExchangeItemId">
+      <wsdl:input message="tns:GetMessageFromArchiveByExchangeItemIdSoapIn" />
+      <wsdl:output message="tns:GetMessageFromArchiveByExchangeItemIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesFromArchive">
+      <wsdl:input message="tns:GetMessagesFromArchiveSoapIn" />
+      <wsdl:output message="tns:GetMessagesFromArchiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RestoreMessage">
+      <wsdl:input message="tns:RestoreMessageSoapIn" />
+      <wsdl:output message="tns:RestoreMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailAndArchive">
+      <wsdl:input message="tns:SendEmailAndArchiveSoapIn" />
+      <wsdl:output message="tns:SendEmailAndArchiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestArchiveMessage">
+      <wsdl:input message="tns:TestArchiveMessageSoapIn" />
+      <wsdl:output message="tns:TestArchiveMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessageFromArchive">
+      <wsdl:input message="tns:DeleteMessageFromArchiveSoapIn" />
+      <wsdl:output message="tns:DeleteMessageFromArchiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagePBSApplicationAssociation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates a single record in exchange archive to denote that the message is associated with a Peninsula Application.  &lt;b&gt;returns TRUE on successful update&lt;/b&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetMessagePBSApplicationAssociationSoapIn" />
+      <wsdl:output message="tns:SetMessagePBSApplicationAssociationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagesPBSApplicationAssociation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Updates many records in exchange archive database to note that the message is associated with a Peninsula Applicaton.  &lt;b&gt;returns TRUE on successful batch of updates&lt;/b&gt;</wsdl:documentation>
+      <wsdl:input message="tns:SetMessagesPBSApplicationAssociationSoapIn" />
+      <wsdl:output message="tns:SetMessagesPBSApplicationAssociationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ForwardEmailAndArchive">
+      <wsdl:input message="tns:ForwardEmailAndArchiveSoapIn" />
+      <wsdl:output message="tns:ForwardEmailAndArchiveSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_ExchangeArchiveSoap" type="tns:WS_ExchangeArchiveSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ArchiveMessage">
+      <soap:operation soapAction="http://tempuri.org/ArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchive">
+      <soap:operation soapAction="http://tempuri.org/GetMessageFromArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchiveByExchangeItemId">
+      <soap:operation soapAction="http://tempuri.org/GetMessageFromArchiveByExchangeItemId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesFromArchive">
+      <soap:operation soapAction="http://tempuri.org/GetMessagesFromArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestoreMessage">
+      <soap:operation soapAction="http://tempuri.org/RestoreMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailAndArchive">
+      <soap:operation soapAction="http://tempuri.org/SendEmailAndArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestArchiveMessage">
+      <soap:operation soapAction="http://tempuri.org/TestArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessageFromArchive">
+      <soap:operation soapAction="http://tempuri.org/DeleteMessageFromArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagePBSApplicationAssociation">
+      <soap:operation soapAction="http://tempuri.org/SetMessagePBSApplicationAssociation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagesPBSApplicationAssociation">
+      <soap:operation soapAction="http://tempuri.org/SetMessagesPBSApplicationAssociation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForwardEmailAndArchive">
+      <soap:operation soapAction="http://tempuri.org/ForwardEmailAndArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_ExchangeArchiveSoap12" type="tns:WS_ExchangeArchiveSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ArchiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/ArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchive">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageFromArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageFromArchiveByExchangeItemId">
+      <soap12:operation soapAction="http://tempuri.org/GetMessageFromArchiveByExchangeItemId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessagesFromArchive">
+      <soap12:operation soapAction="http://tempuri.org/GetMessagesFromArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RestoreMessage">
+      <soap12:operation soapAction="http://tempuri.org/RestoreMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmailAndArchive">
+      <soap12:operation soapAction="http://tempuri.org/SendEmailAndArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestArchiveMessage">
+      <soap12:operation soapAction="http://tempuri.org/TestArchiveMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMessageFromArchive">
+      <soap12:operation soapAction="http://tempuri.org/DeleteMessageFromArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagePBSApplicationAssociation">
+      <soap12:operation soapAction="http://tempuri.org/SetMessagePBSApplicationAssociation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMessagesPBSApplicationAssociation">
+      <soap12:operation soapAction="http://tempuri.org/SetMessagesPBSApplicationAssociation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForwardEmailAndArchive">
+      <soap12:operation soapAction="http://tempuri.org/ForwardEmailAndArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_ExchangeArchive">
+    <wsdl:port name="WS_ExchangeArchiveSoap" binding="tns:WS_ExchangeArchiveSoap">
+      <soap:address location="http://localhost:8035/WS_ExchangeArchive.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_ExchangeArchiveSoap12" binding="tns:WS_ExchangeArchiveSoap12">
+      <soap12:address location="http://localhost:8035/WS_ExchangeArchive.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

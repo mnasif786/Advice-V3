@@ -1,0 +1,12 @@
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\Advice.EmployeeImportTests.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\Advice.EmployeeImportTests.pdb
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\Advice.EmployeeImport.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\HrOnline.MessageContracts.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\NServiceBus.Core.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\nunit.framework.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\Advice.EmployeeImport.pdb
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\NServiceBus.Core.xml
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\bin\Debug\nunit.framework.xml
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\obj\Debug\Advice.EmployeeImportTests.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\obj\Debug\Advice.EmployeeImportTests.dll
+D:\Code\Advice_V3\Advice\Advice.EmployeeImportTests\obj\Debug\Advice.EmployeeImportTests.pdb

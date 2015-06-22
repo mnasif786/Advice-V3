@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e5887191b3a4b25ab8abbda8a63b3e4" Name="Diagram1">
+        <EntityTypeShape EntityType="AdviceModel.EmailTask" Width="1.5" PointX="12.125" PointY="15.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.Task" Width="1.5" PointX="13.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdviceModel.TaskAction" Width="1.5" PointX="9.75" PointY="5.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.TaskArchive" Width="1.5" PointX="5.625" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdviceModel.TaskDocument" Width="1.5" PointX="9.75" PointY="3" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.TaskJob" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdviceModel.TaskType" Width="1.5" PointX="6.5" PointY="5.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.TaskTypeSLA" Width="1.5" PointX="7.5" PointY="5" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.Team" Width="1.5" PointX="5.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdviceModel.User" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="false" />
+        <AssociationConnector Association="AdviceModel.FK_Task_TaskType" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskAction_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskArchive_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskDocument_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskJob_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskTypeSLA_TaskType" ManuallyRouted="false" />
+        <AssociationConnector Association="AdviceModel.FK_Team_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AdviceModel.Department" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskTypeSLA_Department" />
+        <EntityTypeShape EntityType="AdviceModel.Document" Width="1.5" PointX="7.5" PointY="3" IsExpanded="false" />
+        <AssociationConnector Association="AdviceModel.FK_TaskDocument_Document" />
+        <EntityTypeShape EntityType="AdviceModel.BusinessWiseTask" Width="1.5" PointX="14.375" PointY="15.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.HroTask" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="AdviceModel.BusinessWiseNatureOfAdviceGroup" Width="1.5" PointX="12.25" PointY="1.875" IsExpanded="false" />
+        <AssociationConnector Association="AdviceModel.BusinessWiseTaskBusinessWiseNatureOfAdviceGroup" />
+        <AssociationConnector Association="AdviceModel.BusinessWiseNatureOfAdviceGroupHroTask" />
+        <InheritanceConnector EntityType="AdviceModel.EmailTask" />
+        <InheritanceConnector EntityType="AdviceModel.BusinessWiseTask" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="AdviceModel.HroTask" />
+        <EntityTypeShape EntityType="AdviceModel.TaskModifyingReason" Width="2.875" PointX="8.25" PointY="11.625" />
+        <EntityTypeShape EntityType="AdviceModel.TaskModifyingReasonGroup" Width="2.875" PointX="0.75" PointY="7.125" />
+        <AssociationConnector Association="AdviceModel.FK_TaskModifyingReason_TaskModifyingReasonGroup" />
+        <AssociationConnector Association="AdviceModel.TaskTaskModifyingReason" />
+        <AssociationConnector Association="AdviceModel.TaskArchiveTaskModifyingReason" />
+        <EntityTypeShape EntityType="AdviceModel.Permission" Width="1.5" PointX="0.5" PointY="3" />
+        <EntityTypeShape EntityType="AdviceModel.PermissionRole" Width="1.5" PointX="2.25" PointY="2.875" />
+        <AssociationConnector Association="AdviceModel.FK_PermissionRole_Permission" />
+        <EntityTypeShape EntityType="AdviceModel.ReassignTaskEvent" Width="1.5" PointX="15.5" PointY="6.375" />
+        <AssociationConnector Association="AdviceModel.FK_ReassignTaskEvent_NewTeam" />
+        <AssociationConnector Association="AdviceModel.FK_ReassignTaskEvent_PreviousTeam" />
+        <AssociationConnector Association="AdviceModel.FK_ReassignTaskEvent_ReasonId" />
+        <AssociationConnector Association="AdviceModel.FK_ReassignTaskEvent_Task" />
+        <AssociationConnector Association="AdviceModel.TeamTaskArchive" />
+        <EntityTypeShape EntityType="AdviceModel.Action" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="AdviceModel.ActionTypeGroup" Width="1.5" PointX="3.25" PointY="21.75" />
+        <EntityTypeShape EntityType="AdviceModel.Job" Width="2" PointX="3.25" PointY="11.875" />
+        <EntityTypeShape EntityType="AdviceModel.ActionType" Width="1.5" PointX="0.75" PointY="21.625" />
+        <AssociationConnector Association="AdviceModel.FK_Action_ActionType" />
+        <AssociationConnector Association="AdviceModel.ActionTypeActionTypeGroup" />
+        <AssociationConnector Association="AdviceModel.JobAction" />
+        <EntityTypeShape EntityType="AdviceModel.Division" Width="1.5" PointX="7.625" PointY="0.5" />
+        <AssociationConnector Association="AdviceModel.fk_division" />
+        <AssociationConnector Association="AdviceModel.DepartmentTeam" />
+        <EntityTypeShape EntityType="AdviceModel.CorporatePriority" Width="1.5" PointX="8.25" PointY="15.625" />
+        <AssociationConnector Association="AdviceModel.FK_CorporatePriority_User" />
+        <EntityTypeShape EntityType="AdviceModel.MaintenancePermission" Width="1.5" PointX="3.875" PointY="4.625" />
+        <EntityTypeShape EntityType="AdviceModel.MaintenanceUserPermission" Width="1.5" PointX="4" PointY="1" />
+        <AssociationConnector Association="AdviceModel.FK_MaintenanceUserPermission_MaintenancePermission" />
+        <AssociationConnector Association="AdviceModel.FK_MaintenanceUserPermission_User" />
+        <EntityTypeShape EntityType="AdviceModel.ServiceReviewServiceCanGroup" Width="1.5" PointX="14.375" PointY="1.125" />
+        <EntityTypeShape EntityType="AdviceModel.ServiceReviewServiceSchedule" Width="1.5" PointX="16.625" PointY="1" />
+        <AssociationConnector Association="AdviceModel.FK_ServiceReviewServiceSchedule_ServiceReviewServiceSchedule" />
+        <EntityTypeShape EntityType="AdviceModel.NatureOfAdvice" Width="1.5" PointX="1" PointY="29" />
+        <EntityTypeShape EntityType="AdviceModel.NatureOfAdviceGroup" Width="3.625" PointX="3.375" PointY="34.375" />
+        <AssociationConnector Association="AdviceModel.FK_Job_NatureOfAdvice" />
+        <AssociationConnector Association="AdviceModel.FK_NatureOfAdvice_NatureOfAdviceGroup" />
+        <AssociationConnector Association="AdviceModel.JobTaskJob" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

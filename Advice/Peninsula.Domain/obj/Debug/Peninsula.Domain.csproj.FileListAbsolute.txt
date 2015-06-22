@@ -1,0 +1,5 @@
+D:\Code\Advice_V3\Advice\Peninsula.Domain\bin\Debug\Peninsula.Domain.dll
+D:\Code\Advice_V3\Advice\Peninsula.Domain\bin\Debug\Peninsula.Domain.pdb
+D:\Code\Advice_V3\Advice\Peninsula.Domain\obj\Debug\Peninsula.Domain.dll
+D:\Code\Advice_V3\Advice\Peninsula.Domain\obj\Debug\Peninsula.Domain.pdb
+D:\Code\Advice_V3\Advice\Peninsula.Domain\obj\Debug\Peninsula.Domain.csprojResolveAssemblyReference.cache

@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BAEAD89C-3058-4353-91F3-715551B3E0AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Advice.Common</RootNamespace>
+    <AssemblyName>Advice.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmailServerService">
+      <HintPath>..\packages\EmailServerService.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\CompanyContactModel.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Models\JobModel.cs" />
+    <Compile Include="Models\AddEditTeamModel.cs" />
+    <Compile Include="Models\BusinessWiseTaskModel.cs" />
+    <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\ClientRecentActionModel.cs" />
+    <Compile Include="Models\CorporatePriorityModel.cs" />
+    <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\DivisionModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\HroTaskModel.cs" />
+    <Compile Include="Models\Maintenance\CorporatePriorityUserModel.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceUserPermissionsModel.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceUserModel.cs" />
+    <Compile Include="Models\OutlookEmailMessageModel.cs" />
+    <Compile Include="Models\PermissionModel.cs" />
+    <Compile Include="Models\ReassignTaskModel.cs" />
+    <Compile Include="Models\Request\CorporatePriority\CorporatePriorityEditRequest.cs" />
+    <Compile Include="Models\Request\CorporatePriority\CorporatePriorityAddRequest.cs" />
+    <Compile Include="Models\TaskActionModel.cs" />
+    <Compile Include="Models\TaskArchiveModel.cs" />
+    <Compile Include="Models\TaskDetailsModel.cs" />
+    <Compile Include="Models\TaskDocumentModel.cs" />
+    <Compile Include="Models\TaskJobsModel.cs" />
+    <Compile Include="Models\TaskModel.cs" />
+    <Compile Include="Models\TaskModifyingReasonModel.cs" />
+    <Compile Include="Models\TaskSearchResultModel.cs" />
+    <Compile Include="Models\TaskTimelineModel.cs" />
+    <Compile Include="Models\TaskTypeModel.cs" />
+    <Compile Include="Models\TaskTypeSLAModel.cs" />
+    <Compile Include="Models\TeamModel.cs" />
+    <Compile Include="Models\UserIdentityModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserPermissionModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Advice.Domain\Advice.Domain.csproj">
+      <Project>{B215ABCD-C02D-43B6-A7F7-1B48D20C7950}</Project>
+      <Name>Advice.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.ExchangeEmails\Advice.ExchangeEmails.csproj">
+      <Project>{4D0C5024-678F-4268-A15C-9B565955BA3F}</Project>
+      <Name>Advice.ExchangeEmails</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peninsula.Domain\Peninsula.Domain.csproj">
+      <Project>{c3bb5480-0bd5-4dbe-a5da-56951df10a67}</Project>
+      <Name>Peninsula.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

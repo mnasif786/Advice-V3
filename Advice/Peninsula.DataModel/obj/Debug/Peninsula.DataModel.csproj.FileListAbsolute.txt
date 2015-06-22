@@ -1,0 +1,12 @@
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\Peninsula.DataModel.dll.config
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\Peninsula.DataModel.dll
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\Peninsula.DataModel.pdb
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\EntityFramework.dll
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\Peninsula.Domain.dll
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\Peninsula.Domain.pdb
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\EntityFramework.xml
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\obj\Debug\Peninsula.DataModel.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\obj\Debug\Peninsula.DataModel.dll
+D:\Code\Advice_V3\Advice\Peninsula.DataModel\obj\Debug\Peninsula.DataModel.pdb

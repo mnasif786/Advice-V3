@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B215ABCD-C02D-43B6-A7F7-1B48D20C7950}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Advice.Domain</RootNamespace>
+    <AssemblyName>Advice.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseEntity.cs" />
+    <Compile Include="Common\IAdviceRepository.cs" />
+    <Compile Include="Entities\Action.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ActionType.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ActionTypeGroup.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AdviceModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BusinessWiseNatureOfAdviceGroup.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BusinessWiseTask.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CorporatePriority.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CorporatePriorityByCansQueryResult.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Custom\CreatedUser.cs" />
+    <Compile Include="Entities\Custom\DeletedUser.cs" />
+    <Compile Include="Entities\Custom\ModifiedUser.cs" />
+    <Compile Include="Entities\Custom\RecentCustomerAction.cs" />
+    <Compile Include="Entities\Department.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Division.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Enums\AvVersions.cs" />
+    <Compile Include="Entities\Enums\DerivedTaskStatusForDisplay.cs" />
+    <Compile Include="Entities\Document.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailTask.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Enums\ActionType.cs" />
+    <Compile Include="Entities\Enums\ActionTypeGroupType.cs" />
+    <Compile Include="Entities\Enums\Departments.cs" />
+    <Compile Include="Entities\Enums\MaintenancePermissions.cs" />
+    <Compile Include="Entities\Enums\TaskModifyingReasonGroups.cs" />
+    <Compile Include="Entities\Enums\Permissions.cs" />
+    <Compile Include="Entities\Enums\TaskModifyingReasons.cs" />
+    <Compile Include="Entities\Enums\TaskTypeIds.cs" />
+    <Compile Include="Entities\Enums\Teams.cs" />
+    <Compile Include="Entities\ServiceReviewServiceCanGroup.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ServiceReviewServiceSchedule.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\WorkingHours.cs" />
+    <Compile Include="Entities\HroTask.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Job.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MaintenancePermission.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MaintenanceUserPermission.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Parameters\ServiceReviewTaskParameters.cs" />
+    <Compile Include="Entities\Partials\CorporatePriority.cs" />
+    <Compile Include="Entities\Partials\MaintenanceUserPermission.cs" />
+    <Compile Include="Entities\Partials\ReassignTaskEvent.cs" />
+    <Compile Include="Entities\Partials\Task.cs" />
+    <Compile Include="Entities\Partials\TaskArchive.cs" />
+    <Compile Include="Entities\Partials\Team.cs" />
+    <Compile Include="Entities\Permission.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PermissionRole.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ReassignTaskEvent.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Task.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskAction.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskArchive.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskDocument.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskJob.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskModifyingReason.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskModifyingReasonGroup.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskType.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TaskTypeSLA.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Team.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>AdviceModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryContracts\ICorporatePriorityRepository.cs" />
+    <Compile Include="RepositoryContracts\ICustomEntityRepository.cs" />
+    <Compile Include="RepositoryContracts\IDepartmentRepository.cs" />
+    <Compile Include="RepositoryContracts\IDivisionRepository.cs" />
+    <Compile Include="RepositoryContracts\IJobRepository.cs" />
+    <Compile Include="RepositoryContracts\IMaintenanceUserPermissionRepository.cs" />
+    <Compile Include="RepositoryContracts\IPermissionRepository.cs" />
+    <Compile Include="RepositoryContracts\ITaskArchiveRepository.cs" />
+    <Compile Include="RepositoryContracts\ITaskModifyingReasonRepository.cs" />
+    <Compile Include="RepositoryContracts\ITaskRepository.cs" />
+    <Compile Include="RepositoryContracts\ITeamRepository.cs" />
+    <Compile Include="RepositoryContracts\IUserRepository.cs" />
+    <Compile Include="RepositoryContracts\Services\IServiceReviewServiceJobScheduleRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entities\AdviceModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AdviceModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\ScannedDocumetModel\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

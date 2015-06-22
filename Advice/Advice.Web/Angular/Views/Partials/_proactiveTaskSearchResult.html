@@ -1,0 +1,87 @@
+﻿<table id="proactivetasksearchresults" class="taskgrid" tr-ng-grid="" items="proactiveTaskSearchResultData" page-items="25" selection-mode="SingleRow" selected-items="SelectedProactiveTasks" width="100%">
+        <thead>
+            <tr>
+                <th field-name="IsRead"><div>&nbsp;</div></th>
+                <th field-name="TaskTypeDescription" display-name="Type" enable-filtering="false" enable-sorting="true"></th>
+                <th field-name="Can" display-name="CAN" enable-filtering="false" enable-sorting="true"></th>
+                <th field-name="Description" display-name="Description" enable-filtering="false" enable-sorting="false"></th>
+                <th field-name="AssignedUser" display-name="Advisor" enable-filtering="false" enable-sorting="true"></th>
+                <th field-name="CreatedBy" display-name="From" enable-filtering="false" enable-sorting="true"></th>
+                <th field-name="CreatedDate" display-name="Logged" enable-filtering="false" enable-sorting="true" display-format="date:'dd/MM/yyyy HH:mm'"></th>
+                <th field-name="DueDate" display-name="Due" enable-filtering="false" enable-sorting="true" display-format="date:'dd/MM/yyyy HH:mm'"></th>
+                <th field-name="Status" display-name="Status" enable-filtering="false" enable-sorting="true"></th>
+                <th field-name="Selected" ><div>&nbsp;</div></th>
+                <th><div>&nbsp;</div></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td field-name="IsRead" ng-click="setSelectedProActiveTaskIndex(gridItem)">   
+                    <div ng-switch="gridItem.IsRead">
+                        <span ng-switch-when="false" class="fa fa-circle"></span>
+                    </div>
+                </td>
+                <td field-name="TaskTypeDescription" ng-click="setSelectedProActiveTaskIndex(gridItem)">
+                    <ul class="stripList">
+                        <li>
+                    <!--These Tasktype ids are defined in the database table TaskTypes-->
+                            <div class="text-center" ng-switch on="gridItem.TaskTypeId">
+                                <span ng-switch-when="1" class="fa fa-life-ring fa-2x icon-red" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="2" class="fa fa-phone fa-2x icon-dark-red" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="3" class="fa fa-phone fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="4" class="fa fa-archive fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="5" class="fa fa-check-square-o fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="6" class="fa fa-file-text fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="7" class="fa fa-envelope-o fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="8" class="fa fa-fax fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="9" class="fa fa-paste fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="10" class="fa fa-inbox fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="11" class="fa fa-briefcase fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="14" class="fa fa-envelope-o fa-2x icon-green" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="15" class="fa fa-fax fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="18" class="fa fa-envelope-square fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="19" class="fa fa-envelope-square fa-2x icon-green" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="20" class="fa fa-cloud fa-2x icon-blue" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="21" class="fa fa-cloud fa-2x icon-blue" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="22" class="fa fa-cloud-upload fa-2x icon-blue" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="23" class="fa fa-cloud-download fa-2x icon-blue" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="24" class="fa fa-calendar fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-when="25" class="fa fa-forward fa-2x icon-default" data-toggle="tooltip" data-placement="right" title="{{gridItem.TaskTypeDescription}}"></span>
+                                <span ng-switch-default>&nbsp;</span>
+                            </div>
+                        </li>
+                        <li class="text-center" ng-if="gridItem.DocumentCount > 0" field-name="DocumentCount">
+                            <span class="fa fa-paperclip icon-default  fa-flip-horizontal fa-flip-vertical fa-2x" data-toggle="tooltip" data-placement="right" title="Attachments"></span>                         
+                        </li>                        
+                        <li class="text-center" ng-switch on="gridItem.Urgent">                    
+                            <span ng-switch-when="true" class="fa fa-exclamation icon-orange fa-2x" data-toggle="tooltip" data-placement="right" title="Urgent"></span>                                                   
+                        </li>
+                    </ul>
+                </td>
+                <td field-name="Can" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="Description" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="AssignedUser" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="CreatedBy" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="CreatedDate" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="DueDate" ng-click="setSelectedProActiveTaskIndex(gridItem)" ng-class="{strikethrough: isCancelledTask(gridItem) }"></td>
+                <td field-name="Status" ng-click="setSelectedProActiveTaskIndex(gridItem)">
+                    <div class="text-center" ng-switch on="gridItem.Status">
+                        <img ng-switch-when="Red" ng-src="Content/images/RAG_Red.png" data-toggle="tooltip" data-placement="right" title="{{gridItem.Status}}" />
+                        <img ng-switch-when="Green" ng-src="Content/images/RAG_green.png" data-toggle="tooltip" data-placement="right" title="{{gridItem.Status}}" />
+                        <img ng-switch-when="Amber" ng-src="Content/images/RAG_amber.png" data-togglse="tooltip" data-placement="right" title="{{gridItem.Status}}" />
+                        <img ng-switch-when="Platinum" ng-src="Content/images/RAG_platinum.png" data-toggle="tooltip" data-placement="right" title="{{gridItem.Status}}" />
+                        <span ng-switch-default>&nbsp;</span>
+                    </div>
+                </td>
+                <td field-name="Selected">
+                    <div ng-show="getBulkDelete()">
+                        <input type="checkbox" ng-hide="bulkDeleteCheckBoxDisable(gridItem)" ng-checked="taskSelection.indexOf(gridItem) > -1" ng-click="toggleSelection(gridItem)" />
+                    </div>
+                    <div ng-show="getBulkTasksSendToOutlook()">
+                        <input type="checkbox" ng-hide="bulkSendToOutlookCheckBoxDisable(gridItem)" ng-checked="taskSelection.indexOf(gridItem) > -1" ng-click="toggleSelection(gridItem)" />
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>

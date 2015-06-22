@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Advice.Data.Common;
+using Advice.Data.Contracts;
+using Advice.Data.Repository;
+using Advice.Domain;
+using Moq;
+using NUnit.Framework;
+
+namespace Advice.Data.Tests.Repository
+{
+    [TestFixture]
+    public class JobRepositoryTests
+    {
+        private IAdviceDbContextManager _adviceDbContextManager;
+        private Mock<AdviceEntities> _adviceEntities;
+
+        [SetUp]
+        public void TestFixtureSetup()
+        {
+            _adviceEntities = new Mock<AdviceEntities>();
+            _adviceDbContextManager = new AdviceDbContextManager(_adviceEntities.Object);
+        }
+
+        //[Test]
+        //public void Given_When_Then()
+        //{
+        //    JobRepository repo = GetTarget();
+        //    repo.??
+
+        //        Assert.??
+        //}
+
+        public JobRepository GetTarget()
+        {
+            return new JobRepository(_adviceDbContextManager);
+        }
+    }
+}

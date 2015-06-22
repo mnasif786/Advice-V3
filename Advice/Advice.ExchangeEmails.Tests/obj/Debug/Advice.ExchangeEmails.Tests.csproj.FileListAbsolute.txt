@@ -1,0 +1,12 @@
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.ExchangeEmails.Tests.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.ExchangeEmails.Tests.pdb
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.ExchangeEmails.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\EmailServerService.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\nunit.framework.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.ExchangeEmails.pdb
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\nunit.framework.xml
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\bin\Debug\Advice.Infrastructure.pdb
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\obj\Debug\Advice.ExchangeEmails.Tests.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\obj\Debug\Advice.ExchangeEmails.Tests.dll
+D:\Code\Advice_V3\Advice\Advice.ExchangeEmails.Tests\obj\Debug\Advice.ExchangeEmails.Tests.pdb

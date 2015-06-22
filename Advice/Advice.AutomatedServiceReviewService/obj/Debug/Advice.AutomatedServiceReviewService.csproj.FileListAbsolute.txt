@@ -1,0 +1,9 @@
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\bin\Debug\Advice.AutomatedServiceReviewService.exe.config
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\bin\Debug\Advice.AutomatedServiceReviewService.exe
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\bin\Debug\Advice.AutomatedServiceReviewService.pdb
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.csprojResolveAssemblyReference.cache
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.ServiceReviewService.resources
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.csproj.GenerateResource.Cache
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.exe
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.pdb
+D:\Code\Advice_V3\Advice\Advice.AutomatedServiceReviewService\obj\Debug\Advice.AutomatedServiceReviewService.ProjectInstaller.resources

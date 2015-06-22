@@ -1,0 +1,14 @@
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\Advice.Domain.dll.config
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\Advice.Domain.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\Advice.Domain.pdb
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\EntityFramework.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\Newtonsoft.Json.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\System.Net.Http.Formatting.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\EntityFramework.xml
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\Newtonsoft.Json.xml
+D:\Code\Advice_V3\Advice\Advice.Domain\bin\Debug\System.Net.Http.Formatting.xml
+D:\Code\Advice_V3\Advice\Advice.Domain\obj\Debug\Advice.Domain.dll
+D:\Code\Advice_V3\Advice\Advice.Domain\obj\Debug\Advice.Domain.pdb
+D:\Code\Advice_V3\Advice\Advice.Domain\obj\Debug\Advice.Domain.csprojResolveAssemblyReference.cache

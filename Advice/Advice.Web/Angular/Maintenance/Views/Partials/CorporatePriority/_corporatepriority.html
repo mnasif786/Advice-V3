@@ -1,0 +1,56 @@
+﻿<div ng-if="!maintenanceUserPermission.hasCorporatePriorityPermission">You do not have permissions for corporate priority</div>
+<div ng-if="maintenanceUserPermission.hasCorporatePriorityPermission">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-1"><button ng-if="maintenanceUserPermission.hasCorporatePriorityManageUserPermission" class=" btn btn-primary" type="button" ng-click="manageCorporatePriorityUsers()">Manage Users</button></div>
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" class="form-control"
+                       placeholder="Add CAN..."
+                       ng-model="selectedCan.value"
+                       typeahead-min-length="3"
+                       typeahead="cans for cans in getCansStartWith($viewValue)">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="addCorporatePriority()">Add</button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <table class="table table-modal table-striped table-hover">
+            <thead>
+                <tr>
+                    <th class="col-xs-1 text-center">CAN</th>
+                    <th class="col-xs-2">Client Name</th>
+                    <th class="col-xs-1">Contract Value</th>
+                    <th class="col-xs-3">Contract Details</th>
+                    <th class="col-xs-1">Contract End Date</th>
+                    <th class="col-xs-2">Lead Consultant</th>
+                    <th class="col-xs-1"></th>
+                    <th class="col-xs-1"></th>
+                </tr>
+            </thead>
+            <tr ng-repeat="corporatePriority in corporatePriorities" class="{{getCorporatePriorityContractClass(corporatePriority)}}">
+                <td class="col-xs-1">{{corporatePriority.Can}}</td>
+                <td class="col-xs-2">{{corporatePriority.ClientName}}</td>
+                <td class="col-xs-1">{{corporatePriority.ContractValue}}</td>
+                <td class="col-xs-3">{{corporatePriority.ContractDetail}}</td>
+                <td class="col-xs-1">{{corporatePriority.ContractEndDate | date:'dd/MM/yyyy'}}</td>
+                <td class="col-xs-2">{{corporatePriority.LeadConsultant}}</td>
+                <td class="col-xs-1"><button class="btn btn-primary" ng-click="editCorporatePriority(corporatePriority)">Edit</button></td>
+                <td class="col-xs-1">
+                    <confirmation-link caption="Delete"
+                                       type="anchorwithspinner"
+                                       spin-var="spinner"
+                                       css-class="btn btn-primary"
+                                       confirmation-title="Confirm"
+                                       confirmation-message="Are you sure you want to delete this record?"
+                                       on-yes="deleteCorporatePriority(corporatePriority.CorporatePriorityId)">
+                    </confirmation-link>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

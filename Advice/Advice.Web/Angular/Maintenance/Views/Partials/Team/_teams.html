@@ -1,0 +1,30 @@
+﻿<div>
+    <div ng-if="!maintenanceUserPermission.hasTeamPermission">You do not have permissions to edit teams</div>
+    <table ng-if="maintenanceUserPermission.hasTeamPermission" class="table table-modal table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-xs-3 text-center">Team</th>
+                <th class="col-xs-2">Division</th>
+                <th class="col-xs-3">Department</th>
+                <th class="col-xs-2">Deleted</th>
+                <th class="col-xs-1"><button class="btn btn-primary" ng-click="addTeam()">Add</button></th>
+                <th class="col-xs-1"></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="team in teams">
+            <!--<tr>-->
+            <td class="col-xs-3">{{team.Description}}</td>
+            <td class="col-xs-2">{{team.DivisionDescription}}</td>
+            <td class="col-xs-3">{{team.DepartmentDescription}}</td>
+            <td class="col-xs-2" ng-switch="team.Deleted">
+                <span ng-switch-when="true">Yes</span>
+                <span ng-switch-when="false">No</span>
+            </td>
+            <td class="col-xs-1"><button class="btn btn-primary" ng-click="editTeam(team)">Edit</button></td>
+            <td class="col-xs-1">
+                <button ng-if="team.Deleted" class="btn btn-primary" ng-click="reinstateTeam(team)">Reinstate</button>
+                <button ng-if="!team.Deleted" class="btn btn-primary" ng-click="deleteTeam(team)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

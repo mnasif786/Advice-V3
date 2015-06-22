@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A86E4890-5CC0-4A20-9393-ECFD56FB1AE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Application.Tests</RootNamespace>
+    <AssemblyName>Application.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EmailServerService, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EmailServerService.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseClientServiceTests.cs" />
+    <Compile Include="Common\BaseMaintenanceServiceTests.cs" />
+    <Compile Include="Common\BaseTaskModifyingReasonServiceTests.cs" />
+    <Compile Include="Common\BaseTeamServiceTests.cs" />
+    <Compile Include="Common\BaseTaskServiceTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetAllClientsStartWithCanTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetAllClientsStartWithClientNameTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetClientByCanTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetClientByNameTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetRecentClientsActionTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetTop10ClientCansStartWithTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetTop10ClientNamesStartWithTests.cs" />
+    <Compile Include="Implementations\ClientServiceTests\GetTop10ClientsStartWithClientNameTests.cs" />
+    <Compile Include="Implementations\DivisionServiceTests.cs" />
+    <Compile Include="Implementations\DocumentServiceTests.cs" />
+    <Compile Include="Implementations\MaintenanceServiceTests\AddCorporatePriorityUserTests.cs" />
+    <Compile Include="Implementations\MaintenanceServiceTests\GetAllCorporatePrioritiesTests.cs" />
+    <Compile Include="Implementations\MaintenanceServiceTests\GetCorporatePriorityUsersExcludingThisTests.cs" />
+    <Compile Include="Implementations\PermissionServiceTests.cs" />
+    <Compile Include="Implementations\TaskModifyingReasonTests\GetTaskModifyingReasonsForResetGroupTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\DeleteTaskTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetDeletedTasksTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetProActiveTasksTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetTasksByTeamTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetTasksByUserTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetTaskWithDetailByTaskIdTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\ReassignTaskTest.cs" />
+    <Compile Include="Implementations\TaskServiceTests\ResetTaskSlaTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\ReinstateTaskTests.cs" />
+    <Compile Include="Implementations\TaskServiceTests\GetTaskHistoryByTaskId.cs" />
+    <Compile Include="Implementations\TeamServiceTests\GetAllTeamsWithDivisionAndDepartmentTests.cs" />
+    <Compile Include="Implementations\TeamServiceTests\GetTeamsByDepartmentTests.cs" />
+    <Compile Include="Implementations\UserServiceTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Advice.Application\Advice.Application.csproj">
+      <Project>{6041c7b4-4327-4762-8ce4-aae0b86961ad}</Project>
+      <Name>Advice.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Common\Advice.Common.csproj">
+      <Project>{baead89c-3058-4353-91f3-715551b3e0aa}</Project>
+      <Name>Advice.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Data\Advice.Data.csproj">
+      <Project>{bfb6f2a9-8f54-4cc6-86fd-788ad3d770f8}</Project>
+      <Name>Advice.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Domain\Advice.Domain.csproj">
+      <Project>{b215abcd-c02d-43b6-a7f7-1b48d20c7950}</Project>
+      <Name>Advice.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.ExchangeEmails\Advice.ExchangeEmails.csproj">
+      <Project>{4D0C5024-678F-4268-A15C-9B565955BA3F}</Project>
+      <Name>Advice.ExchangeEmails</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.Logging.Test\Advice.Logging.Tests.csproj">
+      <Project>{eaf92331-17cb-4917-9109-658134ba6417}</Project>
+      <Name>Advice.Logging.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Advice.ScannedDocuments\Advice.ScannedDocuments.csproj">
+      <Project>{3a1c42f0-a5d0-4cc4-80f6-0eff98b5b1af}</Project>
+      <Name>Advice.ScannedDocuments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Peninsula.Domain\Peninsula.Domain.csproj">
+      <Project>{c3bb5480-0bd5-4dbe-a5da-56951df10a67}</Project>
+      <Name>Peninsula.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

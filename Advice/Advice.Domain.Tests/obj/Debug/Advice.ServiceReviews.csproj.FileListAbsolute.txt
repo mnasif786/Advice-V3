@@ -1,0 +1,3 @@
+D:\Code\Advice_V3\Advice\Advice.ServiceReviews\bin\Debug\Advice.ServiceReviews.exe.config
+D:\Code\Advice_V3\Advice\Advice.ServiceReviews\obj\Debug\Advice.ServiceReviews.exe
+D:\Code\Advice_V3\Advice\Advice.ServiceReviews\obj\Debug\Advice.ServiceReviews.pdb

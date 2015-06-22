@@ -1,0 +1,180 @@
+﻿<div class="row">
+    <div class="col-lg-12">
+        <div class="nav navbar navbar-default col-lg-12 layoutStrip" style="padding: 5px;">
+        <div class="col-lg-3">
+            <a ng-href="index.html#/tasks" title="Home"><img src="../../Content/images/av3Tran.png" /></a>
+        </div>
+            <div class="col-lg-6">
+                <div class="col-lg-12">
+                    <ul class="stripList paddingMenu">
+                        <li>
+                            <a ng-href="{{advice2MyWork}}" target="_blank" class="no-decoration-icon" title="My Work"><span class="fa fa-line-chart fa-2x"></span></a>
+                        </li>
+                        <li>
+                            <a ng-href="{{advice2CallRecorder}}" target="_blank" class="no-decoration-icon" title="Call Recorder"><span class="fa fa-microphone fa-2x"></span></a>
+                        </li>
+                        <li>
+                            <a ng-href="{{advice2AddTask}}" target="_blank" class="no-decoration-icon" title="Add Task"><span class="fa fa-plus-square fa-2x"></span></a>
+                        </li>
+                        <li >
+                            <a ng-href="{{advice2Reports}}" target="_blank" class="no-decoration-icon" title="Reports"><span class="fa fa-bar-chart fa-2x"></span></a>
+                        </li>
+                        <li >
+                            <a ng-href="{{advice2UserAdmin}}" target="_blank" class="no-decoration-icon" title="User Admin"><span class="fa fa-users fa-2x"></span></a>
+                        </li>
+                        <li>
+                            <a ng-href="maintenanceApp.html#/maintenance" target="_blank" class="no-decoration-icon" title="Maintenance"><span class="fa fa-wrench fa-2x"></span></a>
+                        </li>
+                        <!--DEVELOPER LABBEL-->
+                        <li>
+                            <label class="domainlabel">{{loggedInUser.Identity.Domain}}\{{loggedInUser.Identity.UserName}} </label>
+                        </li>
+                        <li ng-if="loggedInUser.Permissions.Developer">
+                             <div id="infoBuild" class="hideBuild pull-right" ng-click="getBuild()">
+                                <label>{{loggedInUser.MachineName}}</label>
+                                <!-- DO NOT UPDATE: The build number is updated automatically in Jenkins -->
+                                Build Number: #BuildNumber
+                            </div>                                
+                            <div class="pull-right" ng-click="getBuild()" style="top:-2px;">
+                                <span id="showbuild" class="fa fa-info"></span>
+                            </div>   
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3 ">
+                <div ng-include="templates.ClientSearch.URL"></div>          
+            </div>
+        </div>
+        <div class="col-lg-12 panel panel-info layoutStrip">
+            <div class="panel-body bg-info paddingPanel">
+                <div class="col-lg-2">
+                    <div class="col-lg-12 cellWidth">
+                        <multiselect multiple="true" ng-model="selectedTeams" options="team.Description for team in teamList" defaultlabel="Select Teams" change="selectedTeamsUpdateDetails()" templatename="multiselectteam">
+                        </multiselect>
+                    </div>
+
+                    <div class="col-lg-12 cellWidth" ng-show="!viewProActiveTask">
+                        <div class="redCell" ng-class="{animateball:activityMonitor.TasksSearchByTeamInProgress}" ng-click="showTasklistForTeam(filterTypes.Red)"><div class="alignBall">{{teamTasksSearchResult.Timeline.Red}}</div></div>
+                        <div class="amberCell" ng-class="{animateball:activityMonitor.TasksSearchByTeamInProgress}" ng-click="showTasklistForTeam(filterTypes.Amber)"><div class="alignBall">{{teamTasksSearchResult.Timeline.Amber}}</div></div>
+                        <div class="greenCell" ng-class="{animateball:activityMonitor.TasksSearchByTeamInProgress}" ng-click="showTasklistForTeam(filterTypes.Green)"><div class="alignBall">{{teamTasksSearchResult.Timeline.Green}}</div></div>
+                        <div class="platinumCell" ng-class="{animateball:activityMonitor.TasksSearchByTeamInProgress}" ng-click="showTasklistForTeam(filterTypes.Platinum)"><div class="alignBall">{{teamTasksSearchResult.Timeline.Platinum}}</div></div>
+                        <div class="equalsCell"><div class="alignBall">=</div></div>
+                        <div class="totalCell" ng-class="{animateball:activityMonitor.TasksSearchByTeamInProgress}" ng-click="showTasklistForTeam(filterTypes.None)"><div class="alignBall">{{teamTasksSearchResult.Timeline.Total}} </div></div>
+                    </div>
+                    
+                    <div class="col-lg-12 cellWidth" ng-show="viewProActiveTask">
+                        <div class="redCell" ng-class="{animateball:activityMonitor.TeamProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForTeam(filterTypes.Red)"><div class="alignBall">{{teamsProActiveTaskSearchResult.Timeline.Red}}</div></div>
+                        <div class="amberCell" ng-class="{animateball:activityMonitor.TeamProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForTeam(filterTypes.Amber)"><div class="alignBall">{{teamsProActiveTaskSearchResult.Timeline.Amber}}</div></div>
+                        <div class="greenCell" ng-class="{animateball:activityMonitor.TeamProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForTeam(filterTypes.Green)"><div class="alignBall">{{teamsProActiveTaskSearchResult.Timeline.Green}}</div></div>
+                        <div class="platinumCell" ng-class="{animateball:activityMonitor.TeamProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForTeam(filterTypes.Platinum)"><div class="alignBall">{{teamsProActiveTaskSearchResult.Timeline.Platinum}}</div></div>
+                        <div class="equalsCell"><div class="alignBall">=</div></div>
+                        <div class="totalCell" ng-class="{animateball:activityMonitor.TeamProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForTeam(filterTypes.None)"><div class="alignBall">{{teamsProActiveTaskSearchResult.Timeline.Total}} </div></div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-lg-offset-1 ">
+                    <div class="col-lg-12 cellWidth">
+                        <multiselect ng-model="selectedUser" options="user.DisplayName for user in userList" defaultlabel="Select Consultant" change="selectedUserUpdateDetails()" templatename="multiselectuser">
+                        </multiselect>
+                    </div>
+
+                    <div class="col-lg-12 cellWidth" ng-show="!viewProActiveTask">
+                        <div class="redCell" ng-class="{animateball:activityMonitor.TasksSearchByUserInProgress}" ng-click="showTasklistForUser(filterTypes.Red)"><div class="alignBall">{{userTasksSearchResult.Timeline.Red}}</div></div>
+                        <div class="amberCell" ng-class="{animateball:activityMonitor.TasksSearchByUserInProgress}" ng-click="showTasklistForUser(filterTypes.Amber)"><div class="alignBall">{{userTasksSearchResult.Timeline.Amber}}</div></div>
+                        <div class="greenCell" ng-class="{animateball:activityMonitor.TasksSearchByUserInProgress}" ng-click="showTasklistForUser(filterTypes.Green)"><div class="alignBall">{{userTasksSearchResult.Timeline.Green}}</div></div>
+                        <div class="platinumCell" ng-class="{animateball:activityMonitor.TasksSearchByUserInProgress}" ng-click="showTasklistForUser(filterTypes.Platinum)"><div class="alignBall">{{userTasksSearchResult.Timeline.Platinum}}</div></div>
+                        <div class="equalsCell"><div class="alignBall">=</div></div>
+                        <div class="totalCell" ng-class="{animateball:activityMonitor.TasksSearchByUserInProgress}" ng-click="showTasklistForUser(filterTypes.None)"><div class="alignBall">{{userTasksSearchResult.Timeline.Total}} </div></div>
+                    </div>
+                    
+                    <div class="col-lg-12 cellWidth" ng-show="viewProActiveTask">
+                        <div class="redCell" ng-class="{animateball:activityMonitor.UserProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForUser(filterTypes.Red)"><div class="alignBall">{{userProActiveTaskSearchResult.Timeline.Red}}</div></div>
+                        <div class="amberCell" ng-class="{animateball:activityMonitor.UserProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForUser(filterTypes.Amber)"><div class="alignBall">{{userProActiveTaskSearchResult.Timeline.Amber}}</div></div>
+                        <div class="greenCell" ng-class="{animateball:activityMonitor.UserProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForUser(filterTypes.Green)"><div class="alignBall">{{userProActiveTaskSearchResult.Timeline.Green}}</div></div>
+                        <div class="platinumCell" ng-class="{animateball:activityMonitor.UserProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForUser(filterTypes.Platinum)"><div class="alignBall">{{userProActiveTaskSearchResult.Timeline.Platinum}}</div></div>
+                        <div class="equalsCell"><div class="alignBall">=</div></div>
+                        <div class="totalCell" ng-class="{animateball:activityMonitor.UserProActiveTasksSearchInProgress}" ng-click="showProactiveTasklistForUser(filterTypes.None)"><div class="alignBall">{{userProActiveTaskSearchResult.Timeline.Total}} </div></div>
+                    </div>
+
+                </div>
+                <div class="col-lg-2 col-lg-offset-1">
+                    <div class="col-lg-12 cellWidth">
+                        <label style="margin-top: 6px;">My Pro-Active Tasks</label>
+                    </div>
+                    <div class="col-lg-12 cellWidth">
+                        <div class="redCell readonly" ng-class="{animateball:activityMonitor.ProActiveTasksSearchInProgress}"><div class="alignBall">{{proActiveTaskSearchResult.Timeline.Red}}</div></div>
+                        <div class="amberCell readonly" ng-class="{animateball:activityMonitor.ProActiveTasksSearchInProgress}"><div class="alignBall">{{proActiveTaskSearchResult.Timeline.Amber}}</div></div>
+                        <div class="greenCell readonly" ng-class="{animateball:activityMonitor.ProActiveTasksSearchInProgress}"><div class="alignBall">{{proActiveTaskSearchResult.Timeline.Green}}</div></div>
+                        <div class="platinumCell readonly" ng-class="{animateball:activityMonitor.ProActiveTasksSearchInProgress}"><div class="alignBall">{{proActiveTaskSearchResult.Timeline.Platinum}}</div></div>
+                        <div class="equalsCell readonly"><div class="alignBall">=</div></div>
+                        <div class="totalCell readonly" ng-class="{animateball:activityMonitor.ProActiveTasksSearchInProgress}"><div class="alignBall"> {{proActiveTaskSearchResult.Timeline.Total}} </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+<div class="row">
+    <div class="pull-left">
+        <div class="row task-header" ng-class="{proactivetask:viewProActiveTask==true}">
+            <div class="col-md-7">               
+                <div class="btn-group task-header-tab">
+                    <label class="btn btn-primary btn-small" ng-model="viewProActiveTask" btn-radio="false">Tasks</label>
+                    <label class="btn btn-success btn-small proactivetask" ng-model="viewProActiveTask" btn-radio="true">Pro-Active Tasks</label>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div id="grid-actions-split" class="btn-group pull-right" style="padding-right: 30px;">
+                    <button class="btn btn-primary btn-color-style-2" ng-click="refresh()">
+                        <span ng-show="!activityMonitor.TasksSearchByTeamInProgress && !activityMonitor.TasksSearchByUserInProgress && !TeamProActiveTasksSearchInProgress && !UserProActiveTasksSearchInProgress"> Refresh</span>
+                        <span ng-show="activityMonitor.TasksSearchByTeamInProgress || activityMonitor.TasksSearchByUserInProgress || TeamProActiveTasksSearchInProgress || UserProActiveTasksSearchInProgress"><span class="fa fa-spinner fa-spin fa-lg"></span></span>
+                    </button>
+
+                    <button class="btn btn-primary dropdown-toggle btn-color-style-2" data-toggle="dropdown"><span class="caret"></span></button>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-if="currentFilterType!='Delete'">
+                            <a class="btn li-btn" ng-click="setDropDowntype('ShowDeleted')">Show Deleted</a>
+                        </li>
+                        <li ng-if="currentFilterType=='Delete'"><a class="btn li-btn" ng-click="setDropDowntype('HideDeleted')">Hide Deleted</a></li>
+                        <li><a class="btn li-btn">Clear All Filters</a></li>
+                        <li ng-if="currentFilterType!='Delete'">
+                            <a class="btn li-btn" ng-disabled="checkUserHasNotDeletePermissions()" ng-click="setDropDowntype('BulkDelete')">Bulk Delete</a>
+                        </li>
+                        <li><a class="btn li-btn" ng-hide="currentFilterType=='Delete'" ng-click="setDropDowntype('BulkReassign')">Bulk Reassign</a></li>
+                        <li><a class="btn li-btn" ng-hide="currentFilterType=='Delete'" ng-click="setDropDowntype('SendToOutlook')">Bulk Send To Outlook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>              
+        <div class="row" ng-show="viewProActiveTask">
+            <div ng-include="templates.ProActiveTaskSearchResult.URL"></div>
+        </div>
+        <div class="row" ng-show="!viewProActiveTask">
+            <div ng-include="templates.TaskSearchResult.URL"></div>
+        </div>     
+        <div class="pull-right">
+            <div class="btn-group left">
+                <button class="btn btn-primary" ng-show="getBulkDelete() && taskSelection.length > 0" ng-click="deleteBulkTasks()">Delete Selected</button>
+            </div>
+            <div class="btn-group left">
+                <button class="btn btn-primary" ng-show="getBulkTasksSendToOutlook() && taskSelection.length > 0" ng-click="sendBulkTasksToOutlook()">Send Back to Outlook</button>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" ng-show="getBulkDelete() || getBulkTasksSendToOutlook()" ng-click="clearTasks()">Cancel</button>
+            </div>
+        </div>       
+    </div>
+    <div class="pull-left" style="width: 630px;">
+        <div class="row task-detail-header" ng-class="{proactivetask:viewProActiveTask==true}">
+            <label>Details</label>
+        </div>
+        <div class="row task-detail-content">
+            <div ng-include="templates.TaskDetails.URL"></div>
+        </div>
+    </div>
+</div>
+
+
+

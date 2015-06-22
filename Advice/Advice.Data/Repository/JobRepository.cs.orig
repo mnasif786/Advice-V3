@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Advice.Data.Common;
+using Advice.Data.Contracts;
+using Advice.Domain.Entities;
+using Advice.Domain.RepositoryContracts;
+
+namespace Advice.Data.Repository
+{
+    public class JobRepository : AdviceRepository<Job>, IJobRepository
+    {
+        public JobRepository(IAdviceDbContextManager adviceDbContextManager)
+            : base(adviceDbContextManager)
+        {
+
+        }
+
+
+         
+        public IEnumerable<Job> GetJobsByClientId(int clientId)
+        {
+            return Context
+                    .Jobs
+                    .Where( job => job.ClientID == clientId )
+                    .OrderBy(x => x.LastActionDate);
+        }
+    }
+}

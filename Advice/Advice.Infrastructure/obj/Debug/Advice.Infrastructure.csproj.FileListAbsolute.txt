@@ -1,0 +1,4 @@
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\bin\Debug\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\bin\Debug\Advice.Infrastructure.pdb
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\obj\Debug\Advice.Infrastructure.dll
+D:\Code\Advice_V3\Advice\Advice.Infrastructure\obj\Debug\Advice.Infrastructure.pdb

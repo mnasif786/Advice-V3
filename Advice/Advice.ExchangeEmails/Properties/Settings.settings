@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Advice.ExchangeEmails.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Advice_ExchangeEmails_WS_ExchangeArchive_WS_ExchangeArchive" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8035/WS_ExchangeArchive.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

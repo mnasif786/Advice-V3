@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\Code\Advice_v3\Advice\Advice.Web\obj\Release\Package\PackageTmp" />
+  <setAcl path="D:\Code\Advice_v3\Advice\Advice.Web\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="D:\Code\Advice_v3\Advice\Advice.Web\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

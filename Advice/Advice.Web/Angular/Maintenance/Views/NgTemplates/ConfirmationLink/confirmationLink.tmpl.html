@@ -1,0 +1,6 @@
+﻿<button ng-if="button" class="{{cssClass}}" ng-click="openDialog()">{{caption}}</button>
+<a ng-if="anchorWithSpinner" class="{{cssClass}}" ng-click="openDialog()">
+    <span ng-hide="spin">{{caption}}</span>
+    <span ng-show="spin"><span class="fa fa-spinner fa-spin fa-2x"></span></span>
+</a>
+<a ng-if="anchor" class="{{cssClass}}" ng-click="openDialog()">{{caption}}</a>
